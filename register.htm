@@ -1,539 +1,1383 @@
-<!DOCTYPE html>  <html lang="pt">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Inteligência APP</title>  
-
-<style>  
-    * {  
-        box-sizing: border-box;  
-        margin: 0;  
-        padding: 0;  
-    }  
-
-    body {  
-        min-height: 100vh;  
-        font-family: Arial, sans-serif;  
-        background: #050505;  
-        color: white;  
-        display: flex;  
-        justify-content: center;  
-        align-items: center;  
-    }  
-
-    .container {  
-        width: 92%;  
-        max-width: 500px;  
-        text-align: center;  
-    }  
-
-    .logo {  
-        width: 90px;  
-        height: 90px;  
-        margin: 0 auto 25px;  
-        border-radius: 25px;  
-        background: linear-gradient(135deg, #00ff88, #00aa55);  
-        display: flex;  
-        justify-content: center;  
-        align-items: center;  
-        font-size: 42px;  
-        font-weight: bold;  
-        color: #000;  
-        box-shadow: 0 0 35px rgba(0,255,136,.25);  
-    }  
-
-    h1 {  
-        font-size: 32px;  
-        margin-bottom: 10px;  
-    }  
-
-    .subtitle {  
-        color: #999;  
-        font-size: 16px;  
-        margin-bottom: 40px;  
-    }  
-
-    .buttons {  
-        display: flex;  
-        flex-direction: column;  
-        gap: 15px;  
-    }  
-
-    button {  
-        width: 100%;  
-        padding: 18px;  
-        border: none;  
-        border-radius: 14px;  
-        font-size: 17px;  
-        font-weight: bold;  
-        cursor: pointer;  
-        transition: .2s;  
-    }  
-
-    button:hover {  
-        transform: translateY(-2px);  
-    }  
-
-    .work {  
-        background: #00ff88;  
-        color: #000;  
-    }  
-
-    .profile {  
-        background: #151515;  
-        color: white;  
-        border: 1px solid #292929;  
-    }  
-
-    .screen {  
-        display: none;  
-    }  
-
-    .back {  
-        background: transparent;  
-        color: #888;  
-        margin-top: 20px;  
-    }  
-
-    .box {  
-        background: #101010;  
-        border: 1px solid #242424;  
-        padding: 28px;  
-        border-radius: 20px;  
-    }  
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inteligência APP</title>
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            min-height:100vh;
+            font-family:Arial,sans-serif;
+            background:
+                radial-gradient(circle at top,#062b18 0%,#050505 45%);
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .container{
+            width:100%;
+            max-width:520px;
+            text-align:center;
+        }
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo{
+            width:90px;
+            height:90px;
+            margin:0 auto 25px;
+            border-radius:25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00ff88,
+                    #00aa55
+                );
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            font-size:42px;
+            font-weight:bold;
+            color:#000;
+
+            box-shadow:
+                0 0 35px rgba(0,255,136,.25);
+        }
+
+        h1{
+            font-size:32px;
+            line-height:1.15;
+            margin-bottom:10px;
+        }
+
+        h2{
+            font-size:25px;
+            margin-bottom:8px;
+        }
+
+        .subtitle{
+            color:#999;
+            font-size:16px;
+            margin-bottom:35px;
+            line-height:1.5;
+        }
+
+        /* =========================
+           TELAS
+        ========================= */
+
+        .screen{
+            display:none;
+            animation:aparecer .25s ease;
+        }
+
+        @keyframes aparecer{
+
+            from{
+                opacity:0;
+                transform:translateY(8px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
 
-    input {  
-        width: 100%;  
-        padding: 15px;  
-        margin-top: 12px;  
-        border-radius: 12px;  
-        border: 1px solid #292929;  
-        background: #080808;  
-        color: white;  
-        outline: none;  
-    }  
+        }
 
-    .action {  
-        margin-top: 15px;  
-        background: #00ff88;  
-        color: #000;  
-    }  
+        /* =========================
+           BOTÕES
+        ========================= */
 
-    .error {  
-        color: #ff5555;  
-        margin-top: 12px;  
-        font-size: 14px;  
-    }  
+        .buttons{
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+        }
 
-    .success {  
-        color: #00ff88;  
-        margin-top: 12px;  
-        font-size: 14px;  
-    }  
-</style>
+        button{
+            width:100%;
+            padding:17px;
+            border:none;
+            border-radius:14px;
 
-</head>  <body>  <div class="container">  <!-- PRIMEIRA TELA: ENTRAR OU CRIAR CONTA -->  
-<div id="home" class="screen" style="display:block">  
+            font-size:16px;
+            font-weight:bold;
 
-    <div class="logo">IA</div>  
+            cursor:pointer;
 
-    <h1>Bem-vindo à<br>Inteligência APP</h1>  
+            transition:.2s;
+        }
 
-    <p class="subtitle">  
-        Sua plataforma inteligente para criar, programar e trabalhar.  
-    </p>  
+        button:hover{
+            transform:translateY(-2px);
+        }
 
-    <div class="buttons">  
+        button:active{
+            transform:scale(.98);
+        }
 
-        <button class="work" onclick="mostrarLogin()">  
-            🔐 ENTRAR  
-        </button>  
+        .work{
+            background:#00ff88;
+            color:#000;
 
-        <button class="profile" onclick="mostrarRegistro()">  
-            📝 CRIAR CONTA  
-        </button>  
+            box-shadow:
+                0 8px 25px rgba(0,255,136,.12);
+        }
 
-    </div>  
+        .profile{
+            background:#151515;
+            color:white;
+            border:1px solid #292929;
+        }
 
-</div>  
+        .back{
+            background:transparent;
+            color:#888;
+            margin-top:15px;
+        }
 
+        .back:hover{
+            color:#00ff88;
+            transform:none;
+        }
 
-<!-- LOGIN -->  
-<div id="login" class="screen">  
+        /* =========================
+           BOX
+        ========================= */
 
-    <div class="box">  
+        .box{
+            background:rgba(16,16,16,.95);
+            border:1px solid #242424;
 
-        <h2>🔐 Entrar</h2>  
+            padding:28px;
 
-        <input  
-            type="text"  
-            id="loginEmail"  
-            placeholder="Email ou usuário"  
-        >  
+            border-radius:22px;
 
-        <input  
-            type="password"  
-            id="loginSenha"  
-            placeholder="Senha"  
-        >  
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.4);
+        }
 
-        <button class="action" onclick="login()">  
-            ENTRAR  
-        </button>  
+        /* =========================
+           INPUTS
+        ========================= */
 
-        <div id="loginMsg"></div>  
+        input{
+            width:100%;
 
-        <button class="back" onclick="voltar()">  
-            ← Voltar  
-        </button>  
+            padding:15px;
 
-    </div>  
+            margin-top:12px;
 
-</div>  
+            border-radius:12px;
 
+            border:1px solid #292929;
 
-<!-- REGISTRO -->  
-<div id="registro" class="screen">  
+            background:#080808;
 
-    <div class="box">  
+            color:white;
 
-        <h2>📝 Criar conta</h2>  
+            outline:none;
 
-        <input  
-            type="text"  
-            id="regNome"  
-            placeholder="Nome"  
-        >  
+            font-size:15px;
 
-        <input  
-            type="email"  
-            id="regEmail"  
-            placeholder="Email"  
-        >  
+            transition:.2s;
+        }
 
-        <input  
-            type="password"  
-            id="regSenha"  
-            placeholder="Senha"  
-        >  
+        input:focus{
+            border-color:#00ff88;
 
-        <button class="action" onclick="registrar()">  
-            CRIAR CONTA  
-        </button>  
+            box-shadow:
+                0 0 0 2px rgba(0,255,136,.08);
+        }
 
-        <div id="regMsg"></div>  
+        input::placeholder{
+            color:#666;
+        }
 
-        <button class="back" onclick="voltar()">  
-            ← Voltar  
-        </button>  
+        .action{
+            margin-top:16px;
 
-    </div>  
+            background:#00ff88;
+            color:#000;
+        }
 
-</div>  
+        /* =========================
+           MENSAGENS
+        ========================= */
 
+        .error{
+            color:#ff5555;
+            margin-top:12px;
+            font-size:14px;
+        }
 
-<!-- MENU DEPOIS DO LOGIN -->  
-<div id="menu" class="screen">  
+        .success{
+            color:#00ff88;
+            margin-top:12px;
+            font-size:14px;
+        }
 
-    <div class="logo">IA</div>  
+        /* =========================
+           MEUS PROJETOS
+        ========================= */
 
-    <h1>Bem-vindo!</h1>  
+        .project-header{
+            margin-bottom:25px;
+        }
 
-    <p id="nomeUsuario" class="subtitle">  
-        Você está conectado.  
-    </p>  
+        .project-header .logo{
+            width:70px;
+            height:70px;
+            border-radius:20px;
+            font-size:32px;
+            margin-bottom:18px;
+        }
 
-    <div class="buttons">  
+        .project-list{
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            margin-top:15px;
+        }
 
-        <button class="work" onclick="trabalhar()">  
-            💻 TRABALHAR  
-        </button>  
+        .project-card{
+            background:#0a0a0a;
 
-        <button class="profile" onclick="mostrarPerfil()">  
-            👤 PERFIL  
-        </button>  
+            border:1px solid #252525;
 
-    </div>  
+            border-radius:15px;
 
-</div>  
+            padding:16px;
 
+            text-align:left;
 
-<!-- PERFIL -->  
-<div id="perfil" class="screen">  
+            cursor:pointer;
 
-    <div class="box">  
+            transition:.2s;
+        }
 
-        <h2>👤 Perfil</h2>  
+        .project-card:hover{
+            border-color:#00ff88;
+            background:#0d1711;
+            transform:translateY(-2px);
+        }
 
-        <p id="perfilNome" class="subtitle" style="margin-top:10px;margin-bottom:20px;">  
-            Usuário  
-        </p>  
+        .project-title{
+            font-size:16px;
+            font-weight:bold;
+            margin-bottom:5px;
+        }
 
-        <button class="back" onclick="mostrarMenu()">  
-            ← Voltar  
-        </button>  
+        .project-info{
+            color:#777;
+            font-size:12px;
+        }
 
-        <button class="profile" onclick="sair()" style="margin-top:10px;">  
-            SAIR  
-        </button>  
+        .empty-projects{
+            padding:25px 10px;
+            color:#777;
+            font-size:14px;
+        }
 
-    </div>  
+        .new-project{
+            margin-top:18px;
+        }
+
+        /* =========================
+           PERFIL
+        ========================= */
+
+        .profile-info{
+            background:#080808;
+            border:1px solid #242424;
+            padding:18px;
+            border-radius:14px;
+            margin-top:18px;
+            text-align:left;
+        }
+
+        .profile-row{
+            padding:10px 0;
+            border-bottom:1px solid #1d1d1d;
+        }
+
+        .profile-row:last-child{
+            border-bottom:none;
+        }
+
+        .profile-label{
+            color:#666;
+            font-size:12px;
+            margin-bottom:4px;
+        }
+
+        .profile-value{
+            color:white;
+            font-size:15px;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media(max-width:500px){
+
+            body{
+                padding:15px;
+            }
+
+            h1{
+                font-size:28px;
+            }
+
+            .box{
+                padding:22px;
+            }
+
+            .logo{
+                width:78px;
+                height:78px;
+                font-size:36px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =================================================
+         HOME
+    ================================================== -->
+
+    <div id="home" class="screen" style="display:block">
+
+        <div class="logo">
+            IA
+        </div>
+
+        <h1>
+            Bem-vindo à<br>
+            Inteligência APP
+        </h1>
+
+        <p class="subtitle">
+            Sua plataforma inteligente para criar,
+            programar e trabalhar.
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="work"
+                onclick="mostrarLogin()"
+            >
+                🔐 ENTRAR
+            </button>
+
+            <button
+                class="profile"
+                onclick="mostrarRegistro()"
+            >
+                📝 CRIAR CONTA
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         LOGIN
+    ================================================== -->
+
+    <div id="login" class="screen">
+
+        <div class="box">
+
+            <h2>
+                🔐 Entrar
+            </h2>
+
+            <p class="subtitle">
+                Entre na sua conta para continuar.
+            </p>
+
+            <input
+                type="text"
+                id="loginEmail"
+                placeholder="Email ou usuário"
+                autocomplete="username"
+            >
+
+            <input
+                type="password"
+                id="loginSenha"
+                placeholder="Senha"
+                autocomplete="current-password"
+            >
+
+            <button
+                class="action"
+                onclick="login()"
+            >
+                ENTRAR
+            </button>
+
+            <div id="loginMsg"></div>
+
+            <button
+                class="back"
+                onclick="voltar()"
+            >
+                ← Voltar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         REGISTRO
+    ================================================== -->
+
+    <div id="registro" class="screen">
+
+        <div class="box">
+
+            <h2>
+                📝 Criar conta
+            </h2>
+
+            <p class="subtitle">
+                Crie sua conta na Inteligência APP.
+            </p>
+
+            <input
+                type="text"
+                id="regNome"
+                placeholder="Nome"
+                autocomplete="name"
+            >
+
+            <input
+                type="email"
+                id="regEmail"
+                placeholder="Email"
+                autocomplete="email"
+            >
+
+            <input
+                type="password"
+                id="regSenha"
+                placeholder="Senha"
+                autocomplete="new-password"
+            >
+
+            <button
+                class="action"
+                onclick="registrar()"
+            >
+                CRIAR CONTA
+            </button>
+
+            <div id="regMsg"></div>
+
+            <button
+                class="back"
+                onclick="voltar()"
+            >
+                ← Voltar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MENU PRINCIPAL
+    ================================================== -->
+
+    <div id="menu" class="screen">
+
+        <div class="logo">
+            IA
+        </div>
+
+        <h1>
+            Bem-vindo!
+        </h1>
+
+        <p
+            id="nomeUsuario"
+            class="subtitle"
+        >
+            Você está conectado.
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="work"
+                onclick="trabalhar()"
+            >
+                💻 TRABALHAR
+            </button>
+
+            <button
+                class="profile"
+                onclick="mostrarPerfil()"
+            >
+                👤 PERFIL
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MEUS PROJETOS
+    ================================================== -->
+
+    <div id="projetos" class="screen">
+
+        <div class="box">
+
+            <div class="project-header">
+
+                <div
+                    class="logo"
+                    style="margin-bottom:18px;"
+                >
+                    IA
+                </div>
+
+                <h2>
+                    📁 Meus Projetos
+                </h2>
+
+                <p
+                    class="subtitle"
+                    style="margin-bottom:0;"
+                >
+                    Crie um novo projeto ou continue
+                    um projeto existente.
+                </p>
+
+            </div>
+
+
+            <div id="listaProjetos"
+                 class="project-list">
+
+                <div class="empty-projects">
+                    Nenhum projeto criado ainda.
+                </div>
+
+            </div>
+
+
+            <button
+                class="action new-project"
+                onclick="novoProjeto()"
+            >
+                ➕ CRIAR NOVO PROJETO
+            </button>
+
+
+            <button
+                class="back"
+                onclick="mostrarMenu()"
+            >
+                ← Voltar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PERFIL
+    ================================================== -->
+
+    <div id="perfil" class="screen">
+
+        <div class="box">
+
+            <h2>
+                👤 Perfil
+            </h2>
+
+            <div class="profile-info">
+
+                <div class="profile-row">
+
+                    <div class="profile-label">
+                        NOME
+                    </div>
+
+                    <div
+                        id="perfilNome"
+                        class="profile-value"
+                    >
+                        Usuário
+                    </div>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <div class="profile-label">
+                        EMAIL
+                    </div>
+
+                    <div
+                        id="perfilEmail"
+                        class="profile-value"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="back"
+                onclick="mostrarMenu()"
+            >
+                ← Voltar
+            </button>
+
+
+            <button
+                class="profile"
+                onclick="sair()"
+                style="margin-top:10px;"
+            >
+                🚪 SAIR
+            </button>
+
+        </div>
+
+    </div>
+
 
 </div>
 
-</div>  <script>  
-  
-function esconderTudo() {  
-  
-    document.querySelectorAll(".screen").forEach(function(el) {  
-        el.style.display = "none";  
-    });  
-  
-}  
-  
-  
-function mostrarLogin() {  
-  
-    esconderTudo();  
-  
-    document.getElementById("login").style.display = "block";  
-  
-}  
-  
-  
-function mostrarRegistro() {  
-  
-    esconderTudo();  
-  
-    document.getElementById("registro").style.display = "block";  
-  
-}  
-  
-  
-function mostrarMenu() {  
-  
-    esconderTudo();  
-  
-    document.getElementById("menu").style.display = "block";  
-  
-}  
-  
-  
-function mostrarPerfil() {  
-  
-    const user = localStorage.getItem("user");  
-  
-    if (!user) {  
-  
-        mostrarLogin();  
-  
-        return;  
-  
-    }  
-  
-    esconderTudo();  
-  
-    document.getElementById("perfil").style.display = "block";  
-  
-}  
-  
-  
-function voltar() {  
-  
-    esconderTudo();  
-  
-    document.getElementById("home").style.display = "block";  
-  
-}  
-  
-  
-function trabalhar() {  
-  
-    const user = localStorage.getItem("user");  
-  
-    if (!user) {  
-  
-        mostrarLogin();  
-  
-        return;  
-  
-    }  
-  
-    window.location.href = "/trabalhar";  
-  
-}  
-  
-  
-async function registrar() {  
-  
-    const nome = document.getElementById("regNome").value.trim();  
-    const email = document.getElementById("regEmail").value.trim();  
-    const senha = document.getElementById("regSenha").value;  
-  
-    const msg = document.getElementById("regMsg");  
-  
-    if (!nome || !email || !senha) {  
-  
-        msg.className = "error";  
-        msg.innerText = "Preencha todos os campos.";  
-  
-        return;  
-    }  
-  
-    try {  
-  
-        const resposta = await fetch("/register", {  
-  
-            method: "POST",  
-  
-            headers: {  
-                "Content-Type": "application/json"  
-            },  
-  
-            body: JSON.stringify({  
-                nome: nome,  
-                email: email,  
-                senha: senha  
-            })  
-  
-        });  
-  
-        const dados = await resposta.json();  
-  
-        if (!resposta.ok) {  
-  
-            msg.className = "error";  
-            msg.innerText = dados.erro || "Erro ao criar conta.";  
-  
-            return;  
-        }  
-  
-        msg.className = "success";  
-        msg.innerText = "Conta criada com sucesso!";  
-  
-        setTimeout(function() {  
-  
-            mostrarLogin();  
-  
-        }, 1000);  
-  
-    } catch (erro) {  
-  
-        msg.className = "error";  
-        msg.innerText = "Erro de conexão com o servidor.";  
-  
-    }  
-  
-}  
-  
-  
-async function login() {  
-  
-    const email = document.getElementById("loginEmail").value.trim();  
-    const senha = document.getElementById("loginSenha").value;  
-  
-    const msg = document.getElementById("loginMsg");  
-  
-    if (!email || !senha) {  
-  
-        msg.className = "error";  
-        msg.innerText = "Preencha email e senha.";  
-  
-        return;  
-    }  
-  
-    try {  
-  
-        const resposta = await fetch("/login", {  
-  
-            method: "POST",  
-  
-            headers: {  
-                "Content-Type": "application/json"  
-            },  
-  
-            body: JSON.stringify({  
-                email: email,  
-                senha: senha  
-            })  
-  
-        });  
-  
-        const dados = await resposta.json();  
-  
-        if (!resposta.ok) {  
-  
-            msg.className = "error";  
-            msg.innerText = dados.erro || "Login inválido.";  
-  
-            return;  
-        }  
-  
-        localStorage.setItem(  
-            "user",  
-            JSON.stringify(dados.usuario)  
-        );  
-  
-        entrarNoMenu(dados.usuario);  
-  
-    } catch (erro) {  
-  
-        msg.className = "error";  
-        msg.innerText = "Erro de conexão com o servidor.";  
-  
-    }  
-  
-}  
-  
-  
-function entrarNoMenu(usuario) {  
-  
-    const nome = usuario.nome || "usuário";  
-  
-    document.getElementById("nomeUsuario").innerText =  
-        "Olá, " + nome + "!";  
-  
-    document.getElementById("perfilNome").innerText =  
-        "Olá, " + nome + "!";  
-  
-    esconderTudo();  
-  
-    document.getElementById("menu").style.display = "block";  
-  
-}  
-  
-  
-function sair() {  
-  
-    localStorage.removeItem("user");  
-  
-    esconderTudo();  
-  
-    document.getElementById("home").style.display = "block";  
-  
-}  
-  
-  
-window.onload = function() {  
-  
-    const user = localStorage.getItem("user");  
-  
-    if (user) {  
-  
-        try {  
-  
-            const usuario = JSON.parse(user);  
-  
-            entrarNoMenu(usuario);  
-  
-        } catch (e) {  
-  
-            localStorage.removeItem("user");  
-  
-        }  
-  
-    }  
-  
-};  
-  
-</script>  </body>  
-</html>  
+
+
+<script>
+
+/* =====================================================
+   CONTROLE DAS TELAS
+===================================================== */
+
+function esconderTudo(){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(el){
+
+            el.style.display = "none";
+
+        });
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function mostrarLogin(){
+
+    esconderTudo();
+
+    document
+        .getElementById("login")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   REGISTRO
+===================================================== */
+
+function mostrarRegistro(){
+
+    esconderTudo();
+
+    document
+        .getElementById("registro")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+function mostrarMenu(){
+
+    esconderTudo();
+
+    document
+        .getElementById("menu")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   PERFIL
+===================================================== */
+
+function mostrarPerfil(){
+
+    const user =
+        localStorage.getItem("user");
+
+    if(!user){
+
+        mostrarLogin();
+
+        return;
+
+    }
+
+    try{
+
+        const usuario =
+            JSON.parse(user);
+
+        document
+            .getElementById("perfilNome")
+            .innerText =
+            usuario.nome || "Usuário";
+
+        document
+            .getElementById("perfilEmail")
+            .innerText =
+            usuario.email || "-";
+
+    }catch(e){
+
+        localStorage.removeItem("user");
+
+        mostrarLogin();
+
+        return;
+
+    }
+
+    esconderTudo();
+
+    document
+        .getElementById("perfil")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   VOLTAR
+===================================================== */
+
+function voltar(){
+
+    esconderTudo();
+
+    document
+        .getElementById("home")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   TRABALHAR
+===================================================== */
+
+function trabalhar(){
+
+    const user =
+        localStorage.getItem("user");
+
+    if(!user){
+
+        mostrarLogin();
+
+        return;
+
+    }
+
+    /*
+     * Agora TRABALHAR não abre
+     * diretamente o editor.
+     *
+     * Primeiro abre MEUS PROJETOS.
+     */
+
+    carregarProjetos();
+
+    esconderTudo();
+
+    document
+        .getElementById("projetos")
+        .style.display = "block";
+
+}
+
+
+/* =====================================================
+   NOVO PROJETO
+===================================================== */
+
+function novoProjeto(){
+
+    const user =
+        localStorage.getItem("user");
+
+    if(!user){
+
+        mostrarLogin();
+
+        return;
+
+    }
+
+    /*
+     * O editor continua separado.
+     *
+     * Aqui enviamos o usuário
+     * para a tela de trabalho.
+     */
+
+    const nomeProjeto =
+        prompt(
+            "Nome do novo projeto:"
+        );
+
+    if(!nomeProjeto){
+
+        return;
+
+    }
+
+    const projetos =
+        JSON.parse(
+            localStorage.getItem("projetos") || "[]"
+        );
+
+    const projeto = {
+
+        id:Date.now(),
+
+        nome:nomeProjeto.trim(),
+
+        criadoEm:
+            new Date().toLocaleString("pt-BR")
+
+    };
+
+    projetos.push(projeto);
+
+    localStorage.setItem(
+        "projetos",
+        JSON.stringify(projetos)
+    );
+
+    /*
+     * Guarda o projeto que acabou
+     * de ser selecionado.
+     */
+
+    localStorage.setItem(
+        "projetoAtual",
+        JSON.stringify(projeto)
+    );
+
+    /*
+     * Abre o editor ELI AI.
+     */
+
+    window.location.href =
+        "/trabalhar";
+
+}
+
+
+/* =====================================================
+   CARREGAR PROJETOS
+===================================================== */
+
+function carregarProjetos(){
+
+    const lista =
+        document.getElementById(
+            "listaProjetos"
+        );
+
+    if(!lista){
+        return;
+    }
+
+    const projetos =
+        JSON.parse(
+            localStorage.getItem("projetos") || "[]"
+        );
+
+    lista.innerHTML = "";
+
+
+    if(projetos.length === 0){
+
+        lista.innerHTML =
+            `
+            <div class="empty-projects">
+                Nenhum projeto criado ainda.
+                <br><br>
+                Clique em
+                <strong>CRIAR NOVO PROJETO</strong>
+                para começar.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    projetos.forEach(function(projeto){
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "project-card";
+
+
+        card.innerHTML =
+            `
+            <div class="project-title">
+                📁 ${escaparHTML(projeto.nome)}
+            </div>
+
+            <div class="project-info">
+                Criado em ${escaparHTML(projeto.criadoEm)}
+            </div>
+            `;
+
+
+        card.onclick =
+            function(){
+
+                abrirProjeto(projeto);
+
+            };
+
+
+        lista.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   ABRIR PROJETO
+===================================================== */
+
+function abrirProjeto(projeto){
+
+    localStorage.setItem(
+        "projetoAtual",
+        JSON.stringify(projeto)
+    );
+
+    window.location.href =
+        "/trabalhar";
+
+}
+
+
+/* =====================================================
+   ESCAPAR HTML
+===================================================== */
+
+function escaparHTML(texto){
+
+    return String(texto)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   REGISTRO
+===================================================== */
+
+async function registrar(){
+
+    const nome =
+        document
+            .getElementById("regNome")
+            .value
+            .trim();
+
+    const email =
+        document
+            .getElementById("regEmail")
+            .value
+            .trim();
+
+    const senha =
+        document
+            .getElementById("regSenha")
+            .value;
+
+    const msg =
+        document
+            .getElementById("regMsg");
+
+
+    if(!nome || !email || !senha){
+
+        msg.className =
+            "error";
+
+        msg.innerText =
+            "Preencha todos os campos.";
+
+        return;
+
+    }
+
+
+    try{
+
+        const resposta =
+            await fetch(
+                "/register",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        nome:nome,
+
+                        email:email,
+
+                        senha:senha
+
+                    })
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if(!resposta.ok){
+
+            msg.className =
+                "error";
+
+            msg.innerText =
+                dados.erro ||
+                "Erro ao criar conta.";
+
+            return;
+
+        }
+
+
+        msg.className =
+            "success";
+
+        msg.innerText =
+            "Conta criada com sucesso!";
+
+
+        setTimeout(function(){
+
+            mostrarLogin();
+
+        },1000);
+
+
+    }catch(erro){
+
+        msg.className =
+            "error";
+
+        msg.innerText =
+            "Erro de conexão com o servidor.";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login(){
+
+    const email =
+        document
+            .getElementById("loginEmail")
+            .value
+            .trim();
+
+    const senha =
+        document
+            .getElementById("loginSenha")
+            .value;
+
+    const msg =
+        document
+            .getElementById("loginMsg");
+
+
+    if(!email || !senha){
+
+        msg.className =
+            "error";
+
+        msg.innerText =
+            "Preencha email e senha.";
+
+        return;
+
+    }
+
+
+    try{
+
+        const resposta =
+            await fetch(
+                "/login",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        email:email,
+
+                        senha:senha
+
+                    })
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if(!resposta.ok){
+
+            msg.className =
+                "error";
+
+            msg.innerText =
+                dados.erro ||
+                "Login inválido.";
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+
+            "user",
+
+            JSON.stringify(
+                dados.usuario
+            )
+
+        );
+
+
+        entrarNoMenu(
+            dados.usuario
+        );
+
+
+    }catch(erro){
+
+        msg.className =
+            "error";
+
+        msg.innerText =
+            "Erro de conexão com o servidor.";
+
+    }
+
+}
+
+
+/* =====================================================
+   ENTRAR NO MENU
+===================================================== */
+
+function entrarNoMenu(usuario){
+
+    const nome =
+        usuario.nome ||
+        "usuário";
+
+
+    document
+        .getElementById("nomeUsuario")
+        .innerText =
+        "Olá, " + nome + "!";
+
+
+    document
+        .getElementById("perfilNome")
+        .innerText =
+        usuario.nome ||
+        "Usuário";
+
+
+    document
+        .getElementById("perfilEmail")
+        .innerText =
+        usuario.email ||
+        "-";
+
+
+    esconderTudo();
+
+
+    document
+        .getElementById("menu")
+        .style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   SAIR
+===================================================== */
+
+function sair(){
+
+    localStorage.removeItem("user");
+
+    localStorage.removeItem(
+        "projetoAtual"
+    );
+
+    esconderTudo();
+
+    document
+        .getElementById("home")
+        .style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   AO ABRIR A PÁGINA
+===================================================== */
+
+window.onload =
+function(){
+
+    const user =
+        localStorage.getItem("user");
+
+
+    if(user){
+
+        try{
+
+            const usuario =
+                JSON.parse(user);
+
+            entrarNoMenu(usuario);
+
+        }catch(e){
+
+            localStorage.removeItem(
+                "user"
+            );
+
+        }
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
