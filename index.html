@@ -50,6 +50,33 @@ body{margin:0;background:#000;color:#fff;font-family:Arial;overflow:hidden}
   font-size:12px;
   white-space:pre-wrap;
 }
+
+/* LINK DO SITE */
+.site-link{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 14px;
+  background:#0f0;
+  color:#000;
+  border-radius:7px;
+  font-weight:bold;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.site-link:hover{
+  background:#7cff7c;
+}
+
+.status-active{
+  color:#0f0;
+  font-weight:bold;
+}
+
+.status-error{
+  color:#ff5555;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -69,15 +96,24 @@ body{margin:0;background:#000;color:#fff;font-family:Arial;overflow:hidden}
   </div>
 
   <div class="input">
+
     <input
       id="perg"
       placeholder="Digite..."
       onkeypress="if(event.key==='Enter')enviar()"
     >
 
-    <button class="btn2" onclick="enviarFoto()">📷</button>
+    <button
+      class="btn2"
+      onclick="enviarFoto()"
+    >
+      📷
+    </button>
 
-    <button onclick="enviar()">Enviar</button>
+    <button onclick="enviar()">
+      Enviar
+    </button>
+
   </div>
 
 </div>
@@ -99,15 +135,27 @@ body{margin:0;background:#000;color:#fff;font-family:Arial;overflow:hidden}
     <span>CONSOLE</span>
 
     <div>
-      <button class="btn2" onclick="enviarErro()">🐛</button>
-      <button onclick="run()">RUN</button>
+
+      <button
+        class="btn2"
+        onclick="enviarErro()"
+      >
+        🐛
+      </button>
+
+      <button onclick="run()">
+        RUN
+      </button>
+
     </div>
 
   </div>
 
   <div class="cbody" id="log">
+
     &gt; Conectado...<br>
     &gt; Aguardando...
+
   </div>
 
 </div>
@@ -115,19 +163,31 @@ body{margin:0;background:#000;color:#fff;font-family:Arial;overflow:hidden}
 
 <div id="menuBox">
 
-  <div onclick="addLang('html')" class="lang">
+  <div
+    onclick="addLang('html')"
+    class="lang"
+  >
     🌐 Adicionar HTML
   </div>
 
-  <div onclick="addLang('css')" class="lang">
+  <div
+    onclick="addLang('css')"
+    class="lang"
+  >
     🎨 Adicionar CSS
   </div>
 
-  <div onclick="addLang('js')" class="lang">
+  <div
+    onclick="addLang('js')"
+    class="lang"
+  >
     📜 Adicionar JS
   </div>
 
-  <div onclick="addLang('py')" class="lang">
+  <div
+    onclick="addLang('py')"
+    class="lang"
+  >
     🐍 Adicionar Python
   </div>
 
@@ -803,25 +863,102 @@ function run(){
 
   else if(abaAtual === "html"){
 
-    let w =
-      window.open();
-
-    if(w){
-
-      w.document.open();
-
-      w.document.write(c);
-
-      w.document.close();
+    if(!c.trim()){
 
       log(
-        "> HTML aberto em aba nova"
+        "🔴 SITE NÃO ATIVO"
       );
 
-    }else{
+      log(
+        "❌ O arquivo main.html está vazio."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      /*
+       * Criar uma URL temporária
+       * para o HTML.
+       */
+
+      const blob =
+        new Blob(
+          [c],
+          {
+            type:"text/html"
+          }
+        );
+
+
+      const url =
+        URL.createObjectURL(blob);
+
+
+      /*
+       * Site ativo
+       */
 
       log(
-        "> O navegador bloqueou a nova aba"
+        "🟢 SITE ATIVO"
+      );
+
+
+      /*
+       * Criar link
+       */
+
+      const logBox =
+        document.getElementById("log");
+
+
+      const link =
+        document.createElement("a");
+
+
+      link.href =
+        url;
+
+      link.target =
+        "_blank";
+
+      link.rel =
+        "noopener noreferrer";
+
+
+      link.innerText =
+        "🔗 Abrir site";
+
+
+      link.className =
+        "site-link";
+
+
+      logBox.appendChild(
+        document.createElement("br")
+      );
+
+      logBox.appendChild(
+        link
+      );
+
+
+      logBox.scrollTop =
+        logBox.scrollHeight;
+
+
+    }catch(e){
+
+      log(
+        "🔴 SITE NÃO ATIVO"
+      );
+
+      log(
+        "❌ Erro: " +
+        e.message
       );
 
     }
