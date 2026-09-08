@@ -1,216 +1,801 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>ELI AI</title>
+
 
 <style>
-body{margin:0;background:#000;color:#fff;font-family:Arial;overflow:hidden}
-.chat{height:45vh;background:#0a3d0a;display:flex;flex-direction:column}
-.header{padding:10px;background:#062806;color:#0f0;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
-.msgs{flex:1;overflow-y:auto;padding:10px}
-.msg{padding:10px;border-radius:8px;margin:5px 0;max-width:85%;white-space:pre-wrap}
-.user{background:#1a1a1a;color:#0f0;margin-left:auto}
-.eli{background:#0f5f0f;color:#fff}
-.input{display:flex;padding:10px;background:#062806;gap:5px;border-top:2px solid #0f0}
-.input input{flex:1;padding:12px;background:#111;border:1px solid #0f0;color:#fff;border-radius:8px}
-.input button{padding:12px;background:#0f0;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
-.btn2{background:#fa0!important}
 
-.editor{height:27.5vh;background:#0a0f2e;border-top:2px solid #60a5fa}
-.tabs{background:#062806;padding:5px;display:flex;gap:5px;border-bottom:1px solid #0f0;overflow-x:auto;min-height:35px}
-.tab{padding:6px 12px;background:#111;border:1px solid #0f0;border-radius:5px;cursor:pointer;color:#0f0;font-size:12px;white-space:nowrap}
-.tab.active{background:#0f0;color:#000;font-weight:bold}
+/* =====================================================
+   BASE
+===================================================== */
 
-.editor textarea{width:100%;height:calc(100% - 45px);box-sizing:border-box;background:#0a0f2e;color:#93c5fd;border:none;padding:10px;resize:none;outline:none;font-size:13px;font-family:Consolas}
+*{
+    box-sizing:border-box;
+}
 
-.console{height:20vh;background:#3d3d00}
-.chead{padding:8px;background:#2e2e00;color:yellow;display:flex;justify-content:space-between}
-.cbody{padding:10px;color:#ff9;font-size:12px;height:calc(100% - 40px);overflow-y:auto}
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+}
 
-#menuBox{display:none;position:fixed;bottom:70px;left:10px;background:#111;border:2px solid #0f0;padding:10px;border-radius:10px;width:220px;z-index:999}
-#menuBox div{padding:8px;cursor:pointer;border-radius:5px;border-bottom:1px solid #222}
-#menuBox div:hover{background:#0f0;color:#000}
-#menuBox.lang{color:#60a5fa}
-.aviso{color:#fa0;font-weight:bold;margin-top:8px;font-size:13px}
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+.chat{
+    height:45vh;
+
+    background:#0a3d0a;
+
+    display:flex;
+    flex-direction:column;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    padding:10px;
+
+    background:#062806;
+
+    color:#0f0;
+
+    font-weight:bold;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:1px solid #0f0;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.project-name{
+    color:#fff;
+    font-size:13px;
+    font-weight:normal;
+
+    max-width:180px;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.header-buttons{
+    display:flex;
+    gap:5px;
+}
+
+.header button{
+    border:none;
+    border-radius:6px;
+
+    padding:7px 10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.project-btn{
+    background:#111;
+    color:#0f0;
+
+    border:1px solid #0f0 !important;
+}
+
+.btn2{
+    background:#fa0 !important;
+    color:#000;
+}
+
+
+/* =====================================================
+   MENSAGENS
+===================================================== */
+
+.msgs{
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:10px;
+}
+
+.msg{
+    padding:10px;
+
+    border-radius:8px;
+
+    margin:5px 0;
+
+    max-width:85%;
+
+    white-space:pre-wrap;
+
+    word-wrap:break-word;
+}
+
+.user{
+    background:#1a1a1a;
+
+    color:#0f0;
+
+    margin-left:auto;
+}
+
+.eli{
+    background:#0f5f0f;
+
+    color:#fff;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input{
+    display:flex;
+
+    padding:10px;
+
+    background:#062806;
+
+    gap:5px;
+
+    border-top:2px solid #0f0;
+}
+
+.input input{
+    flex:1;
+
+    min-width:0;
+
+    padding:12px;
+
+    background:#111;
+
+    border:1px solid #0f0;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    outline:none;
+}
+
+.input input:focus{
+    box-shadow:
+        0 0 0 2px rgba(0,255,0,.12);
+}
+
+.input button{
+    padding:12px;
+
+    background:#0f0;
+
+    color:#000;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   EDITOR
+===================================================== */
+
+.editor{
+    height:27.5vh;
+
+    background:#0a0f2e;
+
+    border-top:2px solid #60a5fa;
+}
+
+.tabs{
+    background:#062806;
+
+    padding:5px;
+
+    display:flex;
+
+    gap:5px;
+
+    border-bottom:1px solid #0f0;
+
+    overflow-x:auto;
+
+    min-height:35px;
+}
+
+.tab{
+    padding:6px 12px;
+
+    background:#111;
+
+    border:1px solid #0f0;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    color:#0f0;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+.tab.active{
+    background:#0f0;
+
+    color:#000;
+
+    font-weight:bold;
+}
+
+.editor textarea{
+    width:100%;
+
+    height:calc(100% - 45px);
+
+    box-sizing:border-box;
+
+    background:#0a0f2e;
+
+    color:#93c5fd;
+
+    border:none;
+
+    padding:10px;
+
+    resize:none;
+
+    outline:none;
+
+    font-size:13px;
+
+    font-family:Consolas,monospace;
+
+    line-height:1.45;
+}
+
+
+/* =====================================================
+   CONSOLE
+===================================================== */
+
+.console{
+    height:20vh;
+
+    background:#3d3d00;
+}
+
+.chead{
+    padding:8px;
+
+    background:#2e2e00;
+
+    color:yellow;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.chead button{
+    cursor:pointer;
+}
+
+.cbody{
+    padding:10px;
+
+    color:#ff9;
+
+    font-size:12px;
+
+    height:calc(100% - 40px);
+
+    overflow-y:auto;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+#menuBox{
+    display:none;
+
+    position:fixed;
+
+    bottom:70px;
+
+    left:10px;
+
+    background:#111;
+
+    border:2px solid #0f0;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    width:240px;
+
+    max-width:calc(100vw - 20px);
+
+    z-index:999;
+}
+
+#menuBox div{
+    padding:9px;
+
+    cursor:pointer;
+
+    border-radius:5px;
+
+    border-bottom:1px solid #222;
+}
+
+#menuBox div:hover{
+    background:#0f0;
+
+    color:#000;
+}
+
+#menuBox .lang{
+    color:#60a5fa;
+}
+
+
+/* =====================================================
+   CÓDIGO
+===================================================== */
+
+.aviso{
+    color:#fa0;
+
+    font-weight:bold;
+
+    margin-top:8px;
+
+    font-size:13px;
+}
 
 .codebox{
-  margin-top:8px;
-  background:#050505;
-  border:1px solid #333;
-  border-radius:6px;
-  padding:8px;
-  overflow:auto;
-  max-height:180px;
+    margin-top:8px;
+
+    background:#050505;
+
+    border:1px solid #333;
+
+    border-radius:6px;
+
+    padding:8px;
+
+    overflow:auto;
+
+    max-height:180px;
 }
 
 .codebox pre{
-  margin:0;
-  color:#93c5fd;
-  font-size:12px;
-  white-space:pre-wrap;
+    margin:0;
+
+    color:#93c5fd;
+
+    font-size:12px;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
 }
 
-/* LINK DO SITE */
+
+/* =====================================================
+   BOTÃO ENVIAR EDITOR
+===================================================== */
+
+.editor-send{
+    margin-top:8px;
+
+    padding:9px 14px;
+
+    background:#fa0;
+
+    color:#000;
+
+    border:none;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   LINK DO SITE
+===================================================== */
+
 .site-link{
-  display:inline-block;
-  margin-top:8px;
-  padding:9px 14px;
-  background:#0f0;
-  color:#000;
-  border-radius:7px;
-  font-weight:bold;
-  text-decoration:none;
-  cursor:pointer;
+    display:inline-block;
+
+    margin-top:8px;
+
+    padding:9px 14px;
+
+    background:#0f0;
+
+    color:#000;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    cursor:pointer;
 }
 
 .site-link:hover{
-  background:#7cff7c;
+    background:#7cff7c;
 }
 
+
+/* =====================================================
+   STATUS
+===================================================== */
+
 .status-active{
-  color:#0f0;
-  font-weight:bold;
+    color:#0f0;
+
+    font-weight:bold;
 }
 
 .status-error{
-  color:#ff5555;
-  font-weight:bold;
+    color:#ff5555;
+
+    font-weight:bold;
 }
+
+
+/* =====================================================
+   INDICADOR DE SALVAMENTO
+===================================================== */
+
+.save-status{
+    position:fixed;
+
+    right:10px;
+
+    bottom:10px;
+
+    background:#111;
+
+    border:1px solid #333;
+
+    color:#777;
+
+    padding:5px 8px;
+
+    border-radius:6px;
+
+    font-size:10px;
+
+    z-index:1000;
+
+    opacity:.85;
+}
+
+.save-status.saved{
+    color:#0f0;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     CHAT
+===================================================== -->
+
 <div class="chat">
 
-  <div class="header">
-    <span>ELI AI</span>
-    <button class="btn2" onclick="toggleMenu()">⋮</button>
-  </div>
+    <div class="header">
 
-  <div class="msgs" id="msgs">
-    <div class="msg eli">
-      Fala wy! Sou a Eli. Me pede código 🚀
+        <div class="header-left">
+
+            <span>
+                ELI AI
+            </span>
+
+            <span
+                id="projectName"
+                class="project-name"
+            >
+                Projeto
+            </span>
+
+        </div>
+
+
+        <div class="header-buttons">
+
+            <button
+                class="project-btn"
+                onclick="voltarProjetos()"
+                title="Voltar para Meus Projetos"
+            >
+                📁
+            </button>
+
+            <button
+                class="btn2"
+                onclick="toggleMenu()"
+            >
+                ⋮
+            </button>
+
+        </div>
+
     </div>
-  </div>
 
-  <div class="input">
 
-    <input
-      id="perg"
-      placeholder="Digite..."
-      onkeypress="if(event.key==='Enter')enviar()"
+    <div
+        class="msgs"
+        id="msgs"
     >
 
-    <button
-      class="btn2"
-      onclick="enviarFoto()"
-    >
-      📷
-    </button>
+        <!-- As mensagens serão carregadas pelo JavaScript -->
 
-    <button onclick="enviar()">
-      Enviar
-    </button>
+    </div>
 
-  </div>
+
+    <div class="input">
+
+        <input
+            id="perg"
+            placeholder="Digite..."
+            autocomplete="off"
+            onkeypress="
+                if(event.key==='Enter'){
+                    enviar()
+                }
+            "
+        >
+
+
+        <button
+            class="btn2"
+            onclick="enviarFoto()"
+        >
+            📷
+        </button>
+
+
+        <button
+            onclick="enviar()"
+        >
+            Enviar
+        </button>
+
+    </div>
 
 </div>
 
 
-<div class="editor" id="editorBox">
 
-  <div class="tabs" id="tabs"></div>
+<!-- =====================================================
+     EDITOR
+===================================================== -->
 
-  <textarea id="editor">Adiciona uma linguagem no menu ⋮</textarea>
+<div
+    class="editor"
+    id="editorBox"
+>
+
+    <div
+        class="tabs"
+        id="tabs"
+    ></div>
+
+
+    <textarea
+        id="editor"
+        spellcheck="false"
+        oninput="salvarCodigoAutomatico()"
+    >Adiciona uma linguagem no menu ⋮</textarea>
 
 </div>
 
+
+
+<!-- =====================================================
+     CONSOLE
+===================================================== -->
 
 <div class="console">
 
-  <div class="chead">
+    <div class="chead">
 
-    <span>CONSOLE</span>
+        <span>
+            CONSOLE
+        </span>
 
-    <div>
 
-      <button
-        class="btn2"
-        onclick="enviarErro()"
-      >
-        🐛
-      </button>
+        <div>
 
-      <button onclick="run()">
-        RUN
-      </button>
+            <button
+                class="btn2"
+                onclick="enviarErro()"
+            >
+                🐛
+            </button>
+
+
+            <button
+                onclick="run()"
+            >
+                RUN
+            </button>
+
+        </div>
 
     </div>
 
-  </div>
 
-  <div class="cbody" id="log">
+    <div
+        class="cbody"
+        id="log"
+    >
 
-    &gt; Conectado...<br>
-    &gt; Aguardando...
+        &gt; Conectado...<br>
+        &gt; Aguardando...
 
-  </div>
+    </div>
 
 </div>
 
+
+
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <div id="menuBox">
 
-  <div
-    onclick="addLang('html')"
-    class="lang"
-  >
-    🌐 Adicionar HTML
-  </div>
+    <div
+        onclick="addLang('html')"
+        class="lang"
+    >
+        🌐 Adicionar HTML
+    </div>
 
-  <div
-    onclick="addLang('css')"
-    class="lang"
-  >
-    🎨 Adicionar CSS
-  </div>
 
-  <div
-    onclick="addLang('js')"
-    class="lang"
-  >
-    📜 Adicionar JS
-  </div>
+    <div
+        onclick="addLang('css')"
+        class="lang"
+    >
+        🎨 Adicionar CSS
+    </div>
 
-  <div
-    onclick="addLang('py')"
-    class="lang"
-  >
-    🐍 Adicionar Python
-  </div>
 
-  <hr>
+    <div
+        onclick="addLang('js')"
+        class="lang"
+    >
+        📜 Adicionar JS
+    </div>
 
-  <div onclick="alert('Settings em breve wy')">
-    ⚙️ Settings
-  </div>
 
-  <div onclick="alert('Projeto em breve wy')">
-    📁 Projeto
-  </div>
+    <div
+        onclick="addLang('py')"
+        class="lang"
+    >
+        🐍 Adicionar Python
+    </div>
 
-  <hr>
 
-  <div onclick="limpar()">
-    🧹 Limpar Console
-  </div>
+    <hr>
+
+
+    <div
+        onclick="mostrarInfoProjeto()"
+    >
+        📁 Projeto atual
+    </div>
+
+
+    <div
+        onclick="voltarProjetos()"
+    >
+        ↩️ Meus Projetos
+    </div>
+
+
+    <hr>
+
+
+    <div
+        onclick="limparConversa()"
+    >
+        🧹 Limpar conversa
+    </div>
+
+
+    <div
+        onclick="limpar()"
+    >
+        🧹 Limpar Console
+    </div>
 
 </div>
 
 
+
+<!-- =====================================================
+     STATUS
+===================================================== -->
+
+<div
+    id="saveStatus"
+    class="save-status"
+>
+    💾 Salvo
+</div>
+
+
+
 <script>
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
 
 let arquivos = {};
 
@@ -224,820 +809,1867 @@ let historico = [];
 
 let enviando = false;
 
+let projetoAtual = null;
 
-/* =========================
+let salvarTimer = null;
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+window.onload = function(){
+
+    iniciarProjeto();
+
+};
+
+
+/* =====================================================
+   INICIAR PROJETO
+===================================================== */
+
+function iniciarProjeto(){
+
+    const projetoSalvo =
+        localStorage.getItem("projetoAtual");
+
+
+    /*
+     * O editor só deve funcionar
+     * quando existe um projeto selecionado.
+     */
+
+    if(!projetoSalvo){
+
+        alert(
+            "Nenhum projeto foi selecionado."
+        );
+
+        window.location.href = "/";
+
+        return;
+
+    }
+
+
+    try{
+
+        projetoAtual =
+            JSON.parse(projetoSalvo);
+
+    }catch(e){
+
+        localStorage.removeItem(
+            "projetoAtual"
+        );
+
+        window.location.href = "/";
+
+        return;
+
+    }
+
+
+    if(
+        !projetoAtual ||
+        !projetoAtual.id
+    ){
+
+        alert(
+            "Projeto inválido."
+        );
+
+        window.location.href = "/";
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("projectName")
+        .innerText =
+        "• " +
+        (projetoAtual.nome || "Projeto");
+
+
+    carregarDadosProjeto();
+
+}
+
+
+/* =====================================================
+   CHAVE DO PROJETO
+===================================================== */
+
+function chaveProjeto(){
+
+    if(
+        !projetoAtual ||
+        !projetoAtual.id
+    ){
+
+        return null;
+
+    }
+
+
+    return (
+        "eli_projeto_" +
+        projetoAtual.id
+    );
+
+}
+
+
+/* =====================================================
+   CARREGAR DADOS DO PROJETO
+===================================================== */
+
+function carregarDadosProjeto(){
+
+    const chave =
+        chaveProjeto();
+
+
+    if(!chave){
+
+        return;
+
+    }
+
+
+    const dadosSalvos =
+        localStorage.getItem(chave);
+
+
+    /*
+     * Projeto novo
+     */
+
+    if(!dadosSalvos){
+
+        arquivos = {};
+
+        historico = [];
+
+        abaAtual = null;
+
+        criarMensagemInicial();
+
+        atualizarStatus(
+            "💾 Novo projeto"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const dados =
+            JSON.parse(dadosSalvos);
+
+
+        arquivos =
+            dados.arquivos || {};
+
+
+        historico =
+            dados.historico || [];
+
+
+        abaAtual =
+            dados.abaAtual || null;
+
+
+        ultimoCod =
+            dados.ultimoCod || "";
+
+
+        ultimoTipo =
+            dados.ultimoTipo || "js";
+
+
+        /*
+         * Recriar abas
+         */
+
+        reconstruirAbas();
+
+
+        /*
+         * Restaurar conversa
+         */
+
+        restaurarHistorico();
+
+
+        /*
+         * Abrir última aba
+         */
+
+        if(
+            abaAtual &&
+            arquivos[abaAtual] !== undefined
+        ){
+
+            abrirAba(abaAtual);
+
+        }else{
+
+            document
+                .getElementById("editor")
+                .value =
+                "Adiciona uma linguagem no menu ⋮";
+
+        }
+
+
+        atualizarStatus(
+            "💾 Projeto carregado"
+        );
+
+
+    }catch(e){
+
+        console.error(
+            "Erro ao carregar projeto:",
+            e
+        );
+
+        arquivos = {};
+
+        historico = [];
+
+        criarMensagemInicial();
+
+    }
+
+}
+
+
+/* =====================================================
+   CRIAR MENSAGEM INICIAL
+===================================================== */
+
+function criarMensagemInicial(){
+
+    const msgs =
+        document.getElementById("msgs");
+
+
+    msgs.innerHTML = "";
+
+
+    addMsg(
+        "Fala wy! Sou a Eli. Me pede código 🚀",
+        "eli",
+        false
+    );
+
+}
+
+
+/* =====================================================
+   RECONSTRUIR ABAS
+===================================================== */
+
+function reconstruirAbas(){
+
+    const tabs =
+        document.getElementById("tabs");
+
+
+    tabs.innerHTML = "";
+
+
+    Object.keys(arquivos)
+        .forEach(function(lang){
+
+            criarAba(lang);
+
+        });
+
+}
+
+
+/* =====================================================
+   SALVAR PROJETO COMPLETO
+===================================================== */
+
+function salvarProjeto(){
+
+    const chave =
+        chaveProjeto();
+
+
+    if(!chave){
+
+        return;
+
+    }
+
+
+    salvarCodigo();
+
+
+    const dados = {
+
+        projeto:projetoAtual,
+
+        arquivos:arquivos,
+
+        historico:historico,
+
+        abaAtual:abaAtual,
+
+        ultimoCod:ultimoCod,
+
+        ultimoTipo:ultimoTipo,
+
+        atualizadoEm:
+            new Date().toISOString()
+
+    };
+
+
+    try{
+
+        localStorage.setItem(
+            chave,
+            JSON.stringify(dados)
+        );
+
+
+        atualizarStatus(
+            "💾 Salvo"
+        );
+
+
+    }catch(e){
+
+        console.error(
+            "Erro ao salvar projeto:",
+            e
+        );
+
+
+        atualizarStatus(
+            "⚠️ Não foi possível salvar"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SALVAMENTO AUTOMÁTICO
+===================================================== */
+
+function salvarAutomaticamente(){
+
+    clearTimeout(
+        salvarTimer
+    );
+
+
+    salvarTimer =
+        setTimeout(function(){
+
+            salvarProjeto();
+
+        },300);
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function atualizarStatus(texto){
+
+    const status =
+        document.getElementById(
+            "saveStatus"
+        );
+
+
+    if(!status){
+
+        return;
+
+    }
+
+
+    status.innerText =
+        texto;
+
+
+    status.classList.add(
+        "saved"
+    );
+
+}
+
+
+/* =====================================================
    SALVAR CÓDIGO
-========================= */
+===================================================== */
 
 function salvarCodigo(){
 
-  if(abaAtual){
+    if(
+        abaAtual &&
+        document.getElementById("editor")
+    ){
 
-    arquivos[abaAtual] =
-      document.getElementById("editor").value;
+        arquivos[abaAtual] =
+            document.getElementById(
+                "editor"
+            ).value;
 
-  }
+    }
 
 }
 
 
-/* =========================
+/* =====================================================
+   SALVAR CÓDIGO ENQUANTO DIGITA
+===================================================== */
+
+function salvarCodigoAutomatico(){
+
+    salvarCodigo();
+
+    salvarAutomaticamente();
+
+}
+
+
+/* =====================================================
    ADICIONAR LINGUAGEM
-========================= */
+===================================================== */
 
 function addLang(lang){
 
-  if(lang in arquivos){
+    if(lang in arquivos){
+
+        abrirAba(lang);
+
+        toggleMenu();
+
+        return;
+
+    }
+
+
+    arquivos[lang] = "";
+
+
+    criarAba(lang);
+
 
     abrirAba(lang);
 
+
+    salvarProjeto();
+
+
     toggleMenu();
-
-    return;
-
-  }
-
-  arquivos[lang] = "";
-
-  criarAba(lang);
-
-  abrirAba(lang);
-
-  toggleMenu();
 
 }
 
 
-/* =========================
+/* =====================================================
    CRIAR ABA
-========================= */
+===================================================== */
 
 function criarAba(lang){
 
-  let tabs =
-    document.getElementById("tabs");
+    const tabs =
+        document.getElementById(
+            "tabs"
+        );
 
-  let novaAba =
-    document.createElement("div");
 
-  novaAba.className = "tab";
+    /*
+     * Evita aba duplicada
+     */
 
-  novaAba.innerText =
-    "main." + lang;
+    if(
+        document.getElementById(
+            "tab-" + lang
+        )
+    ){
 
-  novaAba.onclick =
-    () => abrirAba(lang);
+        return;
 
-  novaAba.id =
-    "tab-" + lang;
+    }
 
-  tabs.appendChild(novaAba);
+
+    const novaAba =
+        document.createElement("div");
+
+
+    novaAba.className =
+        "tab";
+
+
+    novaAba.innerText =
+        "main." + lang;
+
+
+    novaAba.onclick =
+        function(){
+
+            abrirAba(lang);
+
+        };
+
+
+    novaAba.id =
+        "tab-" + lang;
+
+
+    tabs.appendChild(
+        novaAba
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
    ABRIR ABA
-========================= */
+===================================================== */
 
 function abrirAba(lang){
 
-  salvarCodigo();
+    /*
+     * Salva a aba anterior
+     */
 
-  abaAtual = lang;
+    salvarCodigo();
 
-  document.getElementById("editor").value =
-    arquivos[lang] || "";
 
-  document.querySelectorAll(".tab")
-    .forEach(t =>
-      t.classList.remove("active")
-    );
+    abaAtual =
+        lang;
 
-  let tab =
-    document.getElementById("tab-" + lang);
 
-  if(tab){
+    document
+        .getElementById("editor")
+        .value =
+        arquivos[lang] || "";
 
-    tab.classList.add("active");
 
-  }
+    document
+        .querySelectorAll(".tab")
+        .forEach(function(t){
+
+            t.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const tab =
+        document.getElementById(
+            "tab-" + lang
+        );
+
+
+    if(tab){
+
+        tab.classList.add(
+            "active"
+        );
+
+    }
+
+
+    salvarAutomaticamente();
 
 }
 
 
-/* =========================
+/* =====================================================
+   RESTAURAR HISTÓRICO
+===================================================== */
+
+function restaurarHistorico(){
+
+    const msgs =
+        document.getElementById(
+            "msgs"
+        );
+
+
+    msgs.innerHTML = "";
+
+
+    /*
+     * Se não existe conversa,
+     * mostra a mensagem inicial.
+     */
+
+    if(
+        !historico ||
+        historico.length === 0
+    ){
+
+        criarMensagemInicial();
+
+        return;
+
+    }
+
+
+    historico.forEach(function(item){
+
+        if(
+            !item ||
+            !item.role
+        ){
+
+            return;
+
+        }
+
+
+        /*
+         * Mensagem do usuário
+         */
+
+        if(
+            item.role === "user"
+        ){
+
+            addMsg(
+                escapar(item.content || ""),
+                "user",
+                false
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Resposta da Eli
+         */
+
+        if(
+            item.role === "assistant"
+        ){
+
+            adicionarMensagemEli(
+                item.content || "",
+                item.codigo || "",
+                item.tipo || ""
+            );
+
+        }
+
+    });
+
+
+    msgs.scrollTop =
+        msgs.scrollHeight;
+
+}
+
+
+/* =====================================================
+   ADICIONAR MENSAGEM DA ELI
+===================================================== */
+
+function adicionarMensagemEli(
+    resposta,
+    codigo,
+    tipo
+){
+
+    let html =
+        `<div class="msg eli">`;
+
+
+    html +=
+        escapar(
+            resposta || "Sem resposta."
+        )
+        .replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    /*
+     * Código
+     */
+
+    if(codigo){
+
+        const tipoNormalizado =
+            normalizarTipo(tipo);
+
+
+        html +=
+            `
+            <div class="codebox">
+                <pre>${escapar(codigo)}</pre>
+            </div>
+            `;
+
+
+        if(
+            !(tipoNormalizado in arquivos)
+        ){
+
+            html +=
+                `
+                <div class="aviso">
+                    ⚠️ Falta a aba
+                    ${escapar(
+                        tipoNormalizado.toUpperCase()
+                    )}
+                    <br>
+                    Vai no menu ⋮ e adiciona a linguagem.
+                </div>
+                `;
+
+        }
+
+
+        html +=
+            `
+            <br>
+
+            <button
+                class="editor-send"
+                onclick="usarCodigoRestaurado(
+                    ${JSON.stringify(codigo)},
+                    ${JSON.stringify(tipoNormalizado)}
+                )"
+            >
+                📤 Enviar pro Editor
+            </button>
+            `;
+
+    }
+
+
+    html +=
+        `</div>`;
+
+
+    document
+        .getElementById("msgs")
+        .insertAdjacentHTML(
+            "beforeend",
+            html
+        );
+
+}
+
+
+/* =====================================================
+   USAR CÓDIGO RESTAURADO
+===================================================== */
+
+function usarCodigoRestaurado(
+    codigo,
+    tipo
+){
+
+    ultimoCod =
+        codigo;
+
+
+    ultimoTipo =
+        normalizarTipo(tipo);
+
+
+    enviarEditor();
+
+}
+
+
+/* =====================================================
    ENVIAR PERGUNTA
-========================= */
+===================================================== */
 
 async function enviar(){
 
-  if(enviando) return;
+    if(enviando){
 
-  let p =
-    document.getElementById("perg");
-
-  if(!p || !p.value.trim()) return;
-
-  enviando = true;
-
-  let pergunta =
-    p.value.trim();
-
-  addMsg(
-    escapar(pergunta),
-    "user"
-  );
-
-  historico.push({
-
-    role:"user",
-
-    content:pergunta
-
-  });
-
-  p.value = "";
-
-  let loadingId =
-    addMsg(
-      "Eli pensando...",
-      "eli"
-    );
-
-
-  try{
-
-    let historicoRecente =
-      historico.slice(-12);
-
-
-    let res =
-      await fetch(
-        "/teste-firestore",
-        {
-
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "application/json",
-
-            "Accept":
-              "application/json"
-          },
-
-          body:JSON.stringify({
-
-            pergunta:
-              pergunta,
-
-            historico:
-              historicoRecente
-
-          })
-
-        }
-      );
-
-
-    let textoResposta =
-      await res.text();
-
-
-    let data = null;
-
-    try{
-
-      data =
-        JSON.parse(textoResposta);
-
-    }catch(e){
-
-      console.error(
-        "Resposta não JSON:",
-        textoResposta
-      );
+        return;
 
     }
 
 
-    let loading =
-      document.getElementById(loadingId);
-
-    if(loading){
-
-      loading.remove();
-
-    }
-
-
-    /* =========================
-       ERRO DO SERVIDOR
-    ========================= */
-
-    if(!res.ok){
-
-      let mensagem =
-        data && data.resposta
-          ? data.resposta
-          : "Erro no servidor " + res.status;
-
-      addMsg(
-        "❌ " + mensagem,
-        "eli"
-      );
-
-      console.error(
-        "Erro:",
-        res.status,
-        textoResposta
-      );
-
-      return;
-
-    }
-
-
-    if(!data){
-
-      addMsg(
-        "❌ O servidor enviou uma resposta inválida.",
-        "eli"
-      );
-
-      return;
-
-    }
-
-
-    /* =========================
-       RESPOSTA
-    ========================= */
-
-    if(data.resposta){
-
-      historico.push({
-
-        role:"assistant",
-
-        content:data.resposta
-
-      });
-
-    }
-
-
-    let html =
-      `<div class="msg eli">`;
-
-    html +=
-      escapar(data.resposta || "Sem resposta.")
-      .replace(/\n/g,"<br>");
-
-
-    /* =========================
-       CÓDIGO
-    ========================= */
-
-    if(data.codigo){
-
-      ultimoCod =
-        data.codigo;
-
-      ultimoTipo =
-        normalizarTipo(
-          data.tipo
+    const p =
+        document.getElementById(
+            "perg"
         );
 
 
-      let nomeTipo =
-        ultimoTipo.toUpperCase();
+    if(
+        !p ||
+        !p.value.trim()
+    ){
 
-
-      html +=
-        `<div class="codebox">
-          <pre>${escapar(ultimoCod)}</pre>
-        </div>`;
-
-
-      /* =========================
-         ABA NÃO EXISTE
-      ========================= */
-
-      if(!(ultimoTipo in arquivos)){
-
-        html +=
-          `<div class="aviso">
-            ⚠️ Wy, tá faltando a aba ${nomeTipo}<br>
-            Vai no menu ⋮ e clica em
-            "Adicionar ${nomeTipo}"
-          </div>`;
-
-      }
-
-
-      /* =========================
-         BOTÃO EDITOR
-      ========================= */
-
-      html +=
-        `<br>
-        <button
-          class="btn2"
-          onclick="enviarEditor()">
-          📤 Enviar pro Editor
-        </button>`;
+        return;
 
     }
 
 
-    html +=
-      `</div>`;
+    enviando = true;
 
 
-    document
-      .getElementById("msgs")
-      .insertAdjacentHTML(
-        "beforeend",
-        html
-      );
+    const pergunta =
+        p.value.trim();
 
 
-    document
-      .getElementById("msgs")
-      .scrollTop =
-        document.getElementById("msgs").scrollHeight;
-
-
-  }catch(e){
-
-    let loading =
-      document.getElementById(loadingId);
-
-    if(loading){
-
-      loading.remove();
-
-    }
-
+    /*
+     * Mostrar mensagem
+     */
 
     addMsg(
-      "❌ " + e.message,
-      "eli"
+        escapar(pergunta),
+        "user",
+        false
     );
 
 
-    console.error(
-      "Erro ao comunicar com o servidor:",
-      e
-    );
+    /*
+     * Guardar mensagem
+     */
+
+    historico.push({
+
+        role:"user",
+
+        content:pergunta
+
+    });
 
 
-  }finally{
+    /*
+     * Salvar imediatamente
+     */
 
-    enviando = false;
+    salvarProjeto();
 
-  }
+
+    p.value = "";
+
+
+    const loadingId =
+        addMsg(
+            "Eli pensando...",
+            "eli",
+            false
+        );
+
+
+    try{
+
+        const historicoRecente =
+            historico.slice(-12);
+
+
+        const res =
+            await fetch(
+                "/teste-firestore",
+                {
+
+                    method:"POST",
+
+                    headers:{
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            pergunta:
+                                pergunta,
+
+                            historico:
+                                historicoRecente
+
+                        })
+
+                }
+            );
+
+
+        const textoResposta =
+            await res.text();
+
+
+        let data = null;
+
+
+        try{
+
+            data =
+                JSON.parse(
+                    textoResposta
+                );
+
+        }catch(e){
+
+            console.error(
+                "Resposta não JSON:",
+                textoResposta
+            );
+
+        }
+
+
+        const loading =
+            document.getElementById(
+                loadingId
+            );
+
+
+        if(loading){
+
+            loading.remove();
+
+        }
+
+
+        /*
+         * Erro do servidor
+         */
+
+        if(!res.ok){
+
+            const mensagem =
+                data &&
+                data.resposta
+
+                    ? data.resposta
+
+                    : "Erro no servidor " +
+                      res.status;
+
+
+            addMsg(
+                "❌ " + mensagem,
+                "eli",
+                false
+            );
+
+
+            /*
+             * Também salva o erro
+             * na conversa.
+             */
+
+            historico.push({
+
+                role:"assistant",
+
+                content:
+                    "❌ " + mensagem
+
+            });
+
+
+            salvarProjeto();
+
+
+            return;
+
+        }
+
+
+        if(!data){
+
+            const erroMensagem =
+                "❌ O servidor enviou uma resposta inválida.";
+
+
+            addMsg(
+                erroMensagem,
+                "eli",
+                false
+            );
+
+
+            historico.push({
+
+                role:"assistant",
+
+                content:erroMensagem
+
+            });
+
+
+            salvarProjeto();
+
+
+            return;
+
+        }
+
+
+        const resposta =
+            data.resposta ||
+            "Sem resposta.";
+
+
+        let codigo =
+            data.codigo || "";
+
+
+        let tipo =
+            normalizarTipo(
+                data.tipo
+            );
+
+
+        /*
+         * Guardar resposta + código
+         */
+
+        historico.push({
+
+            role:"assistant",
+
+            content:resposta,
+
+            codigo:codigo,
+
+            tipo:tipo
+
+        });
+
+
+        /*
+         * Guardar código atual
+         */
+
+        if(codigo){
+
+            ultimoCod =
+                codigo;
+
+            ultimoTipo =
+                tipo;
+
+        }
+
+
+        /*
+         * Mostrar resposta
+         */
+
+        adicionarMensagemEli(
+            resposta,
+            codigo,
+            tipo
+        );
+
+
+        /*
+         * Salvar tudo
+         */
+
+        salvarProjeto();
+
+
+        const msgs =
+            document.getElementById(
+                "msgs"
+            );
+
+
+        msgs.scrollTop =
+            msgs.scrollHeight;
+
+
+    }catch(e){
+
+        const loading =
+            document.getElementById(
+                loadingId
+            );
+
+
+        if(loading){
+
+            loading.remove();
+
+        }
+
+
+        const erro =
+            "❌ " +
+            (
+                e.message ||
+                "Erro de conexão com o servidor."
+            );
+
+
+        addMsg(
+            erro,
+            "eli",
+            false
+        );
+
+
+        historico.push({
+
+            role:"assistant",
+
+            content:erro
+
+        });
+
+
+        salvarProjeto();
+
+
+        console.error(
+            "Erro ao comunicar com o servidor:",
+            e
+        );
+
+
+    }finally{
+
+        enviando =
+            false;
+
+    }
 
 }
 
 
-/* =========================
+/* =====================================================
    NORMALIZAR LINGUAGEM
-========================= */
+===================================================== */
 
 function normalizarTipo(tipo){
 
-  tipo =
-    String(tipo || "js")
-    .toLowerCase()
-    .trim();
+    tipo =
+        String(
+            tipo || "js"
+        )
+        .toLowerCase()
+        .trim();
 
-  const mapa = {
 
-    javascript:"js",
+    const mapa = {
 
-    js:"js",
+        javascript:"js",
 
-    html:"html",
+        js:"js",
 
-    htm:"html",
+        html:"html",
 
-    css:"css",
+        htm:"html",
 
-    python:"py",
+        css:"css",
 
-    py:"py",
+        python:"py",
 
-    typescript:"ts",
+        py:"py",
 
-    ts:"ts",
+        typescript:"ts",
 
-    json:"json",
+        ts:"ts",
 
-    java:"java",
+        json:"json",
 
-    php:"php",
+        java:"java",
 
-    sql:"sql",
+        php:"php",
 
-    c:"c",
+        sql:"sql",
 
-    cpp:"cpp",
+        c:"c",
 
-    "c++":"cpp"
+        cpp:"cpp",
 
-  };
+        "c++":"cpp"
 
-  return mapa[tipo] || "js";
+    };
+
+
+    return mapa[tipo] || "js";
 
 }
 
 
-/* =========================
+/* =====================================================
    ESCAPAR HTML
-========================= */
+===================================================== */
 
 function escapar(texto){
 
-  return String(texto)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(texto)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-/* =========================
+/* =====================================================
    ADICIONAR MENSAGEM
-========================= */
-
-function addMsg(t,tipo){
-
-  let id =
-    "m" + Date.now();
-
-  document
-    .getElementById("msgs")
-    .insertAdjacentHTML(
-      "beforeend",
-      `<div class="msg ${tipo}" id="${id}">
-        ${t}
-      </div>`
-    );
-
-  document
-    .getElementById("msgs")
-    .scrollTop =
-      document.getElementById("msgs").scrollHeight;
-
-  return id;
-
-}
-
-
-/* =========================
-   FOTO
-========================= */
-
-function enviarFoto(){
-
-  addMsg(
-    "📷 Foto",
-    "user"
-  );
-
-  addMsg(
-    "Manda a foto wy",
-    "eli"
-  );
-
-}
-
-
-/* =========================
-   ENVIAR CÓDIGO AO EDITOR
-========================= */
-
-function enviarEditor(){
-
-  salvarCodigo();
-
-
-  if(!ultimoCod){
-
-    addMsg(
-      "❌ Não encontrei código para enviar.",
-      "eli"
-    );
-
-    return;
-
-  }
-
-
-  /* =========================
-     CRIAR ABA AUTOMATICAMENTE
-  ========================= */
-
-  if(!(ultimoTipo in arquivos)){
-
-    arquivos[ultimoTipo] = "";
-
-    criarAba(ultimoTipo);
-
-  }
-
-
-  /* =========================
-     COLOCAR CÓDIGO
-  ========================= */
-
-  arquivos[ultimoTipo] =
-    ultimoCod;
-
-
-  abrirAba(ultimoTipo);
-
-
-  addMsg(
-    "✅ Código enviado para main." +
-    ultimoTipo,
-    "eli"
-  );
-
-}
-
-
-/* =========================
-   MENU
-========================= */
-
-function toggleMenu(){
-
-  let m =
-    document.getElementById("menuBox");
-
-  m.style.display =
-    m.style.display === "block"
-      ? "none"
-      : "block";
-
-}
-
-
-/* =========================
-   LIMPAR CONSOLE
-========================= */
-
-function limpar(){
-
-  document
-    .getElementById("log")
-    .innerHTML =
-      "> Limpo";
-
-}
-
-
-/* =========================
-   RUN
-========================= */
-
-function run(){
-
-  salvarCodigo();
-
-
-  if(!abaAtual){
-
-    log(
-      "> Adiciona uma linguagem primeiro wy"
-    );
-
-    return;
-
-  }
-
-
-  let c =
-    document
-      .getElementById("editor")
-      .value;
-
-
-  /* =========================
-     JAVASCRIPT
-  ========================= */
-
-  if(abaAtual === "js"){
-
-    try{
-
-      let r =
-        new Function(c)();
-
-      log(
-        "> Resultado: " +
-        r
-      );
-
-    }catch(e){
-
-      log(
-        "> Erro: " +
-        e.message
-      );
-
-    }
-
-  }
-
-
-  /* =========================
-     HTML
-  ========================= */
-
-  else if(abaAtual === "html"){
-
-    if(!c.trim()){
-
-      log(
-        "🔴 SITE NÃO ATIVO"
-      );
-
-      log(
-        "❌ O arquivo main.html está vazio."
-      );
-
-      return;
-
-    }
-
-
-    try{
-
-      /*
-       * Criar uma URL temporária
-       * para o HTML.
-       */
-
-      const blob =
-        new Blob(
-          [c],
-          {
-            type:"text/html"
-          }
+===================================================== */
+
+function addMsg(
+    t,
+    tipo,
+    rolar = true
+){
+
+    const id =
+        "m" +
+        Date.now() +
+        Math.floor(
+            Math.random() * 1000
         );
 
 
-      const url =
-        URL.createObjectURL(blob);
+    document
+        .getElementById("msgs")
+        .insertAdjacentHTML(
+
+            "beforeend",
+
+            `
+            <div
+                class="msg ${tipo}"
+                id="${id}"
+            >
+                ${t}
+            </div>
+            `
+
+        );
 
 
-      /*
-       * Site ativo
-       */
+    if(rolar){
 
-      log(
-        "🟢 SITE ATIVO"
-      );
-
-
-      /*
-       * Criar link
-       */
-
-      const logBox =
-        document.getElementById("log");
+        const msgs =
+            document.getElementById(
+                "msgs"
+            );
 
 
-      const link =
-        document.createElement("a");
-
-
-      link.href =
-        url;
-
-      link.target =
-        "_blank";
-
-      link.rel =
-        "noopener noreferrer";
-
-
-      link.innerText =
-        "🔗 Abrir site";
-
-
-      link.className =
-        "site-link";
-
-
-      logBox.appendChild(
-        document.createElement("br")
-      );
-
-      logBox.appendChild(
-        link
-      );
-
-
-      logBox.scrollTop =
-        logBox.scrollHeight;
-
-
-    }catch(e){
-
-      log(
-        "🔴 SITE NÃO ATIVO"
-      );
-
-      log(
-        "❌ Erro: " +
-        e.message
-      );
+        msgs.scrollTop =
+            msgs.scrollHeight;
 
     }
 
-  }
 
-
-  /* =========================
-     CSS
-  ========================= */
-
-  else if(abaAtual === "css"){
-
-    log(
-      "> CSS não roda sozinho, usa com HTML"
-    );
-
-  }
-
-
-  /* =========================
-     PYTHON
-  ========================= */
-
-  else if(abaAtual === "py"){
-
-    log(
-      "> Python só roda no servidor"
-    );
-
-  }
-
-
-  else{
-
-    log(
-      "> Linguagem " +
-      abaAtual +
-      " não possui RUN configurado."
-    );
-
-  }
+    return id;
 
 }
 
 
-/* =========================
+/* =====================================================
+   FOTO
+===================================================== */
+
+function enviarFoto(){
+
+    addMsg(
+        "📷 Foto",
+        "user"
+    );
+
+
+    addMsg(
+        "Manda a foto wy",
+        "eli"
+    );
+
+
+    /*
+     * Ainda não existe upload real
+     * de imagem para o backend.
+     */
+
+}
+
+
+/* =====================================================
+   ENVIAR CÓDIGO AO EDITOR
+===================================================== */
+
+function enviarEditor(){
+
+    salvarCodigo();
+
+
+    if(!ultimoCod){
+
+        addMsg(
+            "❌ Não encontrei código para enviar.",
+            "eli"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Se a linguagem ainda não existe,
+     * cria automaticamente.
+     */
+
+    if(
+        !(ultimoTipo in arquivos)
+    ){
+
+        arquivos[ultimoTipo] =
+            "";
+
+
+        criarAba(
+            ultimoTipo
+        );
+
+    }
+
+
+    /*
+     * Coloca o código no arquivo.
+     */
+
+    arquivos[ultimoTipo] =
+        ultimoCod;
+
+
+    /*
+     * Abre a aba.
+     */
+
+    abrirAba(
+        ultimoTipo
+    );
+
+
+    /*
+     * Salva no projeto.
+     */
+
+    salvarProjeto();
+
+
+    addMsg(
+        "✅ Código enviado para main." +
+        ultimoTipo +
+        " e salvo no projeto.",
+        "eli"
+    );
+
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+function toggleMenu(){
+
+    const m =
+        document.getElementById(
+            "menuBox"
+        );
+
+
+    m.style.display =
+        m.style.display === "block"
+            ? "none"
+            : "block";
+
+}
+
+
+/* =====================================================
+   INFORMAÇÕES DO PROJETO
+===================================================== */
+
+function mostrarInfoProjeto(){
+
+    toggleMenu();
+
+
+    if(!projetoAtual){
+
+        return;
+
+    }
+
+
+    const quantidade =
+        Object.keys(
+            arquivos
+        ).length;
+
+
+    alert(
+
+        "📁 Projeto: " +
+        (projetoAtual.nome || "Projeto") +
+
+        "\n\nArquivos: " +
+        quantidade +
+
+        "\nMensagens: " +
+        historico.length
+
+    );
+
+}
+
+
+/* =====================================================
+   VOLTAR PARA MEUS PROJETOS
+===================================================== */
+
+function voltarProjetos(){
+
+    /*
+     * Primeiro salva tudo.
+     */
+
+    salvarProjeto();
+
+
+    /*
+     * Fecha menu caso esteja aberto.
+     */
+
+    const menu =
+        document.getElementById(
+            "menuBox"
+        );
+
+
+    if(menu){
+
+        menu.style.display =
+            "none";
+
+    }
+
+
+    /*
+     * Volta para a tela
+     * de Meus Projetos.
+     */
+
+    window.location.href =
+        "/";
+
+}
+
+
+/* =====================================================
+   LIMPAR CONVERSA
+===================================================== */
+
+function limparConversa(){
+
+    toggleMenu();
+
+
+    const confirmar =
+        confirm(
+            "Tem certeza que quer limpar esta conversa?\n\nOs códigos do projeto continuarão guardados."
+        );
+
+
+    if(!confirmar){
+
+        return;
+
+    }
+
+
+    historico = [];
+
+
+    criarMensagemInicial();
+
+
+    salvarProjeto();
+
+
+    atualizarStatus(
+        "💾 Conversa limpa"
+    );
+
+}
+
+
+/* =====================================================
+   LIMPAR CONSOLE
+===================================================== */
+
+function limpar(){
+
+    document
+        .getElementById("log")
+        .innerHTML =
+        "> Limpo";
+
+}
+
+
+/* =====================================================
+   RUN
+===================================================== */
+
+function run(){
+
+    salvarCodigo();
+
+
+    salvarProjeto();
+
+
+    if(!abaAtual){
+
+        log(
+            "> Adiciona uma linguagem primeiro wy"
+        );
+
+        return;
+
+    }
+
+
+    const c =
+        document
+            .getElementById("editor")
+            .value;
+
+
+    /*
+     * JAVASCRIPT
+     */
+
+    if(
+        abaAtual === "js"
+    ){
+
+        try{
+
+            const r =
+                new Function(c)();
+
+
+            log(
+                "> Resultado: " +
+                r
+            );
+
+
+        }catch(e){
+
+            log(
+                "> Erro: " +
+                e.message
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+    /*
+     * HTML
+     */
+
+    if(
+        abaAtual === "html"
+    ){
+
+        if(!c.trim()){
+
+            log(
+                "🔴 SITE NÃO ATIVO"
+            );
+
+
+            log(
+                "❌ O arquivo main.html está vazio."
+            );
+
+
+            return;
+
+        }
+
+
+        try{
+
+            const blob =
+                new Blob(
+
+                    [c],
+
+                    {
+                        type:
+                            "text/html"
+                    }
+
+                );
+
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            log(
+                "🟢 SITE ATIVO"
+            );
+
+
+            const logBox =
+                document.getElementById(
+                    "log"
+                );
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                url;
+
+
+            link.target =
+                "_blank";
+
+
+            link.rel =
+                "noopener noreferrer";
+
+
+            link.innerText =
+                "🔗 Abrir site";
+
+
+            link.className =
+                "site-link";
+
+
+            logBox.appendChild(
+                document.createElement(
+                    "br"
+                )
+            );
+
+
+            logBox.appendChild(
+                link
+            );
+
+
+            logBox.scrollTop =
+                logBox.scrollHeight;
+
+
+        }catch(e){
+
+            log(
+                "🔴 SITE NÃO ATIVO"
+            );
+
+
+            log(
+                "❌ Erro: " +
+                e.message
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+    /*
+     * CSS
+     */
+
+    if(
+        abaAtual === "css"
+    ){
+
+        log(
+            "> CSS não roda sozinho, usa com HTML"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+     * PYTHON
+     */
+
+    if(
+        abaAtual === "py"
+    ){
+
+        log(
+            "> Python só roda no servidor"
+        );
+
+
+        return;
+
+    }
+
+
+    log(
+        "> Linguagem " +
+        abaAtual +
+        " não possui RUN configurado."
+    );
+
+}
+
+
+/* =====================================================
    CONSOLE
-========================= */
+===================================================== */
 
 function log(t){
 
-  document
-    .getElementById("log")
-    .innerHTML +=
-      "<br>" + escapar(t);
+    document
+        .getElementById("log")
+        .innerHTML +=
+        "<br>" +
+        escapar(t);
+
 
 }
 
 
-/* =========================
-   ENVIAR ERRO
-========================= */
+/* =====================================================
+   ENVIAR ERRO PARA A ELI
+===================================================== */
 
 function enviarErro(){
 
-  let e =
+    const e =
+        document
+            .getElementById("log")
+            .innerText;
+
+
     document
-      .getElementById("log")
-      .innerText;
+        .getElementById("perg")
+        .value =
+        "Eli me ajuda com este erro:\n\n" +
+        e;
 
-  document
-    .getElementById("perg")
-    .value =
-      "Eli me ajuda: " + e;
 
-  enviar();
+    enviar();
 
 }
+
+
+/* =====================================================
+   SALVAR ANTES DE SAIR / FECHAR
+===================================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        salvarProjeto();
+
+    }
+);
+
+
+/* =====================================================
+   CTRL + S
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            (event.ctrlKey ||
+             event.metaKey) &&
+            event.key.toLowerCase() === "s"
+        ){
+
+            event.preventDefault();
+
+            salvarProjeto();
+
+            atualizarStatus(
+                "💾 Salvo"
+            );
+
+        }
+
+    }
+);
 
 </script>
 
