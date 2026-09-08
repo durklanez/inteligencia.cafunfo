@@ -12,7 +12,6 @@
 
 <title>ELI AI</title>
 
-
 <style>
 
 /* =====================================================
@@ -44,9 +43,7 @@ body{
 
 .chat{
     height:45vh;
-
     background:#0a3d0a;
-
     display:flex;
     flex-direction:column;
 }
@@ -72,7 +69,8 @@ body{
 
     align-items:center;
 
-    border-bottom:1px solid #0f0;
+    border-bottom:2px solid #0f0;
+
 }
 
 
@@ -82,9 +80,10 @@ body{
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
     min-width:0;
+
 }
 
 
@@ -103,6 +102,7 @@ body{
     text-overflow:ellipsis;
 
     white-space:nowrap;
+
 }
 
 
@@ -110,7 +110,8 @@ body{
 
     display:flex;
 
-    gap:5px;
+    gap:7px;
+
 }
 
 
@@ -118,13 +119,16 @@ body{
 
     border:none;
 
-    border-radius:6px;
+    border-radius:8px;
 
-    padding:7px 10px;
+    padding:9px 12px;
 
     cursor:pointer;
 
     font-weight:bold;
+
+    font-size:16px;
+
 }
 
 
@@ -134,7 +138,8 @@ body{
 
     color:#0f0;
 
-    border:1px solid #0f0 !important;
+    border:2px solid #0f0 !important;
+
 }
 
 
@@ -143,6 +148,7 @@ body{
     background:#fa0 !important;
 
     color:#000;
+
 }
 
 
@@ -157,6 +163,7 @@ body{
     overflow-y:auto;
 
     padding:10px;
+
 }
 
 
@@ -164,17 +171,18 @@ body{
 
     padding:10px;
 
-    border-radius:8px;
+    border-radius:9px;
 
-    margin:5px 0;
+    margin:6px 0;
 
-    max-width:85%;
+    max-width:88%;
 
     white-space:pre-wrap;
 
     word-wrap:break-word;
 
     overflow-wrap:anywhere;
+
 }
 
 
@@ -185,6 +193,7 @@ body{
     color:#0f0;
 
     margin-left:auto;
+
 }
 
 
@@ -193,6 +202,7 @@ body{
     background:#0f5f0f;
 
     color:#fff;
+
 }
 
 
@@ -208,9 +218,10 @@ body{
 
     background:#062806;
 
-    gap:5px;
+    gap:8px;
 
     border-top:2px solid #0f0;
+
 }
 
 
@@ -220,30 +231,33 @@ body{
 
     min-width:0;
 
-    padding:12px;
+    padding:13px;
 
     background:#111;
 
-    border:1px solid #0f0;
+    border:2px solid #0f0;
 
     color:#fff;
 
-    border-radius:8px;
+    border-radius:10px;
 
     outline:none;
+
+    font-size:15px;
+
 }
 
 
-.input input:focus{
+.input input::placeholder{
 
-    box-shadow:
-        0 0 0 2px rgba(0,255,0,.12);
+    color:#777;
+
 }
 
 
 .input button{
 
-    padding:12px;
+    padding:12px 15px;
 
     background:#0f0;
 
@@ -251,11 +265,14 @@ body{
 
     border:none;
 
-    border-radius:8px;
+    border-radius:9px;
 
     font-weight:bold;
 
     cursor:pointer;
+
+    font-size:14px;
+
 }
 
 
@@ -270,6 +287,7 @@ body{
     background:#0a0f2e;
 
     border-top:2px solid #60a5fa;
+
 }
 
 
@@ -287,27 +305,29 @@ body{
 
     overflow-x:auto;
 
-    min-height:35px;
+    min-height:45px;
+
 }
 
 
 .tab{
 
-    padding:6px 12px;
+    padding:8px 13px;
 
     background:#111;
 
     border:1px solid #0f0;
 
-    border-radius:5px;
+    border-radius:7px;
 
     cursor:pointer;
 
     color:#0f0;
 
-    font-size:12px;
+    font-size:13px;
 
     white-space:nowrap;
+
 }
 
 
@@ -318,6 +338,7 @@ body{
     color:#000;
 
     font-weight:bold;
+
 }
 
 
@@ -327,13 +348,15 @@ body{
 
     height:calc(100% - 45px);
 
+    box-sizing:border-box;
+
     background:#0a0f2e;
 
     color:#93c5fd;
 
     border:none;
 
-    padding:10px;
+    padding:12px;
 
     resize:none;
 
@@ -343,7 +366,8 @@ body{
 
     font-family:Consolas,monospace;
 
-    line-height:1.45;
+    line-height:1.5;
+
 }
 
 
@@ -356,12 +380,13 @@ body{
     height:20vh;
 
     background:#3d3d00;
+
 }
 
 
 .chead{
 
-    padding:8px;
+    padding:8px 12px;
 
     background:#2e2e00;
 
@@ -372,12 +397,18 @@ body{
     justify-content:space-between;
 
     align-items:center;
+
+    font-size:14px;
+
 }
 
 
 .chead button{
 
     cursor:pointer;
+
+    padding:7px 12px;
+
 }
 
 
@@ -392,6 +423,9 @@ body{
     height:calc(100% - 40px);
 
     overflow-y:auto;
+
+    word-break:break-word;
+
 }
 
 
@@ -422,18 +456,22 @@ body{
     max-width:calc(100vw - 20px);
 
     z-index:999;
+
+    box-shadow:0 5px 25px rgba(0,0,0,.6);
+
 }
 
 
 #menuBox div{
 
-    padding:9px;
+    padding:10px;
 
     cursor:pointer;
 
-    border-radius:5px;
+    border-radius:6px;
 
     border-bottom:1px solid #222;
+
 }
 
 
@@ -442,12 +480,14 @@ body{
     background:#0f0;
 
     color:#000;
+
 }
 
 
 #menuBox .lang{
 
     color:#60a5fa;
+
 }
 
 
@@ -461,9 +501,10 @@ body{
 
     font-weight:bold;
 
-    margin-top:8px;
+    margin-top:9px;
 
     font-size:13px;
+
 }
 
 
@@ -473,19 +514,20 @@ body{
 
 .codebox{
 
-    margin-top:8px;
+    margin-top:9px;
 
     background:#050505;
 
-    border:1px solid #333;
+    border:1px solid #444;
 
-    border-radius:6px;
+    border-radius:7px;
 
-    padding:8px;
+    padding:9px;
 
     overflow:auto;
 
-    max-height:180px;
+    max-height:190px;
+
 }
 
 
@@ -500,6 +542,7 @@ body{
     white-space:pre-wrap;
 
     word-break:break-word;
+
 }
 
 
@@ -527,12 +570,6 @@ body{
 
     cursor:pointer;
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,.3);
-
-    transition:
-        transform .15s,
-        background .15s;
 }
 
 
@@ -540,18 +577,18 @@ body{
 
     background:#93c5fd;
 
-    transform:translateY(-1px);
 }
 
 
 .editor-send:active{
 
     transform:scale(.97);
+
 }
 
 
 /* =====================================================
-   LINK DO SITE
+   LINK SITE
 ===================================================== */
 
 .site-link{
@@ -560,25 +597,27 @@ body{
 
     margin-top:8px;
 
-    padding:9px 14px;
+    padding:10px 15px;
 
     background:#0f0;
 
     color:#000;
 
-    border-radius:7px;
+    border-radius:8px;
 
     font-weight:bold;
 
     text-decoration:none;
 
     cursor:pointer;
+
 }
 
 
 .site-link:hover{
 
     background:#7cff7c;
+
 }
 
 
@@ -598,35 +637,18 @@ body{
 
     border:1px solid #333;
 
-    color:#777;
+    color:#0f0;
 
-    padding:5px 8px;
+    padding:6px 10px;
 
-    border-radius:6px;
+    border-radius:7px;
 
-    font-size:10px;
+    font-size:11px;
 
     z-index:1000;
 
-    opacity:.85;
-}
+    opacity:.9;
 
-
-.save-status.saved{
-
-    color:#0f0;
-}
-
-
-/* =====================================================
-   BOTÃO DESABILITADO
-===================================================== */
-
-button:disabled{
-
-    opacity:.6;
-
-    cursor:not-allowed;
 }
 
 </style>
@@ -643,16 +665,13 @@ button:disabled{
 
 <div class="chat">
 
-
     <div class="header">
-
 
         <div class="header-left">
 
             <span>
                 ELI AI
             </span>
-
 
             <span
                 id="projectName"
@@ -665,7 +684,6 @@ button:disabled{
 
 
         <div class="header-buttons">
-
 
             <button
                 class="project-btn"
@@ -688,16 +706,13 @@ button:disabled{
     </div>
 
 
-
     <div
         class="msgs"
         id="msgs"
     ></div>
 
 
-
     <div class="input">
-
 
         <input
             id="perg"
@@ -705,7 +720,7 @@ button:disabled{
             autocomplete="off"
             onkeypress="
                 if(event.key==='Enter'){
-                    enviar()
+                    enviar();
                 }
             "
         >
@@ -740,7 +755,6 @@ button:disabled{
     id="editorBox"
 >
 
-
     <div
         class="tabs"
         id="tabs"
@@ -763,9 +777,7 @@ button:disabled{
 
 <div class="console">
 
-
     <div class="chead">
-
 
         <span>
             CONSOLE
@@ -773,7 +785,6 @@ button:disabled{
 
 
         <div>
-
 
             <button
                 class="btn2"
@@ -813,7 +824,6 @@ button:disabled{
 ===================================================== -->
 
 <div id="menuBox">
-
 
     <div
         onclick="addLang('html')"
@@ -921,15 +931,15 @@ let salvarTimer = null;
 
 
 /*
- * Guarda cada código gerado pela ELI
- * com seu próprio ID.
+ * Cada código que aparece na conversa
+ * recebe seu próprio identificador.
  */
 
 let codigosGerados = {};
 
 
 /* =====================================================
-   INICIALIZAÇÃO
+   INICIAR
 ===================================================== */
 
 window.onload = function(){
@@ -940,7 +950,7 @@ window.onload = function(){
 
 
 /* =====================================================
-   INICIAR PROJETO
+   INICIAR PROJETO ATUAL
 ===================================================== */
 
 function iniciarProjeto(){
@@ -957,10 +967,7 @@ function iniciarProjeto(){
             "Nenhum projeto foi selecionado."
         );
 
-
-        window.location.href =
-            "/";
-
+        window.location.href = "/";
 
         return;
 
@@ -976,14 +983,11 @@ function iniciarProjeto(){
 
     }catch(e){
 
-        localStorage.removeItem(
-            "projetoAtual"
+        alert(
+            "Erro ao abrir o projeto."
         );
 
-
-        window.location.href =
-            "/";
-
+        window.location.href = "/";
 
         return;
 
@@ -999,10 +1003,7 @@ function iniciarProjeto(){
             "Projeto inválido."
         );
 
-
-        window.location.href =
-            "/";
-
+        window.location.href = "/";
 
         return;
 
@@ -1027,7 +1028,7 @@ function iniciarProjeto(){
 
 
 /* =====================================================
-   CHAVE DO PROJETO
+   CHAVE INDIVIDUAL DO PROJETO
 ===================================================== */
 
 function chaveProjeto(){
@@ -1051,7 +1052,7 @@ function chaveProjeto(){
 
 
 /* =====================================================
-   CARREGAR PROJETO
+   CARREGAR DADOS
 ===================================================== */
 
 function carregarDadosProjeto(){
@@ -1067,7 +1068,7 @@ function carregarDadosProjeto(){
     }
 
 
-    const dadosSalvos =
+    const salvo =
         localStorage.getItem(
             chave
         );
@@ -1077,7 +1078,7 @@ function carregarDadosProjeto(){
      * PROJETO NOVO
      */
 
-    if(!dadosSalvos){
+    if(!salvo){
 
         arquivos = {};
 
@@ -1088,6 +1089,8 @@ function carregarDadosProjeto(){
         ultimoTipo = "js";
 
         historico = [];
+
+        codigosGerados = {};
 
         criarMensagemInicial();
 
@@ -1104,7 +1107,7 @@ function carregarDadosProjeto(){
 
         const dados =
             JSON.parse(
-                dadosSalvos
+                salvo
             );
 
 
@@ -1165,16 +1168,17 @@ function carregarDadosProjeto(){
     }catch(e){
 
         console.error(
-            "Erro ao carregar projeto:",
+            "Erro ao carregar:",
             e
         );
-
 
         arquivos = {};
 
         historico = [];
 
         abaAtual = null;
+
+        codigosGerados = {};
 
         criarMensagemInicial();
 
@@ -1254,7 +1258,29 @@ function salvarProjeto(){
     }
 
 
-    salvarCodigo();
+    /*
+     * IMPORTANTE:
+     * Só salvar o conteúdo atual se realmente
+     * existir uma aba selecionada.
+     */
+
+    if(abaAtual){
+
+        const editor =
+            document.getElementById(
+                "editor"
+            );
+
+        if(editor){
+
+            arquivos[
+                abaAtual
+            ] =
+            editor.value;
+
+        }
+
+    }
 
 
     const dados = {
@@ -1301,7 +1327,7 @@ function salvarProjeto(){
     }catch(e){
 
         console.error(
-            "Erro ao salvar projeto:",
+            "Erro ao salvar:",
             e
         );
 
@@ -1316,7 +1342,7 @@ function salvarProjeto(){
 
 
 /* =====================================================
-   SALVAMENTO AUTOMÁTICO
+   SALVAR AUTOMÁTICO
 ===================================================== */
 
 function salvarAutomaticamente(){
@@ -1333,7 +1359,7 @@ function salvarAutomaticamente(){
                 salvarProjeto();
 
             },
-            300
+            250
         );
 
 }
@@ -1351,45 +1377,48 @@ function atualizarStatus(texto){
         );
 
 
-    if(!status){
+    if(status){
+
+        status.innerText =
+            texto;
+
+    }
+
+}
+
+
+/* =====================================================
+   SALVAR CÓDIGO ATUAL
+===================================================== */
+
+function salvarCodigo(){
+
+    if(
+        !abaAtual
+    ){
 
         return;
 
     }
 
 
-    status.innerText =
-        texto;
-
-
-    status.classList.add(
-        "saved"
-    );
-
-}
-
-
-/* =====================================================
-   SALVAR CÓDIGO
-===================================================== */
-
-function salvarCodigo(){
-
-    if(
-        abaAtual &&
+    const editor =
         document.getElementById(
             "editor"
-        )
-    ){
+        );
 
-        arquivos[
-            abaAtual
-        ] =
-            document.getElementById(
-                "editor"
-            ).value;
+
+    if(!editor){
+
+        return;
 
     }
+
+
+    arquivos[
+        abaAtual
+    ] =
+        editor.value;
 
 }
 
@@ -1415,7 +1444,7 @@ function addLang(lang){
 
     /*
      * Se já existe,
-     * simplesmente abre.
+     * apenas abrir.
      */
 
     if(
@@ -1434,7 +1463,7 @@ function addLang(lang){
 
 
     /*
-     * Criar arquivo
+     * Criar arquivo vazio
      */
 
     arquivos[
@@ -1452,7 +1481,7 @@ function addLang(lang){
 
 
     /*
-     * Abrir
+     * Abrir aba
      */
 
     abrirAba(
@@ -1485,7 +1514,7 @@ function criarAba(lang){
 
 
     /*
-     * Não duplicar
+     * Não duplicar.
      */
 
     if(
@@ -1509,12 +1538,12 @@ function criarAba(lang){
         "tab";
 
 
-    novaAba.innerText =
-        "main." + lang;
-
-
     novaAba.id =
         "tab-" + lang;
+
+
+    novaAba.innerText =
+        "main." + lang;
 
 
     novaAba.onclick =
@@ -1541,40 +1570,73 @@ function criarAba(lang){
 function abrirAba(lang){
 
     /*
-     * Guardar aba anterior
+     * =================================================
+     * CORREÇÃO IMPORTANTE
+     *
+     * Só salva a aba anterior se ela for diferente
+     * da nova aba.
+     *
+     * Isso impede que o código novo seja apagado
+     * quando o botão "Enviar para o Editor" é usado.
+     * =================================================
      */
 
-    salvarCodigo();
+    if(
+        abaAtual &&
+        abaAtual !== lang
+    ){
 
+        salvarCodigo();
+
+    }
+
+
+    /*
+     * Agora muda a aba.
+     */
 
     abaAtual =
         lang;
 
 
-    document
-        .getElementById(
+    /*
+     * Coloca o código correto no editor.
+     */
+
+    const editor =
+        document.getElementById(
             "editor"
-        )
-        .value =
+        );
+
+
+    editor.value =
         arquivos[
             lang
         ] || "";
 
+
+    /*
+     * Remover active.
+     */
 
     document
         .querySelectorAll(
             ".tab"
         )
         .forEach(
-            function(t){
+            function(tab){
 
-                t.classList.remove(
+                tab.classList.remove(
                     "active"
                 );
 
             }
         );
 
+
+    /*
+     * Ativar aba.
+     */
 
     const tab =
         document.getElementById(
@@ -1597,7 +1659,7 @@ function abrirAba(lang){
 
 
 /* =====================================================
-   LIMPAR TEXTO ESTRANHO DA RESPOSTA
+   LIMPAR TEXTO DA IA
 ===================================================== */
 
 function limparTextoIA(texto){
@@ -1609,8 +1671,7 @@ function limparTextoIA(texto){
 
 
     /*
-     * Alguns backends podem enviar
-     * \n literalmente.
+     * Corrigir \n literal.
      */
 
     resultado =
@@ -1654,6 +1715,9 @@ function restaurarHistorico(){
     msgs.innerHTML = "";
 
 
+    codigosGerados = {};
+
+
     if(
         !historico ||
         historico.length === 0
@@ -1688,13 +1752,17 @@ function restaurarHistorico(){
             ){
 
                 addMsg(
+
                     escapar(
                         limparTextoIA(
                             item.content
                         )
                     ),
+
                     "user",
+
                     false
+
                 );
 
 
@@ -1717,7 +1785,9 @@ function restaurarHistorico(){
                         item.content
                     ),
 
-                    item.codigo || "",
+                    limparTextoIA(
+                        item.codigo || ""
+                    ),
 
                     item.tipo || ""
 
@@ -1736,7 +1806,7 @@ function restaurarHistorico(){
 
 
 /* =====================================================
-   ADICIONAR MENSAGEM DA ELI
+   ADICIONAR RESPOSTA DA ELI
 ===================================================== */
 
 function adicionarMensagemEli(
@@ -1745,32 +1815,34 @@ function adicionarMensagemEli(
     tipo
 ){
 
-    const respostaLimpa =
+    resposta =
         limparTextoIA(
             resposta
         );
 
 
-    const codigoLimpo =
+    codigo =
         limparTextoIA(
             codigo
         );
 
 
-    const tipoNormalizado =
+    tipo =
         normalizarTipo(
             tipo
         );
 
 
-    let codigoId = null;
+    let codigoId =
+        null;
 
 
     /*
-     * Cada código recebe seu próprio ID.
+     * Se houver código,
+     * criar ID exclusivo.
      */
 
-    if(codigoLimpo){
+    if(codigo){
 
         codigoId =
             "codigo_" +
@@ -1786,10 +1858,10 @@ function adicionarMensagemEli(
         ] = {
 
             codigo:
-                codigoLimpo,
+                codigo,
 
             tipo:
-                tipoNormalizado
+                tipo
 
         };
 
@@ -1801,12 +1873,12 @@ function adicionarMensagemEli(
 
 
     /*
-     * RESPOSTA
+     * Texto da resposta.
      */
 
     html +=
         escapar(
-            respostaLimpa
+            resposta
         )
         .replace(
             /\n/g,
@@ -1815,17 +1887,17 @@ function adicionarMensagemEli(
 
 
     /*
-     * CÓDIGO
+     * Código.
      */
 
-    if(codigoLimpo){
+    if(codigo){
 
         html += `
 
             <div class="codebox">
 
                 <pre>${escapar(
-                    codigoLimpo
+                    codigo
                 )}</pre>
 
             </div>
@@ -1834,11 +1906,12 @@ function adicionarMensagemEli(
 
 
         /*
-         * Se a linguagem não existe
+         * Aviso quando a linguagem
+         * ainda não existe.
          */
 
         if(
-            !(tipoNormalizado in arquivos)
+            !(tipo in arquivos)
         ){
 
             html += `
@@ -1848,7 +1921,7 @@ function adicionarMensagemEli(
                     ⚠️ A linguagem
                     <strong>
                         ${escapar(
-                            tipoNormalizado.toUpperCase()
+                            tipo.toUpperCase()
                         )}
                     </strong>
                     ainda não existe.
@@ -1859,7 +1932,9 @@ function adicionarMensagemEli(
                     <strong>
                         📤 Enviar para o Editor
                     </strong>
-                    para criar automaticamente.
+
+                    e ela será criada
+                    automaticamente.
 
                 </div>
 
@@ -1869,7 +1944,7 @@ function adicionarMensagemEli(
 
 
         /*
-         * BOTÃO DO CÓDIGO
+         * BOTÃO
          */
 
         html += `
@@ -1878,9 +1953,7 @@ function adicionarMensagemEli(
 
             <button
                 class="editor-send"
-                onclick="enviarCodigoGerado(
-                    '${codigoId}'
-                )"
+                onclick="enviarCodigoGerado('${codigoId}')"
             >
 
                 📤 Enviar para o Editor
@@ -1909,15 +1982,13 @@ function adicionarMensagemEli(
 
 
 /* =====================================================
-   ENVIAR CÓDIGO GERADO PARA O EDITOR
+   ⭐ ENVIAR CÓDIGO ESPECÍFICO PARA O EDITOR ⭐
 ===================================================== */
 
-function enviarCodigoGerado(
-    codigoId
-){
+function enviarCodigoGerado(codigoId){
 
     /*
-     * Pegar EXATAMENTE o código
+     * Pegar exatamente o código
      * daquele botão.
      */
 
@@ -1939,9 +2010,19 @@ function enviarCodigoGerado(
     }
 
 
-    const codigo =
-        dados.codigo;
+    /*
+     * Limpar.
+     */
 
+    const codigo =
+        limparTextoIA(
+            dados.codigo
+        );
+
+
+    /*
+     * Detectar linguagem.
+     */
 
     const tipo =
         normalizarTipo(
@@ -1963,13 +2044,19 @@ function enviarCodigoGerado(
 
     /*
      * =================================================
-     * IMPORTANTE:
+     * AQUI ESTÁ A PARTE MAIS IMPORTANTE
      *
-     * Se o arquivo já existe,
-     * SUBSTITUI o código antigo.
+     * Se main.html já existe:
      *
-     * Se não existe,
-     * CRIA o arquivo.
+     *     substitui o conteúdo antigo.
+     *
+     * Se main.py já existe:
+     *
+     *     substitui o conteúdo antigo.
+     *
+     * Se não existe:
+     *
+     *     cria.
      * =================================================
      */
 
@@ -1980,7 +2067,7 @@ function enviarCodigoGerado(
 
 
     /*
-     * Guardar último código
+     * Guardar como último código.
      */
 
     ultimoCod =
@@ -1992,10 +2079,7 @@ function enviarCodigoGerado(
 
 
     /*
-     * =================================================
-     * SE A LINGUAGEM NÃO EXISTIR:
-     * CRIAR ABA
-     * =================================================
+     * Criar aba automaticamente.
      */
 
     if(
@@ -2013,34 +2097,75 @@ function enviarCodigoGerado(
 
     /*
      * =================================================
-     * ABRIR AUTOMATICAMENTE A LINGUAGEM
+     * IMPORTANTE:
+     *
+     * Não chamar abrirAba() antes de colocar o
+     * código no editor.
+     *
+     * Colocamos diretamente.
      * =================================================
      */
 
-    abrirAba(
-        tipo
-    );
+    abaAtual =
+        tipo;
+
+
+    document
+        .getElementById(
+            "editor"
+        )
+        .value =
+        codigo;
 
 
     /*
-     * =================================================
-     * SALVAR
-     * =================================================
+     * Ativar a aba.
+     */
+
+    document
+        .querySelectorAll(
+            ".tab"
+        )
+        .forEach(
+            function(tab){
+
+                tab.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const tab =
+        document.getElementById(
+            "tab-" + tipo
+        );
+
+
+    if(tab){
+
+        tab.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /*
+     * Salvar imediatamente.
      */
 
     salvarProjeto();
 
 
     /*
-     * =================================================
-     * MENSAGEM DE CONFIRMAÇÃO
-     * =================================================
+     * Mensagem.
      */
 
     addMsg(
 
-        "✅ Código atualizado em " +
-        "main." +
+        "✅ Código atualizado em main." +
         tipo +
         ".",
 
@@ -2050,7 +2175,7 @@ function enviarCodigoGerado(
 
 
     /*
-     * Pequeno aviso no console
+     * Console.
      */
 
     log(
@@ -2063,15 +2188,10 @@ function enviarCodigoGerado(
 
 
 /* =====================================================
-   COMPATIBILIDADE
+   COMPATIBILIDADE COM BOTÃO ANTIGO
 ===================================================== */
 
 function enviarEditor(){
-
-    /*
-     * Mantemos esta função para
-     * compatibilidade com código antigo.
-     */
 
     if(!ultimoCod){
 
@@ -2122,7 +2242,7 @@ function enviarCodigoDireto(
 
 
     /*
-     * SUBSTITUI o arquivo existente
+     * Substituir ou criar.
      */
 
     arquivos[
@@ -2140,7 +2260,7 @@ function enviarCodigoDireto(
 
 
     /*
-     * Criar aba se necessário
+     * Criar aba.
      */
 
     if(
@@ -2157,17 +2277,54 @@ function enviarCodigoDireto(
 
 
     /*
-     * Abrir linguagem
+     * Colocar no editor.
      */
 
-    abrirAba(
-        tipo
-    );
+    abaAtual =
+        tipo;
+
+
+    document
+        .getElementById(
+            "editor"
+        )
+        .value =
+        codigo;
 
 
     /*
-     * Salvar
+     * Active.
      */
+
+    document
+        .querySelectorAll(
+            ".tab"
+        )
+        .forEach(
+            function(tab){
+
+                tab.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const tab =
+        document.getElementById(
+            "tab-" + tipo
+        );
+
+
+    if(tab){
+
+        tab.classList.add(
+            "active"
+        );
+
+    }
+
 
     salvarProjeto();
 
@@ -2190,37 +2347,53 @@ function normalizarTipo(tipo){
 
     const mapa = {
 
-        javascript:"js",
+        javascript:
+            "js",
 
-        js:"js",
+        js:
+            "js",
 
-        html:"html",
+        html:
+            "html",
 
-        htm:"html",
+        htm:
+            "html",
 
-        css:"css",
+        css:
+            "css",
 
-        python:"py",
+        python:
+            "py",
 
-        py:"py",
+        py:
+            "py",
 
-        typescript:"ts",
+        typescript:
+            "ts",
 
-        ts:"ts",
+        ts:
+            "ts",
 
-        json:"json",
+        json:
+            "json",
 
-        java:"java",
+        java:
+            "java",
 
-        php:"php",
+        php:
+            "php",
 
-        sql:"sql",
+        sql:
+            "sql",
 
-        c:"c",
+        c:
+            "c",
 
-        cpp:"cpp",
+        cpp:
+            "cpp",
 
-        "c++":"cpp"
+        "c++":
+            "cpp"
 
     };
 
@@ -2275,7 +2448,7 @@ function escapar(texto){
 ===================================================== */
 
 function addMsg(
-    t,
+    texto,
     tipo,
     rolar = true
 ){
@@ -2302,7 +2475,7 @@ function addMsg(
                 class="msg ${tipo}"
                 id="${id}"
             >
-                ${t}
+                ${texto}
             </div>
             `
 
@@ -2357,7 +2530,8 @@ async function enviar(){
     }
 
 
-    enviando = true;
+    enviando =
+        true;
 
 
     const pergunta =
@@ -2365,7 +2539,7 @@ async function enviar(){
 
 
     /*
-     * Mostrar pergunta
+     * Mostrar pergunta.
      */
 
     addMsg(
@@ -2377,7 +2551,7 @@ async function enviar(){
 
 
     /*
-     * Guardar pergunta
+     * Guardar pergunta.
      */
 
     historico.push({
@@ -2398,7 +2572,7 @@ async function enviar(){
 
 
     /*
-     * Loading
+     * Loading.
      */
 
     const loadingId =
@@ -2411,8 +2585,7 @@ async function enviar(){
     try{
 
         /*
-         * Mandar somente role + content
-         * para o backend.
+         * Backend recebe somente role + content.
          */
 
         const historicoRecente =
@@ -2434,6 +2607,10 @@ async function enviar(){
                     }
                 );
 
+
+        /*
+         * Chamada para o backend.
+         */
 
         const res =
             await fetch(
@@ -2468,6 +2645,10 @@ async function enviar(){
             );
 
 
+        /*
+         * Ler resposta.
+         */
+
         const textoResposta =
             await res.text();
 
@@ -2493,7 +2674,7 @@ async function enviar(){
 
 
         /*
-         * Remover loading
+         * Remover loading.
          */
 
         const loading =
@@ -2510,7 +2691,7 @@ async function enviar(){
 
 
         /*
-         * ERRO DO SERVIDOR
+         * ERRO.
          */
 
         if(!res.ok){
@@ -2528,11 +2709,14 @@ async function enviar(){
 
 
             addMsg(
+
                 "❌ " +
                 escapar(
                     mensagem
                 ),
+
                 "eli"
+
             );
 
 
@@ -2557,7 +2741,7 @@ async function enviar(){
 
 
         /*
-         * RESPOSTA INVÁLIDA
+         * Resposta inválida.
          */
 
         if(!data){
@@ -2593,7 +2777,7 @@ async function enviar(){
 
         /*
          * =================================================
-         * PEGAR RESPOSTA
+         * RESPOSTA
          * =================================================
          */
 
@@ -2606,7 +2790,7 @@ async function enviar(){
 
         /*
          * =================================================
-         * PEGAR CÓDIGO
+         * CÓDIGO
          * =================================================
          */
 
@@ -2619,7 +2803,7 @@ async function enviar(){
 
         /*
          * =================================================
-         * DETECTAR LINGUAGEM
+         * TIPO
          * =================================================
          */
 
@@ -2631,9 +2815,9 @@ async function enviar(){
 
         /*
          * =================================================
-         * GUARDAR HISTÓRICO COMPLETO
+         * GUARDAR HISTÓRICO
          *
-         * Aqui também guardamos o código.
+         * Agora guardamos também o código e linguagem.
          * =================================================
          */
 
@@ -2655,7 +2839,7 @@ async function enviar(){
 
 
         /*
-         * Guardar último código
+         * Guardar último código.
          */
 
         if(codigo){
@@ -2670,7 +2854,7 @@ async function enviar(){
 
 
         /*
-         * Mostrar resposta
+         * Mostrar resposta.
          */
 
         adicionarMensagemEli(
@@ -2685,11 +2869,15 @@ async function enviar(){
 
 
         /*
-         * Salvar tudo
+         * Salvar conversa + código.
          */
 
         salvarProjeto();
 
+
+        /*
+         * Scroll.
+         */
 
         const msgs =
             document.getElementById(
@@ -2702,6 +2890,10 @@ async function enviar(){
 
 
     }catch(e){
+
+        /*
+         * Remover loading.
+         */
 
         const loading =
             document.getElementById(
@@ -2747,7 +2939,7 @@ async function enviar(){
 
 
         console.error(
-            "Erro ao comunicar com o servidor:",
+            "Erro:",
             e
         );
 
@@ -2805,7 +2997,7 @@ function toggleMenu(){
 
 
 /* =====================================================
-   INFO PROJETO
+   INFORMAÇÕES DO PROJETO
 ===================================================== */
 
 function mostrarInfoProjeto(){
@@ -2846,21 +3038,20 @@ function mostrarInfoProjeto(){
 
 
 /* =====================================================
-   VOLTAR PARA PROJETOS
+   VOLTAR PARA MEUS PROJETOS
 ===================================================== */
 
 function voltarProjetos(){
 
     /*
-     * Salvar antes de sair
+     * Salvar tudo antes de sair.
      */
 
     salvarProjeto();
 
 
     /*
-     * Ir para tela principal,
-     * onde está Meus Projetos.
+     * Voltar para a página principal.
      */
 
     window.location.href =
@@ -2892,6 +3083,9 @@ function limparConversa(){
 
 
     historico = [];
+
+
+    codigosGerados = {};
 
 
     criarMensagemInicial();
@@ -2929,6 +3123,10 @@ function limpar(){
 
 function run(){
 
+    /*
+     * Salvar primeiro.
+     */
+
     salvarCodigo();
 
     salvarProjeto();
@@ -2963,7 +3161,7 @@ function run(){
 
         try{
 
-            const r =
+            const resultado =
                 new Function(
                     c
                 )();
@@ -2971,7 +3169,7 @@ function run(){
 
             log(
                 "> Resultado: " +
-                r
+                resultado
             );
 
 
@@ -3147,6 +3345,10 @@ function run(){
     }
 
 
+    /*
+     * Outras linguagens.
+     */
+
     log(
         "> Linguagem " +
         abaAtual +
@@ -3157,7 +3359,7 @@ function run(){
 
 
 /* =====================================================
-   CONSOLE
+   LOG
 ===================================================== */
 
 function log(t){
@@ -3179,7 +3381,7 @@ function log(t){
 
 function enviarErro(){
 
-    const e =
+    const erro =
         document
             .getElementById(
                 "log"
@@ -3193,7 +3395,7 @@ function enviarErro(){
         )
         .value =
         "Eli me ajuda com este erro:\n\n" +
-        e;
+        erro;
 
 
     enviar();
