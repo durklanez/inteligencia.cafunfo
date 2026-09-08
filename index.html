@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
 
 <meta charset="UTF-8">
@@ -56,6 +57,7 @@ body{
 ===================================================== */
 
 .header{
+
     padding:10px;
 
     background:#062806;
@@ -73,31 +75,49 @@ body{
     border-bottom:1px solid #0f0;
 }
 
+
 .header-left{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
+    min-width:0;
 }
 
+
 .project-name{
+
     color:#fff;
+
     font-size:13px;
+
     font-weight:normal;
 
     max-width:180px;
 
     overflow:hidden;
+
     text-overflow:ellipsis;
+
     white-space:nowrap;
 }
 
+
 .header-buttons{
+
     display:flex;
+
     gap:5px;
 }
 
+
 .header button{
+
     border:none;
+
     border-radius:6px;
 
     padding:7px 10px;
@@ -107,15 +127,21 @@ body{
     font-weight:bold;
 }
 
+
 .project-btn{
+
     background:#111;
+
     color:#0f0;
 
     border:1px solid #0f0 !important;
 }
 
+
 .btn2{
+
     background:#fa0 !important;
+
     color:#000;
 }
 
@@ -125,6 +151,7 @@ body{
 ===================================================== */
 
 .msgs{
+
     flex:1;
 
     overflow-y:auto;
@@ -132,7 +159,9 @@ body{
     padding:10px;
 }
 
+
 .msg{
+
     padding:10px;
 
     border-radius:8px;
@@ -144,9 +173,13 @@ body{
     white-space:pre-wrap;
 
     word-wrap:break-word;
+
+    overflow-wrap:anywhere;
 }
 
+
 .user{
+
     background:#1a1a1a;
 
     color:#0f0;
@@ -154,7 +187,9 @@ body{
     margin-left:auto;
 }
 
+
 .eli{
+
     background:#0f5f0f;
 
     color:#fff;
@@ -166,6 +201,7 @@ body{
 ===================================================== */
 
 .input{
+
     display:flex;
 
     padding:10px;
@@ -177,7 +213,9 @@ body{
     border-top:2px solid #0f0;
 }
 
+
 .input input{
+
     flex:1;
 
     min-width:0;
@@ -195,12 +233,16 @@ body{
     outline:none;
 }
 
+
 .input input:focus{
+
     box-shadow:
         0 0 0 2px rgba(0,255,0,.12);
 }
 
+
 .input button{
+
     padding:12px;
 
     background:#0f0;
@@ -222,6 +264,7 @@ body{
 ===================================================== */
 
 .editor{
+
     height:27.5vh;
 
     background:#0a0f2e;
@@ -229,7 +272,9 @@ body{
     border-top:2px solid #60a5fa;
 }
 
+
 .tabs{
+
     background:#062806;
 
     padding:5px;
@@ -245,7 +290,9 @@ body{
     min-height:35px;
 }
 
+
 .tab{
+
     padding:6px 12px;
 
     background:#111;
@@ -263,7 +310,9 @@ body{
     white-space:nowrap;
 }
 
+
 .tab.active{
+
     background:#0f0;
 
     color:#000;
@@ -271,12 +320,12 @@ body{
     font-weight:bold;
 }
 
+
 .editor textarea{
+
     width:100%;
 
     height:calc(100% - 45px);
-
-    box-sizing:border-box;
 
     background:#0a0f2e;
 
@@ -303,12 +352,15 @@ body{
 ===================================================== */
 
 .console{
+
     height:20vh;
 
     background:#3d3d00;
 }
 
+
 .chead{
+
     padding:8px;
 
     background:#2e2e00;
@@ -322,11 +374,15 @@ body{
     align-items:center;
 }
 
+
 .chead button{
+
     cursor:pointer;
 }
 
+
 .cbody{
+
     padding:10px;
 
     color:#ff9;
@@ -344,6 +400,7 @@ body{
 ===================================================== */
 
 #menuBox{
+
     display:none;
 
     position:fixed;
@@ -367,7 +424,9 @@ body{
     z-index:999;
 }
 
+
 #menuBox div{
+
     padding:9px;
 
     cursor:pointer;
@@ -377,22 +436,27 @@ body{
     border-bottom:1px solid #222;
 }
 
+
 #menuBox div:hover{
+
     background:#0f0;
 
     color:#000;
 }
 
+
 #menuBox .lang{
+
     color:#60a5fa;
 }
 
 
 /* =====================================================
-   CÓDIGO
+   AVISO
 ===================================================== */
 
 .aviso{
+
     color:#fa0;
 
     font-weight:bold;
@@ -402,7 +466,13 @@ body{
     font-size:13px;
 }
 
+
+/* =====================================================
+   CAIXA DE CÓDIGO
+===================================================== */
+
 .codebox{
+
     margin-top:8px;
 
     background:#050505;
@@ -418,7 +488,9 @@ body{
     max-height:180px;
 }
 
+
 .codebox pre{
+
     margin:0;
 
     color:#93c5fd;
@@ -432,25 +504,49 @@ body{
 
 
 /* =====================================================
-   BOTÃO ENVIAR EDITOR
+   BOTÃO ENVIAR PARA EDITOR
 ===================================================== */
 
 .editor-send{
-    margin-top:8px;
 
-    padding:9px 14px;
+    margin-top:10px;
 
-    background:#fa0;
+    padding:11px 16px;
+
+    background:#60a5fa;
 
     color:#000;
 
     border:none;
 
-    border-radius:7px;
+    border-radius:8px;
 
     font-weight:bold;
 
+    font-size:13px;
+
     cursor:pointer;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.3);
+
+    transition:
+        transform .15s,
+        background .15s;
+}
+
+
+.editor-send:hover{
+
+    background:#93c5fd;
+
+    transform:translateY(-1px);
+}
+
+
+.editor-send:active{
+
+    transform:scale(.97);
 }
 
 
@@ -459,6 +555,7 @@ body{
 ===================================================== */
 
 .site-link{
+
     display:inline-block;
 
     margin-top:8px;
@@ -478,7 +575,9 @@ body{
     cursor:pointer;
 }
 
+
 .site-link:hover{
+
     background:#7cff7c;
 }
 
@@ -487,24 +586,8 @@ body{
    STATUS
 ===================================================== */
 
-.status-active{
-    color:#0f0;
-
-    font-weight:bold;
-}
-
-.status-error{
-    color:#ff5555;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   INDICADOR DE SALVAMENTO
-===================================================== */
-
 .save-status{
+
     position:fixed;
 
     right:10px;
@@ -528,8 +611,22 @@ body{
     opacity:.85;
 }
 
+
 .save-status.saved{
+
     color:#0f0;
+}
+
+
+/* =====================================================
+   BOTÃO DESABILITADO
+===================================================== */
+
+button:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
 }
 
 </style>
@@ -546,7 +643,9 @@ body{
 
 <div class="chat">
 
+
     <div class="header">
+
 
         <div class="header-left">
 
@@ -554,11 +653,12 @@ body{
                 ELI AI
             </span>
 
+
             <span
                 id="projectName"
                 class="project-name"
             >
-                Projeto
+                • Projeto
             </span>
 
         </div>
@@ -566,13 +666,15 @@ body{
 
         <div class="header-buttons">
 
+
             <button
                 class="project-btn"
                 onclick="voltarProjetos()"
-                title="Voltar para Meus Projetos"
+                title="Meus Projetos"
             >
                 📁
             </button>
+
 
             <button
                 class="btn2"
@@ -586,17 +688,16 @@ body{
     </div>
 
 
+
     <div
         class="msgs"
         id="msgs"
-    >
+    ></div>
 
-        <!-- As mensagens serão carregadas pelo JavaScript -->
-
-    </div>
 
 
     <div class="input">
+
 
         <input
             id="perg"
@@ -639,6 +740,7 @@ body{
     id="editorBox"
 >
 
+
     <div
         class="tabs"
         id="tabs"
@@ -661,7 +763,9 @@ body{
 
 <div class="console">
 
+
     <div class="chead">
+
 
         <span>
             CONSOLE
@@ -669,6 +773,7 @@ body{
 
 
         <div>
+
 
             <button
                 class="btn2"
@@ -708,6 +813,7 @@ body{
 ===================================================== -->
 
 <div id="menuBox">
+
 
     <div
         onclick="addLang('html')"
@@ -814,6 +920,14 @@ let projetoAtual = null;
 let salvarTimer = null;
 
 
+/*
+ * Guarda cada código gerado pela ELI
+ * com seu próprio ID.
+ */
+
+let codigosGerados = {};
+
+
 /* =====================================================
    INICIALIZAÇÃO
 ===================================================== */
@@ -832,13 +946,10 @@ window.onload = function(){
 function iniciarProjeto(){
 
     const projetoSalvo =
-        localStorage.getItem("projetoAtual");
+        localStorage.getItem(
+            "projetoAtual"
+        );
 
-
-    /*
-     * O editor só deve funcionar
-     * quando existe um projeto selecionado.
-     */
 
     if(!projetoSalvo){
 
@@ -846,7 +957,10 @@ function iniciarProjeto(){
             "Nenhum projeto foi selecionado."
         );
 
-        window.location.href = "/";
+
+        window.location.href =
+            "/";
+
 
         return;
 
@@ -856,7 +970,9 @@ function iniciarProjeto(){
     try{
 
         projetoAtual =
-            JSON.parse(projetoSalvo);
+            JSON.parse(
+                projetoSalvo
+            );
 
     }catch(e){
 
@@ -864,7 +980,10 @@ function iniciarProjeto(){
             "projetoAtual"
         );
 
-        window.location.href = "/";
+
+        window.location.href =
+            "/";
+
 
         return;
 
@@ -880,7 +999,10 @@ function iniciarProjeto(){
             "Projeto inválido."
         );
 
-        window.location.href = "/";
+
+        window.location.href =
+            "/";
+
 
         return;
 
@@ -888,10 +1010,15 @@ function iniciarProjeto(){
 
 
     document
-        .getElementById("projectName")
+        .getElementById(
+            "projectName"
+        )
         .innerText =
         "• " +
-        (projetoAtual.nome || "Projeto");
+        (
+            projetoAtual.nome ||
+            "Projeto"
+        );
 
 
     carregarDadosProjeto();
@@ -924,7 +1051,7 @@ function chaveProjeto(){
 
 
 /* =====================================================
-   CARREGAR DADOS DO PROJETO
+   CARREGAR PROJETO
 ===================================================== */
 
 function carregarDadosProjeto(){
@@ -941,20 +1068,26 @@ function carregarDadosProjeto(){
 
 
     const dadosSalvos =
-        localStorage.getItem(chave);
+        localStorage.getItem(
+            chave
+        );
 
 
     /*
-     * Projeto novo
+     * PROJETO NOVO
      */
 
     if(!dadosSalvos){
 
         arquivos = {};
 
-        historico = [];
-
         abaAtual = null;
+
+        ultimoCod = "";
+
+        ultimoTipo = "js";
+
+        historico = [];
 
         criarMensagemInicial();
 
@@ -970,7 +1103,9 @@ function carregarDadosProjeto(){
     try{
 
         const dados =
-            JSON.parse(dadosSalvos);
+            JSON.parse(
+                dadosSalvos
+            );
 
 
         arquivos =
@@ -993,35 +1128,29 @@ function carregarDadosProjeto(){
             dados.ultimoTipo || "js";
 
 
-        /*
-         * Recriar abas
-         */
-
         reconstruirAbas();
 
-
-        /*
-         * Restaurar conversa
-         */
 
         restaurarHistorico();
 
 
-        /*
-         * Abrir última aba
-         */
-
         if(
             abaAtual &&
-            arquivos[abaAtual] !== undefined
+            arquivos[
+                abaAtual
+            ] !== undefined
         ){
 
-            abrirAba(abaAtual);
+            abrirAba(
+                abaAtual
+            );
 
         }else{
 
             document
-                .getElementById("editor")
+                .getElementById(
+                    "editor"
+                )
                 .value =
                 "Adiciona uma linguagem no menu ⋮";
 
@@ -1040,9 +1169,12 @@ function carregarDadosProjeto(){
             e
         );
 
+
         arquivos = {};
 
         historico = [];
+
+        abaAtual = null;
 
         criarMensagemInicial();
 
@@ -1052,13 +1184,15 @@ function carregarDadosProjeto(){
 
 
 /* =====================================================
-   CRIAR MENSAGEM INICIAL
+   MENSAGEM INICIAL
 ===================================================== */
 
 function criarMensagemInicial(){
 
     const msgs =
-        document.getElementById("msgs");
+        document.getElementById(
+            "msgs"
+        );
 
 
     msgs.innerHTML = "";
@@ -1080,24 +1214,31 @@ function criarMensagemInicial(){
 function reconstruirAbas(){
 
     const tabs =
-        document.getElementById("tabs");
+        document.getElementById(
+            "tabs"
+        );
 
 
     tabs.innerHTML = "";
 
 
-    Object.keys(arquivos)
-        .forEach(function(lang){
+    Object.keys(
+        arquivos
+    ).forEach(
+        function(lang){
 
-            criarAba(lang);
+            criarAba(
+                lang
+            );
 
-        });
+        }
+    );
 
 }
 
 
 /* =====================================================
-   SALVAR PROJETO COMPLETO
+   SALVAR PROJETO
 ===================================================== */
 
 function salvarProjeto(){
@@ -1118,17 +1259,23 @@ function salvarProjeto(){
 
     const dados = {
 
-        projeto:projetoAtual,
+        projeto:
+            projetoAtual,
 
-        arquivos:arquivos,
+        arquivos:
+            arquivos,
 
-        historico:historico,
+        historico:
+            historico,
 
-        abaAtual:abaAtual,
+        abaAtual:
+            abaAtual,
 
-        ultimoCod:ultimoCod,
+        ultimoCod:
+            ultimoCod,
 
-        ultimoTipo:ultimoTipo,
+        ultimoTipo:
+            ultimoTipo,
 
         atualizadoEm:
             new Date().toISOString()
@@ -1140,7 +1287,9 @@ function salvarProjeto(){
 
         localStorage.setItem(
             chave,
-            JSON.stringify(dados)
+            JSON.stringify(
+                dados
+            )
         );
 
 
@@ -1158,7 +1307,7 @@ function salvarProjeto(){
 
 
         atualizarStatus(
-            "⚠️ Não foi possível salvar"
+            "⚠️ Erro ao salvar"
         );
 
     }
@@ -1178,11 +1327,14 @@ function salvarAutomaticamente(){
 
 
     salvarTimer =
-        setTimeout(function(){
+        setTimeout(
+            function(){
 
-            salvarProjeto();
+                salvarProjeto();
 
-        },300);
+            },
+            300
+        );
 
 }
 
@@ -1225,10 +1377,14 @@ function salvarCodigo(){
 
     if(
         abaAtual &&
-        document.getElementById("editor")
+        document.getElementById(
+            "editor"
+        )
     ){
 
-        arquivos[abaAtual] =
+        arquivos[
+            abaAtual
+        ] =
             document.getElementById(
                 "editor"
             ).value;
@@ -1239,7 +1395,7 @@ function salvarCodigo(){
 
 
 /* =====================================================
-   SALVAR CÓDIGO ENQUANTO DIGITA
+   SALVAR ENQUANTO DIGITA
 ===================================================== */
 
 function salvarCodigoAutomatico(){
@@ -1257,9 +1413,18 @@ function salvarCodigoAutomatico(){
 
 function addLang(lang){
 
-    if(lang in arquivos){
+    /*
+     * Se já existe,
+     * simplesmente abre.
+     */
 
-        abrirAba(lang);
+    if(
+        lang in arquivos
+    ){
+
+        abrirAba(
+            lang
+        );
 
         toggleMenu();
 
@@ -1268,14 +1433,36 @@ function addLang(lang){
     }
 
 
-    arquivos[lang] = "";
+    /*
+     * Criar arquivo
+     */
+
+    arquivos[
+        lang
+    ] = "";
 
 
-    criarAba(lang);
+    /*
+     * Criar aba
+     */
+
+    criarAba(
+        lang
+    );
 
 
-    abrirAba(lang);
+    /*
+     * Abrir
+     */
 
+    abrirAba(
+        lang
+    );
+
+
+    /*
+     * Salvar
+     */
 
     salvarProjeto();
 
@@ -1298,7 +1485,7 @@ function criarAba(lang){
 
 
     /*
-     * Evita aba duplicada
+     * Não duplicar
      */
 
     if(
@@ -1313,7 +1500,9 @@ function criarAba(lang){
 
 
     const novaAba =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     novaAba.className =
@@ -1324,16 +1513,18 @@ function criarAba(lang){
         "main." + lang;
 
 
+    novaAba.id =
+        "tab-" + lang;
+
+
     novaAba.onclick =
         function(){
 
-            abrirAba(lang);
+            abrirAba(
+                lang
+            );
 
         };
-
-
-    novaAba.id =
-        "tab-" + lang;
 
 
     tabs.appendChild(
@@ -1350,7 +1541,7 @@ function criarAba(lang){
 function abrirAba(lang){
 
     /*
-     * Salva a aba anterior
+     * Guardar aba anterior
      */
 
     salvarCodigo();
@@ -1361,20 +1552,28 @@ function abrirAba(lang){
 
 
     document
-        .getElementById("editor")
+        .getElementById(
+            "editor"
+        )
         .value =
-        arquivos[lang] || "";
+        arquivos[
+            lang
+        ] || "";
 
 
     document
-        .querySelectorAll(".tab")
-        .forEach(function(t){
+        .querySelectorAll(
+            ".tab"
+        )
+        .forEach(
+            function(t){
 
-            t.classList.remove(
-                "active"
-            );
+                t.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
 
     const tab =
@@ -1398,6 +1597,49 @@ function abrirAba(lang){
 
 
 /* =====================================================
+   LIMPAR TEXTO ESTRANHO DA RESPOSTA
+===================================================== */
+
+function limparTextoIA(texto){
+
+    let resultado =
+        String(
+            texto || ""
+        );
+
+
+    /*
+     * Alguns backends podem enviar
+     * \n literalmente.
+     */
+
+    resultado =
+        resultado.replace(
+            /\\r\\n/g,
+            "\n"
+        );
+
+
+    resultado =
+        resultado.replace(
+            /\\n/g,
+            "\n"
+        );
+
+
+    resultado =
+        resultado.replace(
+            /\\r/g,
+            "\n"
+        );
+
+
+    return resultado;
+
+}
+
+
+/* =====================================================
    RESTAURAR HISTÓRICO
 ===================================================== */
 
@@ -1412,11 +1654,6 @@ function restaurarHistorico(){
     msgs.innerHTML = "";
 
 
-    /*
-     * Se não existe conversa,
-     * mostra a mensagem inicial.
-     */
-
     if(
         !historico ||
         historico.length === 0
@@ -1429,54 +1666,67 @@ function restaurarHistorico(){
     }
 
 
-    historico.forEach(function(item){
+    historico.forEach(
+        function(item){
 
-        if(
-            !item ||
-            !item.role
-        ){
+            if(
+                !item ||
+                !item.role
+            ){
 
-            return;
+                return;
+
+            }
+
+
+            /*
+             * USUÁRIO
+             */
+
+            if(
+                item.role === "user"
+            ){
+
+                addMsg(
+                    escapar(
+                        limparTextoIA(
+                            item.content
+                        )
+                    ),
+                    "user",
+                    false
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+             * ELI
+             */
+
+            if(
+                item.role === "assistant"
+            ){
+
+                adicionarMensagemEli(
+
+                    limparTextoIA(
+                        item.content
+                    ),
+
+                    item.codigo || "",
+
+                    item.tipo || ""
+
+                );
+
+            }
 
         }
-
-
-        /*
-         * Mensagem do usuário
-         */
-
-        if(
-            item.role === "user"
-        ){
-
-            addMsg(
-                escapar(item.content || ""),
-                "user",
-                false
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * Resposta da Eli
-         */
-
-        if(
-            item.role === "assistant"
-        ){
-
-            adicionarMensagemEli(
-                item.content || "",
-                item.codigo || "",
-                item.tipo || ""
-            );
-
-        }
-
-    });
+    );
 
 
     msgs.scrollTop =
@@ -1495,13 +1745,68 @@ function adicionarMensagemEli(
     tipo
 ){
 
+    const respostaLimpa =
+        limparTextoIA(
+            resposta
+        );
+
+
+    const codigoLimpo =
+        limparTextoIA(
+            codigo
+        );
+
+
+    const tipoNormalizado =
+        normalizarTipo(
+            tipo
+        );
+
+
+    let codigoId = null;
+
+
+    /*
+     * Cada código recebe seu próprio ID.
+     */
+
+    if(codigoLimpo){
+
+        codigoId =
+            "codigo_" +
+            Date.now() +
+            "_" +
+            Math.floor(
+                Math.random() * 1000000
+            );
+
+
+        codigosGerados[
+            codigoId
+        ] = {
+
+            codigo:
+                codigoLimpo,
+
+            tipo:
+                tipoNormalizado
+
+        };
+
+    }
+
+
     let html =
         `<div class="msg eli">`;
 
 
+    /*
+     * RESPOSTA
+     */
+
     html +=
         escapar(
-            resposta || "Sem resposta."
+            respostaLimpa
         )
         .replace(
             /\n/g,
@@ -1510,56 +1815,79 @@ function adicionarMensagemEli(
 
 
     /*
-     * Código
+     * CÓDIGO
      */
 
-    if(codigo){
+    if(codigoLimpo){
 
-        const tipoNormalizado =
-            normalizarTipo(tipo);
+        html += `
 
-
-        html +=
-            `
             <div class="codebox">
-                <pre>${escapar(codigo)}</pre>
-            </div>
-            `;
 
+                <pre>${escapar(
+                    codigoLimpo
+                )}</pre>
+
+            </div>
+
+        `;
+
+
+        /*
+         * Se a linguagem não existe
+         */
 
         if(
             !(tipoNormalizado in arquivos)
         ){
 
-            html +=
-                `
+            html += `
+
                 <div class="aviso">
-                    ⚠️ Falta a aba
-                    ${escapar(
-                        tipoNormalizado.toUpperCase()
-                    )}
+
+                    ⚠️ A linguagem
+                    <strong>
+                        ${escapar(
+                            tipoNormalizado.toUpperCase()
+                        )}
+                    </strong>
+                    ainda não existe.
+
                     <br>
-                    Vai no menu ⋮ e adiciona a linguagem.
+
+                    Clica em
+                    <strong>
+                        📤 Enviar para o Editor
+                    </strong>
+                    para criar automaticamente.
+
                 </div>
-                `;
+
+            `;
 
         }
 
 
-        html +=
-            `
+        /*
+         * BOTÃO DO CÓDIGO
+         */
+
+        html += `
+
             <br>
 
             <button
                 class="editor-send"
-                onclick="usarCodigoRestaurado(
-                    ${JSON.stringify(codigo)},
-                    ${JSON.stringify(tipoNormalizado)}
+                onclick="enviarCodigoGerado(
+                    '${codigoId}'
                 )"
             >
-                📤 Enviar pro Editor
+
+                📤 Enviar para o Editor
+
             </button>
-            `;
+
+        `;
 
     }
 
@@ -1569,7 +1897,9 @@ function adicionarMensagemEli(
 
 
     document
-        .getElementById("msgs")
+        .getElementById(
+            "msgs"
+        )
         .insertAdjacentHTML(
             "beforeend",
             html
@@ -1579,385 +1909,267 @@ function adicionarMensagemEli(
 
 
 /* =====================================================
-   USAR CÓDIGO RESTAURADO
+   ENVIAR CÓDIGO GERADO PARA O EDITOR
 ===================================================== */
 
-function usarCodigoRestaurado(
-    codigo,
-    tipo
+function enviarCodigoGerado(
+    codigoId
 ){
+
+    /*
+     * Pegar EXATAMENTE o código
+     * daquele botão.
+     */
+
+    const dados =
+        codigosGerados[
+            codigoId
+        ];
+
+
+    if(!dados){
+
+        addMsg(
+            "❌ Não encontrei este código.",
+            "eli"
+        );
+
+        return;
+
+    }
+
+
+    const codigo =
+        dados.codigo;
+
+
+    const tipo =
+        normalizarTipo(
+            dados.tipo
+        );
+
+
+    if(!codigo){
+
+        addMsg(
+            "❌ O código está vazio.",
+            "eli"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * =================================================
+     * IMPORTANTE:
+     *
+     * Se o arquivo já existe,
+     * SUBSTITUI o código antigo.
+     *
+     * Se não existe,
+     * CRIA o arquivo.
+     * =================================================
+     */
+
+    arquivos[
+        tipo
+    ] =
+        codigo;
+
+
+    /*
+     * Guardar último código
+     */
 
     ultimoCod =
         codigo;
 
 
     ultimoTipo =
-        normalizarTipo(tipo);
-
-
-    enviarEditor();
-
-}
-
-
-/* =====================================================
-   ENVIAR PERGUNTA
-===================================================== */
-
-async function enviar(){
-
-    if(enviando){
-
-        return;
-
-    }
-
-
-    const p =
-        document.getElementById(
-            "perg"
-        );
-
-
-    if(
-        !p ||
-        !p.value.trim()
-    ){
-
-        return;
-
-    }
-
-
-    enviando = true;
-
-
-    const pergunta =
-        p.value.trim();
+        tipo;
 
 
     /*
-     * Mostrar mensagem
+     * =================================================
+     * SE A LINGUAGEM NÃO EXISTIR:
+     * CRIAR ABA
+     * =================================================
      */
 
-    addMsg(
-        escapar(pergunta),
-        "user",
-        false
+    if(
+        !document.getElementById(
+            "tab-" + tipo
+        )
+    ){
+
+        criarAba(
+            tipo
+        );
+
+    }
+
+
+    /*
+     * =================================================
+     * ABRIR AUTOMATICAMENTE A LINGUAGEM
+     * =================================================
+     */
+
+    abrirAba(
+        tipo
     );
 
 
     /*
-     * Guardar mensagem
-     */
-
-    historico.push({
-
-        role:"user",
-
-        content:pergunta
-
-    });
-
-
-    /*
-     * Salvar imediatamente
+     * =================================================
+     * SALVAR
+     * =================================================
      */
 
     salvarProjeto();
 
 
-    p.value = "";
+    /*
+     * =================================================
+     * MENSAGEM DE CONFIRMAÇÃO
+     * =================================================
+     */
+
+    addMsg(
+
+        "✅ Código atualizado em " +
+        "main." +
+        tipo +
+        ".",
+
+        "eli"
+
+    );
 
 
-    const loadingId =
+    /*
+     * Pequeno aviso no console
+     */
+
+    log(
+        "🟢 main." +
+        tipo +
+        " atualizado com o novo código."
+    );
+
+}
+
+
+/* =====================================================
+   COMPATIBILIDADE
+===================================================== */
+
+function enviarEditor(){
+
+    /*
+     * Mantemos esta função para
+     * compatibilidade com código antigo.
+     */
+
+    if(!ultimoCod){
+
         addMsg(
-            "Eli pensando...",
-            "eli",
-            false
+            "❌ Não encontrei código para enviar.",
+            "eli"
+        );
+
+        return;
+
+    }
+
+
+    enviarCodigoDireto(
+        ultimoCod,
+        ultimoTipo
+    );
+
+}
+
+
+/* =====================================================
+   ENVIO DIRETO
+===================================================== */
+
+function enviarCodigoDireto(
+    codigo,
+    tipo
+){
+
+    codigo =
+        limparTextoIA(
+            codigo
         );
 
 
-    try{
-
-        const historicoRecente =
-            historico.slice(-12);
-
-
-        const res =
-            await fetch(
-                "/teste-firestore",
-                {
-
-                    method:"POST",
-
-                    headers:{
-
-                        "Content-Type":
-                            "application/json",
-
-                        "Accept":
-                            "application/json"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            pergunta:
-                                pergunta,
-
-                            historico:
-                                historicoRecente
-
-                        })
-
-                }
-            );
-
-
-        const textoResposta =
-            await res.text();
-
-
-        let data = null;
-
-
-        try{
-
-            data =
-                JSON.parse(
-                    textoResposta
-                );
-
-        }catch(e){
-
-            console.error(
-                "Resposta não JSON:",
-                textoResposta
-            );
-
-        }
-
-
-        const loading =
-            document.getElementById(
-                loadingId
-            );
-
-
-        if(loading){
-
-            loading.remove();
-
-        }
-
-
-        /*
-         * Erro do servidor
-         */
-
-        if(!res.ok){
-
-            const mensagem =
-                data &&
-                data.resposta
-
-                    ? data.resposta
-
-                    : "Erro no servidor " +
-                      res.status;
-
-
-            addMsg(
-                "❌ " + mensagem,
-                "eli",
-                false
-            );
-
-
-            /*
-             * Também salva o erro
-             * na conversa.
-             */
-
-            historico.push({
-
-                role:"assistant",
-
-                content:
-                    "❌ " + mensagem
-
-            });
-
-
-            salvarProjeto();
-
-
-            return;
-
-        }
-
-
-        if(!data){
-
-            const erroMensagem =
-                "❌ O servidor enviou uma resposta inválida.";
-
-
-            addMsg(
-                erroMensagem,
-                "eli",
-                false
-            );
-
-
-            historico.push({
-
-                role:"assistant",
-
-                content:erroMensagem
-
-            });
-
-
-            salvarProjeto();
-
-
-            return;
-
-        }
-
-
-        const resposta =
-            data.resposta ||
-            "Sem resposta.";
-
-
-        let codigo =
-            data.codigo || "";
-
-
-        let tipo =
-            normalizarTipo(
-                data.tipo
-            );
-
-
-        /*
-         * Guardar resposta + código
-         */
-
-        historico.push({
-
-            role:"assistant",
-
-            content:resposta,
-
-            codigo:codigo,
-
-            tipo:tipo
-
-        });
-
-
-        /*
-         * Guardar código atual
-         */
-
-        if(codigo){
-
-            ultimoCod =
-                codigo;
-
-            ultimoTipo =
-                tipo;
-
-        }
-
-
-        /*
-         * Mostrar resposta
-         */
-
-        adicionarMensagemEli(
-            resposta,
-            codigo,
+    tipo =
+        normalizarTipo(
             tipo
         );
 
 
-        /*
-         * Salvar tudo
-         */
+    if(!codigo){
 
-        salvarProjeto();
-
-
-        const msgs =
-            document.getElementById(
-                "msgs"
-            );
-
-
-        msgs.scrollTop =
-            msgs.scrollHeight;
-
-
-    }catch(e){
-
-        const loading =
-            document.getElementById(
-                loadingId
-            );
-
-
-        if(loading){
-
-            loading.remove();
-
-        }
-
-
-        const erro =
-            "❌ " +
-            (
-                e.message ||
-                "Erro de conexão com o servidor."
-            );
-
-
-        addMsg(
-            erro,
-            "eli",
-            false
-        );
-
-
-        historico.push({
-
-            role:"assistant",
-
-            content:erro
-
-        });
-
-
-        salvarProjeto();
-
-
-        console.error(
-            "Erro ao comunicar com o servidor:",
-            e
-        );
-
-
-    }finally{
-
-        enviando =
-            false;
+        return;
 
     }
+
+
+    /*
+     * SUBSTITUI o arquivo existente
+     */
+
+    arquivos[
+        tipo
+    ] =
+        codigo;
+
+
+    ultimoCod =
+        codigo;
+
+
+    ultimoTipo =
+        tipo;
+
+
+    /*
+     * Criar aba se necessário
+     */
+
+    if(
+        !document.getElementById(
+            "tab-" + tipo
+        )
+    ){
+
+        criarAba(
+            tipo
+        );
+
+    }
+
+
+    /*
+     * Abrir linguagem
+     */
+
+    abrirAba(
+        tipo
+    );
+
+
+    /*
+     * Salvar
+     */
+
+    salvarProjeto();
 
 }
 
@@ -2013,7 +2225,9 @@ function normalizarTipo(tipo){
     };
 
 
-    return mapa[tipo] || "js";
+    return mapa[
+        tipo
+    ] || "js";
 
 }
 
@@ -2024,32 +2238,34 @@ function normalizarTipo(tipo){
 
 function escapar(texto){
 
-    return String(texto)
+    return String(
+        texto || ""
+    )
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+    .replace(
+        /</g,
+        "&lt;"
+    )
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+    .replace(
+        />/g,
+        "&gt;"
+    )
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
@@ -2067,13 +2283,16 @@ function addMsg(
     const id =
         "m" +
         Date.now() +
+        "_" +
         Math.floor(
-            Math.random() * 1000
+            Math.random() * 10000
         );
 
 
     document
-        .getElementById("msgs")
+        .getElementById(
+            "msgs"
+        )
         .insertAdjacentHTML(
 
             "beforeend",
@@ -2110,6 +2329,440 @@ function addMsg(
 
 
 /* =====================================================
+   ENVIAR PERGUNTA
+===================================================== */
+
+async function enviar(){
+
+    if(enviando){
+
+        return;
+
+    }
+
+
+    const p =
+        document.getElementById(
+            "perg"
+        );
+
+
+    if(
+        !p ||
+        !p.value.trim()
+    ){
+
+        return;
+
+    }
+
+
+    enviando = true;
+
+
+    const pergunta =
+        p.value.trim();
+
+
+    /*
+     * Mostrar pergunta
+     */
+
+    addMsg(
+        escapar(
+            pergunta
+        ),
+        "user"
+    );
+
+
+    /*
+     * Guardar pergunta
+     */
+
+    historico.push({
+
+        role:
+            "user",
+
+        content:
+            pergunta
+
+    });
+
+
+    salvarProjeto();
+
+
+    p.value = "";
+
+
+    /*
+     * Loading
+     */
+
+    const loadingId =
+        addMsg(
+            "Eli pensando...",
+            "eli"
+        );
+
+
+    try{
+
+        /*
+         * Mandar somente role + content
+         * para o backend.
+         */
+
+        const historicoRecente =
+            historico
+                .slice(-12)
+                .map(
+                    function(item){
+
+                        return {
+
+                            role:
+                                item.role,
+
+                            content:
+                                item.content
+
+                        };
+
+                    }
+                );
+
+
+        const res =
+            await fetch(
+                "/teste-firestore",
+                {
+
+                    method:
+                        "POST",
+
+                    headers:{
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            pergunta:
+                                pergunta,
+
+                            historico:
+                                historicoRecente
+
+                        })
+
+                }
+            );
+
+
+        const textoResposta =
+            await res.text();
+
+
+        let data = null;
+
+
+        try{
+
+            data =
+                JSON.parse(
+                    textoResposta
+                );
+
+        }catch(e){
+
+            console.error(
+                "Resposta não JSON:",
+                textoResposta
+            );
+
+        }
+
+
+        /*
+         * Remover loading
+         */
+
+        const loading =
+            document.getElementById(
+                loadingId
+            );
+
+
+        if(loading){
+
+            loading.remove();
+
+        }
+
+
+        /*
+         * ERRO DO SERVIDOR
+         */
+
+        if(!res.ok){
+
+            const mensagem =
+                data &&
+                data.resposta
+
+                    ? limparTextoIA(
+                        data.resposta
+                    )
+
+                    : "Erro no servidor " +
+                      res.status;
+
+
+            addMsg(
+                "❌ " +
+                escapar(
+                    mensagem
+                ),
+                "eli"
+            );
+
+
+            historico.push({
+
+                role:
+                    "assistant",
+
+                content:
+                    "❌ " +
+                    mensagem
+
+            });
+
+
+            salvarProjeto();
+
+
+            return;
+
+        }
+
+
+        /*
+         * RESPOSTA INVÁLIDA
+         */
+
+        if(!data){
+
+            const erro =
+                "❌ O servidor enviou uma resposta inválida.";
+
+
+            addMsg(
+                erro,
+                "eli"
+            );
+
+
+            historico.push({
+
+                role:
+                    "assistant",
+
+                content:
+                    erro
+
+            });
+
+
+            salvarProjeto();
+
+
+            return;
+
+        }
+
+
+        /*
+         * =================================================
+         * PEGAR RESPOSTA
+         * =================================================
+         */
+
+        const resposta =
+            limparTextoIA(
+                data.resposta ||
+                "Sem resposta."
+            );
+
+
+        /*
+         * =================================================
+         * PEGAR CÓDIGO
+         * =================================================
+         */
+
+        const codigo =
+            limparTextoIA(
+                data.codigo ||
+                ""
+            );
+
+
+        /*
+         * =================================================
+         * DETECTAR LINGUAGEM
+         * =================================================
+         */
+
+        const tipo =
+            normalizarTipo(
+                data.tipo
+            );
+
+
+        /*
+         * =================================================
+         * GUARDAR HISTÓRICO COMPLETO
+         *
+         * Aqui também guardamos o código.
+         * =================================================
+         */
+
+        historico.push({
+
+            role:
+                "assistant",
+
+            content:
+                resposta,
+
+            codigo:
+                codigo,
+
+            tipo:
+                tipo
+
+        });
+
+
+        /*
+         * Guardar último código
+         */
+
+        if(codigo){
+
+            ultimoCod =
+                codigo;
+
+            ultimoTipo =
+                tipo;
+
+        }
+
+
+        /*
+         * Mostrar resposta
+         */
+
+        adicionarMensagemEli(
+
+            resposta,
+
+            codigo,
+
+            tipo
+
+        );
+
+
+        /*
+         * Salvar tudo
+         */
+
+        salvarProjeto();
+
+
+        const msgs =
+            document.getElementById(
+                "msgs"
+            );
+
+
+        msgs.scrollTop =
+            msgs.scrollHeight;
+
+
+    }catch(e){
+
+        const loading =
+            document.getElementById(
+                loadingId
+            );
+
+
+        if(loading){
+
+            loading.remove();
+
+        }
+
+
+        const erro =
+            "❌ " +
+            (
+                e.message ||
+                "Erro de conexão com o servidor."
+            );
+
+
+        addMsg(
+            escapar(
+                erro
+            ),
+            "eli"
+        );
+
+
+        historico.push({
+
+            role:
+                "assistant",
+
+            content:
+                erro
+
+        });
+
+
+        salvarProjeto();
+
+
+        console.error(
+            "Erro ao comunicar com o servidor:",
+            e
+        );
+
+
+    }finally{
+
+        enviando =
+            false;
+
+    }
+
+}
+
+
+/* =====================================================
    FOTO
 ===================================================== */
 
@@ -2126,87 +2779,6 @@ function enviarFoto(){
         "eli"
     );
 
-
-    /*
-     * Ainda não existe upload real
-     * de imagem para o backend.
-     */
-
-}
-
-
-/* =====================================================
-   ENVIAR CÓDIGO AO EDITOR
-===================================================== */
-
-function enviarEditor(){
-
-    salvarCodigo();
-
-
-    if(!ultimoCod){
-
-        addMsg(
-            "❌ Não encontrei código para enviar.",
-            "eli"
-        );
-
-        return;
-
-    }
-
-
-    /*
-     * Se a linguagem ainda não existe,
-     * cria automaticamente.
-     */
-
-    if(
-        !(ultimoTipo in arquivos)
-    ){
-
-        arquivos[ultimoTipo] =
-            "";
-
-
-        criarAba(
-            ultimoTipo
-        );
-
-    }
-
-
-    /*
-     * Coloca o código no arquivo.
-     */
-
-    arquivos[ultimoTipo] =
-        ultimoCod;
-
-
-    /*
-     * Abre a aba.
-     */
-
-    abrirAba(
-        ultimoTipo
-    );
-
-
-    /*
-     * Salva no projeto.
-     */
-
-    salvarProjeto();
-
-
-    addMsg(
-        "✅ Código enviado para main." +
-        ultimoTipo +
-        " e salvo no projeto.",
-        "eli"
-    );
-
 }
 
 
@@ -2216,22 +2788,24 @@ function enviarEditor(){
 
 function toggleMenu(){
 
-    const m =
+    const menu =
         document.getElementById(
             "menuBox"
         );
 
 
-    m.style.display =
-        m.style.display === "block"
+    menu.style.display =
+        menu.style.display === "block"
+
             ? "none"
+
             : "block";
 
 }
 
 
 /* =====================================================
-   INFORMAÇÕES DO PROJETO
+   INFO PROJETO
 ===================================================== */
 
 function mostrarInfoProjeto(){
@@ -2246,7 +2820,7 @@ function mostrarInfoProjeto(){
     }
 
 
-    const quantidade =
+    const quantidadeArquivos =
         Object.keys(
             arquivos
         ).length;
@@ -2255,10 +2829,13 @@ function mostrarInfoProjeto(){
     alert(
 
         "📁 Projeto: " +
-        (projetoAtual.nome || "Projeto") +
+        (
+            projetoAtual.nome ||
+            "Projeto"
+        ) +
 
         "\n\nArquivos: " +
-        quantidade +
+        quantidadeArquivos +
 
         "\nMensagens: " +
         historico.length
@@ -2269,39 +2846,21 @@ function mostrarInfoProjeto(){
 
 
 /* =====================================================
-   VOLTAR PARA MEUS PROJETOS
+   VOLTAR PARA PROJETOS
 ===================================================== */
 
 function voltarProjetos(){
 
     /*
-     * Primeiro salva tudo.
+     * Salvar antes de sair
      */
 
     salvarProjeto();
 
 
     /*
-     * Fecha menu caso esteja aberto.
-     */
-
-    const menu =
-        document.getElementById(
-            "menuBox"
-        );
-
-
-    if(menu){
-
-        menu.style.display =
-            "none";
-
-    }
-
-
-    /*
-     * Volta para a tela
-     * de Meus Projetos.
+     * Ir para tela principal,
+     * onde está Meus Projetos.
      */
 
     window.location.href =
@@ -2355,7 +2914,9 @@ function limparConversa(){
 function limpar(){
 
     document
-        .getElementById("log")
+        .getElementById(
+            "log"
+        )
         .innerHTML =
         "> Limpo";
 
@@ -2369,7 +2930,6 @@ function limpar(){
 function run(){
 
     salvarCodigo();
-
 
     salvarProjeto();
 
@@ -2387,7 +2947,9 @@ function run(){
 
     const c =
         document
-            .getElementById("editor")
+            .getElementById(
+                "editor"
+            )
             .value;
 
 
@@ -2402,7 +2964,9 @@ function run(){
         try{
 
             const r =
-                new Function(c)();
+                new Function(
+                    c
+                )();
 
 
             log(
@@ -2434,7 +2998,9 @@ function run(){
         abaAtual === "html"
     ){
 
-        if(!c.trim()){
+        if(
+            !c.trim()
+        ){
 
             log(
                 "🔴 SITE NÃO ATIVO"
@@ -2597,29 +3163,34 @@ function run(){
 function log(t){
 
     document
-        .getElementById("log")
+        .getElementById(
+            "log"
+        )
         .innerHTML +=
         "<br>" +
         escapar(t);
-
 
 }
 
 
 /* =====================================================
-   ENVIAR ERRO PARA A ELI
+   ENVIAR ERRO PARA ELI
 ===================================================== */
 
 function enviarErro(){
 
     const e =
         document
-            .getElementById("log")
+            .getElementById(
+                "log"
+            )
             .innerText;
 
 
     document
-        .getElementById("perg")
+        .getElementById(
+            "perg"
+        )
         .value =
         "Eli me ajuda com este erro:\n\n" +
         e;
@@ -2631,7 +3202,44 @@ function enviarErro(){
 
 
 /* =====================================================
-   SALVAR ANTES DE SAIR / FECHAR
+   CTRL + S
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+
+            (
+                event.ctrlKey ||
+                event.metaKey
+            )
+
+            &&
+
+            event.key.toLowerCase() === "s"
+
+        ){
+
+            event.preventDefault();
+
+
+            salvarProjeto();
+
+
+            atualizarStatus(
+                "💾 Salvo"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SALVAR ANTES DE SAIR
 ===================================================== */
 
 window.addEventListener(
@@ -2643,35 +3251,8 @@ window.addEventListener(
     }
 );
 
-
-/* =====================================================
-   CTRL + S
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            (event.ctrlKey ||
-             event.metaKey) &&
-            event.key.toLowerCase() === "s"
-        ){
-
-            event.preventDefault();
-
-            salvarProjeto();
-
-            atualizarStatus(
-                "💾 Salvo"
-            );
-
-        }
-
-    }
-);
-
 </script>
 
 </body>
+
 </html>
