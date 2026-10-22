@@ -3,63 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
 <title>ELI AI</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%}
 body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
+button{cursor:pointer;font-weight:bold}
 .chat{height:45vh;background:#0a3d0a;display:flex;flex-direction:column}
-.header{padding:10px;background:#062806;color:#0f0;font-weight:bold;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #0f0}
+.header{padding:10px;background:#062806;color:#0f0;font-weight:bold;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #0f0;gap:8px}
 .header-left{display:flex;align-items:center;gap:8px;min-width:0}
-.project-name{color:#fff;font-size:13px;font-weight:normal;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.project-name{color:#fff;font-size:12px;font-weight:normal;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .header-buttons{display:flex;gap:7px}
-.header button{border:none;border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:bold;font-size:16px}
+.header button{border:none;border-radius:8px;padding:9px 12px;font-size:16px}
 .project-btn{background:#111;color:#0f0;border:2px solid #0f0!important}
 .btn2{background:#fa0!important;color:#000}
 .msgs{flex:1;overflow-y:auto;padding:10px}
-.msg{padding:10px;border-radius:9px;margin:6px 0;max-width:88%;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere}
+.msg{padding:10px;border-radius:9px;margin:6px 0;max-width:95%;white-space:pre-wrap;overflow-wrap:anywhere}
 .user{background:#1a1a1a;color:#0f0;margin-left:auto}
 .eli{background:#0f5f0f;color:#fff}
-.input{display:flex;padding:10px;background:#062806;gap:8px;border-top:2px solid #0f0}
-.input input{flex:1;min-width:0;padding:13px;background:#111;border:2px solid #0f0;color:#fff;border-radius:10px;outline:none;font-size:15px}
+.input{display:flex;padding:9px;background:#062806;gap:6px;border-top:2px solid #0f0}
+.input input{flex:1;min-width:0;width:0;padding:12px;background:#111;border:2px solid #0f0;color:#fff;border-radius:10px;outline:none;font-size:14px}
 .input input::placeholder{color:#777}
-.input button{padding:12px 15px;background:#0f0;color:#000;border:none;border-radius:9px;font-weight:bold;cursor:pointer;font-size:14px}
-.editor{height:27.5vh;background:#0a0f2e;border-top:2px solid #60a5fa}
-.tabs{background:#062806;padding:5px;display:flex;gap:5px;border-bottom:1px solid #0f0;overflow-x:auto;min-height:45px}
-.tab{padding:8px 13px;background:#111;border:1px solid #0f0;border-radius:7px;cursor:pointer;color:#0f0;font-size:13px;white-space:nowrap}
-.tab.active{background:#0f0;color:#000;font-weight:bold}
-.editor textarea{width:100%;height:calc(100% - 45px);box-sizing:border-box;background:#0a0f2e;color:#93c5fd;border:none;padding:12px;resize:none;outline:none;font-size:13px;font-family:Consolas,monospace;line-height:1.5}
-.console{height:20vh;background:#3d3d00}
-.chead{padding:8px 12px;background:#2e2e00;color:yellow;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.chead button{cursor:pointer;padding:7px 12px}
-.cbody{padding:10px;color:#ff9;font-size:12px;height:calc(100% - 40px);overflow-y:auto;word-break:break-word}
+.input button{padding:10px 12px;background:#0f0;color:#000;border:none;border-radius:9px;font-size:13px}
+.editor{height:32vh;background:#0a0f2e;border-top:2px solid #60a5fa;display:flex;flex-direction:column}
+.tabs{background:#062806;padding:5px;display:flex;gap:5px;border-bottom:1px solid #0f0;overflow-x:auto;min-height:43px;flex-shrink:0}
+.tab{padding:8px 12px;background:#111;border:1px solid #0f0;border-radius:7px;color:#0f0;font-size:12px;white-space:nowrap;flex-shrink:0}
+.tab.active{background:#0f0;color:#000}
+#gerarAppBtn{flex-shrink:0;width:100%;height:38px;background:#0f0;color:#000;border:0;border-bottom:1px solid #063006;font-weight:bold;font-size:14px}
+.editor textarea{display:block;width:100%;flex:1;min-height:0;background:#0a0f2e;color:#93c5fd;border:none;padding:12px;resize:none;outline:none;font-size:13px;font-family:Consolas,monospace;line-height:1.5;tab-size:2}
+.console{height:23vh;background:#202000}
+.chead{padding:8px 12px;background:#2e2e00;color:yellow;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.chead button{padding:7px 11px;border:none;border-radius:6px}
+.cbody{padding:10px;color:#ff9;font-size:12px;height:calc(100% - 38px);overflow-y:auto;overflow-wrap:anywhere}
+.codebox{margin-top:10px;background:#050505;border:1px solid #444;border-radius:7px;padding:10px;overflow:auto;max-height:250px}
+.codebox pre{margin:0;color:#93c5fd;font-size:12px;white-space:pre;overflow-wrap:normal;font-family:Consolas,monospace}
+.code-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.code-actions button{flex:1;min-width:100px;padding:11px;border:none;border-radius:8px;font-size:13px}
+.editor-send{background:#60a5fa;color:#000}
+.copy-code{background:#0f0;color:#000}
+.code-actions button:active{transform:scale(.98)}
+.aviso{color:#fa0;font-size:12px;margin-top:8px}
 #menuBox{display:none;position:fixed;bottom:70px;left:10px;background:#111;border:2px solid #0f0;padding:10px;border-radius:10px;width:260px;max-width:calc(100vw - 20px);max-height:75vh;overflow-y:auto;z-index:999;box-shadow:0 5px 25px rgba(0,0,0,.6)}
 #menuBox div{padding:10px;cursor:pointer;border-radius:6px;border-bottom:1px solid #222}
 #menuBox div:hover{background:#0f0;color:#000}
 #menuBox .lang{color:#60a5fa}
-.aviso{color:#fa0;font-weight:bold;margin-top:9px;font-size:13px}
-.codebox{margin-top:9px;background:#050505;border:1px solid #444;border-radius:7px;padding:9px;overflow:auto;max-height:190px}
-.codebox pre{margin:0;color:#93c5fd;font-size:12px;white-space:pre-wrap;word-break:break-word}
-.editor-send{margin-top:10px;padding:11px 16px;background:#60a5fa;color:#000;border:none;border-radius:8px;font-weight:bold;font-size:13px;cursor:pointer}
-.editor-send:hover{background:#93c5fd}
-.editor-send:active{transform:scale(.97)}
-.site-link{display:inline-block;margin-top:8px;padding:10px 15px;background:#0f0;color:#000;border-radius:8px;font-weight:bold;text-decoration:none;cursor:pointer}
-.site-link:hover{background:#7cff7c}
-.save-status{position:fixed;right:10px;bottom:10px;background:#111;border:1px solid #333;color:#0f0;padding:6px 10px;border-radius:7px;font-size:11px;z-index:1000;opacity:.9}
-
-/* Janela de remoção de linguagens */
+.save-status{position:fixed;right:8px;bottom:8px;background:#111;border:1px solid #333;color:#0f0;padding:6px 9px;border-radius:7px;font-size:10px;z-index:1000;opacity:.9;pointer-events:none}
 #removeLangModal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:18px}
-.remove-card{width:100%;max-width:390px;max-height:85vh;overflow:auto;background:#111;border:2px solid #0f0;border-radius:14px;padding:18px;box-shadow:0 10px 35px #000}
+.remove-card{width:100%;max-width:390px;max-height:85vh;overflow:auto;background:#111;border:2px solid #0f0;border-radius:14px;padding:18px}
 .remove-card h3{margin:0 0 8px;color:#0f0}
-.remove-card p{font-size:13px;color:#ccc;line-height:1.4}
+.remove-card p{font-size:13px;color:#ccc;line-height:1.5}
 #removeLangList{display:flex;flex-direction:column;gap:8px;margin:15px 0}
-.remove-option{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #333;border-radius:8px;background:#1b1b1b;cursor:pointer}
+.remove-option{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #333;border-radius:8px;background:#1b1b1b}
 .remove-option input{width:18px;height:18px;accent-color:#0f0}
 .remove-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.remove-actions button{flex:1;min-width:105px;padding:10px;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
+.remove-actions button{flex:1;min-width:100px;padding:10px;border:0;border-radius:8px}
 #cancelRemove{background:#333;color:#fff}
 #confirmRemove{background:#0f0;color:#000}
 #removeAll{background:#fa0;color:#000}
+@media(max-width:400px){.header{padding:7px}.header button{padding:8px 9px}.project-name{max-width:95px}.input{padding:6px}.input button{padding:9px;font-size:12px}.input input{padding:10px}}
 </style>
 </head>
 <body>
@@ -67,47 +69,61 @@ body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
   <div class="header">
     <div class="header-left"><span>ELI AI</span><span id="projectName" class="project-name">• Projeto</span></div>
     <div class="header-buttons">
-      <button class="project-btn" onclick="voltarProjetos()" title="Meus Projetos">📁</button>
+      <button class="project-btn" onclick="voltarProjetos()" title="Meus projetos">📁</button>
       <button class="btn2" onclick="toggleMenu()" title="Menu">⋮</button>
     </div>
   </div>
   <div class="msgs" id="msgs"></div>
   <div class="input">
-    <input id="perg" placeholder="Digite..." autocomplete="off" onkeypress="if(event.key==='Enter') enviar()">
-    <button class="btn2" onclick="enviarFoto()">📷</button>
+    <input id="perg" placeholder="Pede código à Eli..." autocomplete="off">
+    <button class="btn2" onclick="enviarFoto()" title="Enviar imagem">📷</button>
     <button onclick="enviar()">Enviar</button>
+    <input id="fotoInput" type="file" accept="image/*" hidden>
   </div>
 </div>
-
-<div class="editor" id="editorBox">
+<div class="editor">
   <div class="tabs" id="tabs"></div>
-  <textarea id="editor" spellcheck="false" oninput="salvarCodigoAutomatico()">Adiciona uma linguagem no menu ⋮</textarea>
+  <button id="gerarAppBtn" onclick="gerarApp()">🚀 GERAR APP</button>
+  <textarea id="editor" spellcheck="false" oninput="salvarCodigoAutomatico()" placeholder="Escolhe uma linguagem no menu ⋮"></textarea>
 </div>
-
 <div class="console">
-  <div class="chead"><span>CONSOLE</span><div><button class="btn2" onclick="enviarErro()">🐛</button><button onclick="run()">RUN</button></div></div>
-  <div class="cbody" id="log">&gt; Conectado...<br>&gt; Aguardando...</div>
+  <div class="chead"><span>CONSOLE</span><div><button class="btn2" onclick="enviarErro()" title="Analisar erro">🐛</button><button onclick="run()">RUN</button></div></div>
+  <div class="cbody" id="log">&gt; ELI AI conectada.<br>&gt; Aguardando instruções...</div>
 </div>
-
 <div id="menuBox">
   <div onclick="addLang('html')" class="lang">🌐 Adicionar HTML</div>
   <div onclick="addLang('css')" class="lang">🎨 Adicionar CSS</div>
-  <div onclick="addLang('js')" class="lang">📜 Adicionar JS</div>
+  <div onclick="addLang('js')" class="lang">📜 Adicionar JavaScript</div>
   <div onclick="addLang('py')" class="lang">🐍 Adicionar Python</div>
+  <div onclick="addLang('dart')" class="lang">🎯 Adicionar Dart / Flutter</div>
+  <div onclick="addLang('yaml')" class="lang">⚙️ Adicionar YAML</div>
+  <div onclick="addLang('json')" class="lang">📋 Adicionar JSON</div>
+  <div onclick="addLang('ts')" class="lang">📘 Adicionar TypeScript</div>
+  <div onclick="addLang('java')" class="lang">☕ Adicionar Java</div>
+  <div onclick="addLang('kt')" class="lang">📱 Adicionar Kotlin</div>
+  <div onclick="addLang('swift')" class="lang">🍎 Adicionar Swift</div>
+  <div onclick="addLang('php')" class="lang">🐘 Adicionar PHP</div>
+  <div onclick="addLang('sql')" class="lang">🗄️ Adicionar SQL</div>
+  <div onclick="addLang('c')" class="lang">💻 Adicionar C</div>
+  <div onclick="addLang('cpp')" class="lang">💻 Adicionar C++</div>
+  <div onclick="addLang('xml')" class="lang">🧩 Adicionar XML</div>
+  <div onclick="addLang('sh')" class="lang">⌨️ Adicionar Shell</div>
+  <div onclick="addLang('go')" class="lang">🐹 Adicionar Go</div>
+  <div onclick="addLang('rs')" class="lang">🦀 Adicionar Rust</div>
+  <div onclick="addLang('rb')" class="lang">💎 Adicionar Ruby</div>
+  <div onclick="addLang('md')" class="lang">📝 Adicionar Markdown</div>
   <hr>
-  <div onclick="abrirRemocaoLinguagens()">🗑️ Remover linguagem</div>
-  <hr>
+  <div onclick="abrirRemocaoLinguagens()">🗑️ Remover linguagens</div>
   <div onclick="mostrarInfoProjeto()">📁 Projeto atual</div>
-  <div onclick="voltarProjetos()">↩️ Meus Projetos</div>
+  <div onclick="voltarProjetos()">↩️ Meus projetos</div>
   <hr>
   <div onclick="limparConversa()">🧹 Limpar conversa</div>
-  <div onclick="limpar()">🧹 Limpar Console</div>
+  <div onclick="limpar()">🧹 Limpar console</div>
 </div>
-
-<div id="removeLangModal" role="dialog" aria-modal="true" aria-labelledby="removeLangTitle">
+<div id="removeLangModal" role="dialog" aria-modal="true">
   <div class="remove-card">
-    <h3 id="removeLangTitle">🗑️ Remover linguagens</h3>
-    <p>Seleciona uma ou mais linguagens que queres remover deste projeto. O código selecionado será apagado deste projeto.</p>
+    <h3>🗑️ Remover linguagens</h3>
+    <p>Seleciona as linguagens que pretendes remover deste projeto. O código dos ficheiros selecionados será apagado.</p>
     <div id="removeLangList"></div>
     <div class="remove-actions">
       <button id="cancelRemove" onclick="fecharRemocaoLinguagens()">Cancelar</button>
@@ -116,295 +132,103 @@ body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
     </div>
   </div>
 </div>
-
 <div id="saveStatus" class="save-status">💾 Salvo</div>
-
 <script>
-let arquivos = {};
-let abaAtual = null;
-let ultimoCod = "";
-let ultimoTipo = "js";
-let historico = [];
-let enviando = false;
-let projetoAtual = null;
-let salvarTimer = null;
-let codigosGerados = {};
-
-window.onload = iniciarProjeto;
-
+"use strict";
+let arquivos={}, abaAtual=null, ultimoCod="", ultimoTipo="js", historico=[], enviando=false, projetoAtual=null, salvarTimer=null, codigosGerados={}, fotoPendente=null;
+const EXTENSOES={html:"html",css:"css",js:"js",py:"py",dart:"dart",flutter:"dart",yaml:"yaml",yml:"yaml",json:"json",ts:"ts",typescript:"ts",java:"java",kotlin:"kt",kt:"kt",swift:"swift",php:"php",sql:"sql",c:"c",cpp:"cpp","c++":"cpp",xml:"xml",bash:"sh",shell:"sh",sh:"sh",go:"go",rust:"rs",ruby:"rb",markdown:"md",md:"md"};
+window.addEventListener("load",iniciarProjeto);
+document.getElementById("perg").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();enviar();}});
+document.getElementById("fotoInput").addEventListener("change",async function(){const f=this.files&&this.files[0];if(!f)return;fotoPendente=f;addMsg("📷 Imagem selecionada: "+f.name+". Escreve a tua pergunta e carrega em Enviar.", "user");this.value="";});
 function iniciarProjeto(){
-  const projetoSalvo = localStorage.getItem("projetoAtual");
-  if(!projetoSalvo){alert("Nenhum projeto foi selecionado.");window.location.href="/";return;}
-  try{projetoAtual=JSON.parse(projetoSalvo);}catch(e){alert("Erro ao abrir o projeto.");window.location.href="/";return;}
-  if(!projetoAtual || !projetoAtual.id){alert("Projeto inválido.");window.location.href="/";return;}
-  document.getElementById("projectName").innerText="• "+(projetoAtual.nome||"Projeto");
-  carregarDadosProjeto();
+ const s=localStorage.getItem("projetoAtual");
+ if(!s){alert("Nenhum projeto foi selecionado.");window.location.href="/";return;}
+ try{projetoAtual=JSON.parse(s);}catch(e){alert("Não foi possível abrir o projeto.");window.location.href="/";return;}
+ if(!projetoAtual||!projetoAtual.id){alert("Projeto inválido.");window.location.href="/";return;}
+ document.getElementById("projectName").textContent="• "+(projetoAtual.nome||"Projeto");
+ carregarDadosProjeto();
 }
 function chaveProjeto(){return projetoAtual&&projetoAtual.id?"eli_projeto_"+projetoAtual.id:null;}
-
 function carregarDadosProjeto(){
-  const chave=chaveProjeto();if(!chave)return;
-  const salvo=localStorage.getItem(chave);
-  if(!salvo){arquivos={};abaAtual=null;ultimoCod="";ultimoTipo="js";historico=[];codigosGerados={};criarMensagemInicial();atualizarStatus("💾 Novo projeto");return;}
-  try{
-    const dados=JSON.parse(salvo);
-    arquivos=dados.arquivos||{};historico=dados.historico||[];abaAtual=dados.abaAtual||null;
-    ultimoCod=dados.ultimoCod||"";ultimoTipo=dados.ultimoTipo||"js";
-    reconstruirAbas();restaurarHistorico();
-    if(abaAtual&&arquivos[abaAtual]!==undefined)abrirAba(abaAtual);
-    else document.getElementById("editor").value="Adiciona uma linguagem no menu ⋮";
-    atualizarStatus("💾 Projeto carregado");
-  }catch(e){console.error("Erro ao carregar:",e);arquivos={};historico=[];abaAtual=null;codigosGerados={};criarMensagemInicial();}
+ const chave=chaveProjeto();if(!chave)return;const salvo=localStorage.getItem(chave);
+ if(!salvo){arquivos={};abaAtual=null;ultimoCod="";ultimoTipo="js";historico=[];codigosGerados={};criarMensagemInicial();atualizarStatus("💾 Novo projeto");return;}
+ try{const d=JSON.parse(salvo);arquivos=d.arquivos||{};historico=d.historico||[];abaAtual=d.abaAtual||null;ultimoCod=d.ultimoCod||"";ultimoTipo=normalizarTipo(d.ultimoTipo||"js");reconstruirAbas();restaurarHistorico();if(abaAtual&&Object.hasOwn(arquivos,abaAtual))abrirAba(abaAtual);else{abaAtual=null;document.getElementById("editor").value="";}atualizarStatus("💾 Projeto carregado");}
+ catch(e){console.error(e);arquivos={};historico=[];abaAtual=null;codigosGerados={};criarMensagemInicial();log("⚠️ Não foi possível carregar todos os dados do projeto.");}
 }
-function criarMensagemInicial(){
-  const msgs=document.getElementById("msgs");msgs.innerHTML="";
-  addMsg("Fala wy! Sou a Eli. Me pede código 🚀","eli",false);
-}
-function reconstruirAbas(){
-  const tabs=document.getElementById("tabs");tabs.innerHTML="";
-  Object.keys(arquivos).forEach(lang=>criarAba(lang));
-}
-function salvarProjeto(){
-  const chave=chaveProjeto();if(!chave)return;
-  if(abaAtual&&Object.prototype.hasOwnProperty.call(arquivos,abaAtual)){
-    const editor=document.getElementById("editor");if(editor)arquivos[abaAtual]=editor.value;
-  }
-  const dados={projeto:projetoAtual,arquivos,historico,abaAtual,ultimoCod,ultimoTipo,atualizadoEm:new Date().toISOString()};
-  try{localStorage.setItem(chave,JSON.stringify(dados));atualizarStatus("💾 Salvo");}
-  catch(e){console.error("Erro ao salvar:",e);atualizarStatus("⚠️ Erro ao salvar");}
-}
-function salvarAutomaticamente(){clearTimeout(salvarTimer);salvarTimer=setTimeout(salvarProjeto,250);}
-function atualizarStatus(texto){const status=document.getElementById("saveStatus");if(status)status.innerText=texto;}
-function salvarCodigo(){
-  if(!abaAtual||!Object.prototype.hasOwnProperty.call(arquivos,abaAtual))return;
-  const editor=document.getElementById("editor");if(editor)arquivos[abaAtual]=editor.value;
-}
+function criarMensagemInicial(){const m=document.getElementById("msgs");m.innerHTML="";addMsg("Fala wy! Sou a Eli. Me pede código 🚀","eli",false);}
+function reconstruirAbas(){const t=document.getElementById("tabs");t.innerHTML="";Object.keys(arquivos).forEach(criarAba);}
+function salvarProjeto(){const k=chaveProjeto();if(!k)return;salvarCodigo();const d={projeto:projetoAtual,arquivos,historico,abaAtual,ultimoCod,ultimoTipo,atualizadoEm:new Date().toISOString()};try{localStorage.setItem(k,JSON.stringify(d));atualizarStatus("💾 Salvo");}catch(e){console.error(e);atualizarStatus("⚠️ Erro ao salvar");}}
+function salvarAutomaticamente(){clearTimeout(salvarTimer);salvarTimer=setTimeout(salvarProjeto,300);}
+function atualizarStatus(t){const e=document.getElementById("saveStatus");if(e)e.textContent=t;}
+function salvarCodigo(){if(!abaAtual||!Object.hasOwn(arquivos,abaAtual))return;const e=document.getElementById("editor");if(e)arquivos[abaAtual]=e.value;}
 function salvarCodigoAutomatico(){salvarCodigo();salvarAutomaticamente();}
-
-function addLang(lang){
-  if(lang in arquivos){abrirAba(lang);toggleMenu();return;}
-  arquivos[lang]="";criarAba(lang);abrirAba(lang);salvarProjeto();toggleMenu();
+function nomeFicheiro(tipo){const x=normalizarTipo(tipo);const n={yaml:"pubspec.yaml",dart:"main.dart",kt:"MainActivity.kt",swift:"main.swift",py:"main.py",html:"main.html",css:"main.css",js:"main.js",ts:"main.ts",json:"data.json",md:"README.md",sh:"script.sh",rs:"main.rs",rb:"main.rb",cpp:"main.cpp",c:"main.c",xml:"main.xml",go:"main.go",java:"Main.java",php:"index.php",sql:"query.sql"};return n[x]||"main."+x;}
+function addLang(lang){lang=normalizarTipo(lang);if(Object.hasOwn(arquivos,lang)){abrirAba(lang);toggleMenu();return;}arquivos[lang]="";criarAba(lang);abrirAba(lang);salvarProjeto();toggleMenu();log("📁 Ficheiro criado: "+nomeFicheiro(lang));}
+function criarAba(lang){if(document.getElementById("tab-"+lang))return;const b=document.createElement("button");b.type="button";b.className="tab";b.id="tab-"+lang;b.textContent=nomeFicheiro(lang);b.onclick=()=>abrirAba(lang);document.getElementById("tabs").appendChild(b);}
+function abrirAba(lang){if(!Object.hasOwn(arquivos,lang))return;salvarCodigo();abaAtual=lang;document.getElementById("editor").value=arquivos[lang]||"";document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));const t=document.getElementById("tab-"+lang);if(t){t.classList.add("active");t.scrollIntoView({block:"nearest",inline:"nearest"});}salvarAutomaticamente();}
+function normalizarTipo(tipo){tipo=String(tipo||"js").toLowerCase().trim().replace(/^\./,"");const m={javascript:"js",node:"js",nodejs:"js",js:"js",html:"html",htm:"html",css:"css",python:"py",python3:"py",py:"py",dart:"dart",flutter:"dart",yaml:"yaml",yml:"yaml",typescript:"ts",ts:"ts",kotlin:"kt",kt:"kt",swift:"swift","c++":"cpp",cpp:"cpp",c:"c",java:"java",php:"php",sql:"sql",json:"json",xml:"xml",bash:"sh",shell:"sh",sh:"sh",go:"go",rust:"rs",ruby:"rb",markdown:"md",md:"md"};return m[tipo]||tipo||"js";}
+function limparTextoIA(t){return String(t||"").replace(/\r\n/g,"\n").replace(/\r/g,"\n");}
+function addMsg(texto,tipo,rolar=true){const e=document.createElement("div");e.className="msg "+tipo;e.textContent=texto;const m=document.getElementById("msgs");m.appendChild(e);if(rolar)m.scrollTop=m.scrollHeight;return e;}
+function restaurarHistorico(){const m=document.getElementById("msgs");m.innerHTML="";codigosGerados={};if(!historico||!historico.length){criarMensagemInicial();return;}historico.forEach(i=>{if(!i||!i.role)return;if(i.role==="user")addMsg(limparTextoIA(i.content),"user",false);if(i.role==="assistant")adicionarMensagemEli(limparTextoIA(i.content),limparTextoIA(i.codigo||""),i.tipo||"",false);});m.scrollTop=m.scrollHeight;}
+function adicionarMensagemEli(resposta,codigo,tipo,rolar=true){
+ resposta=limparTextoIA(resposta);codigo=limparTextoIA(codigo);tipo=normalizarTipo(tipo);const msg=document.createElement("div");msg.className="msg eli";const tx=document.createElement("div");tx.textContent=resposta;msg.appendChild(tx);
+ if(codigo){const id="codigo_"+Date.now()+"_"+Math.floor(Math.random()*1000000);codigosGerados[id]={codigo,tipo};const box=document.createElement("div");box.className="codebox";const pre=document.createElement("pre");pre.textContent=codigo;box.appendChild(pre);msg.appendChild(box);
+  if(!Object.hasOwn(arquivos,tipo)){const av=document.createElement("div");av.className="aviso";av.textContent="A linguagem "+tipo.toUpperCase()+" ainda não tem uma aba. O botão Enviar criará o ficheiro.";msg.appendChild(av);}
+  const ac=document.createElement("div");ac.className="code-actions";const be=document.createElement("button");be.className="editor-send";be.textContent="📤 Enviar";be.onclick=()=>enviarCodigoGerado(id);const bc=document.createElement("button");bc.className="copy-code";bc.textContent="📋 Copiar";bc.onclick=()=>copiarCodigo(id,bc);ac.append(be,bc);msg.appendChild(ac);
+ }
+ const m=document.getElementById("msgs");m.appendChild(msg);if(rolar)m.scrollTop=m.scrollHeight;
 }
-function criarAba(lang){
-  const tabs=document.getElementById("tabs");if(document.getElementById("tab-"+lang))return;
-  const novaAba=document.createElement("div");novaAba.className="tab";novaAba.id="tab-"+lang;novaAba.innerText="main."+lang;
-  novaAba.onclick=()=>abrirAba(lang);tabs.appendChild(novaAba);
-}
-function abrirAba(lang){
-  if(!Object.prototype.hasOwnProperty.call(arquivos,lang))return;
-  if(abaAtual&&abaAtual!==lang)salvarCodigo();
-  abaAtual=lang;document.getElementById("editor").value=arquivos[lang]||"";
-  document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"));
-  const tab=document.getElementById("tab-"+lang);if(tab)tab.classList.add("active");
-  salvarAutomaticamente();
-}
-
-/* Remoção de linguagens: atua apenas no projeto aberto */
-function abrirRemocaoLinguagens(){
-  document.getElementById("menuBox").style.display="none";
-  const lista=document.getElementById("removeLangList");
-  lista.innerHTML="";
-  const linguagens=Object.keys(arquivos);
-  if(!linguagens.length){
-    lista.innerHTML='<p>Este projeto ainda não tem linguagens para remover.</p>';
-    document.getElementById("confirmRemove").disabled=true;
-    document.getElementById("removeAll").disabled=true;
-  }else{
-    document.getElementById("confirmRemove").disabled=false;
-    document.getElementById("removeAll").disabled=false;
-    linguagens.forEach(lang=>{
-      const label=document.createElement("label");
-      label.className="remove-option";
-      const check=document.createElement("input");
-      check.type="checkbox";check.value=lang;check.className="remove-lang-check";
-      const nome=document.createElement("span");nome.textContent="main."+lang;
-      label.append(check,nome);lista.appendChild(label);
-    });
-  }
-  document.getElementById("removeLangModal").style.display="flex";
-}
-function fecharRemocaoLinguagens(){document.getElementById("removeLangModal").style.display="none";}
-function removerLinguagensSelecionadas(){
-  const selecionadas=[...document.querySelectorAll(".remove-lang-check:checked")].map(el=>el.value);
-  if(!selecionadas.length){alert("Seleciona pelo menos uma linguagem.");return;}
-  if(!confirm("Confirmas a remoção de: "+selecionadas.map(x=>"main."+x).join(", ")+"? O código destes ficheiros será apagado deste projeto."))return;
-  executarRemocaoLinguagens(selecionadas);
-}
-function removerTodasLinguagens(){
-  const todas=Object.keys(arquivos);
-  if(!todas.length){fecharRemocaoLinguagens();return;}
-  if(!confirm("Tens a certeza que queres remover TODAS as linguagens deste projeto? O código dos ficheiros será apagado, mas o histórico da conversa será mantido."))return;
-  executarRemocaoLinguagens(todas);
-}
-function executarRemocaoLinguagens(langs){
-  salvarCodigo();
-  langs.forEach(lang=>{
-    delete arquivos[lang];
-    const tab=document.getElementById("tab-"+lang);if(tab)tab.remove();
-  });
-  if(abaAtual&&langs.includes(abaAtual)){
-    abaAtual=null;
-    const restantes=Object.keys(arquivos);
-    const editor=document.getElementById("editor");
-    if(restantes.length){
-      abaAtual=restantes[0];
-      editor.value=arquivos[abaAtual]||"";
-      const tab=document.getElementById("tab-"+abaAtual);if(tab)tab.classList.add("active");
-    }else{
-      editor.value="Adiciona uma linguagem no menu ⋮";
-    }
-  }
-  if(ultimoTipo&&langs.includes(ultimoTipo)){ultimoCod="";ultimoTipo="js";}
-  salvarProjeto();fecharRemocaoLinguagens();
-  log("🗑️ Linguagens removidas: "+langs.map(x=>"main."+x).join(", "));
-  atualizarStatus("💾 Projeto atualizado");
-}
-document.getElementById("removeLangModal").addEventListener("click",function(event){
-  if(event.target===this)fecharRemocaoLinguagens();
-});
-document.addEventListener("keydown",function(event){if(event.key==="Escape")fecharRemocaoLinguagens();});
-
-function limparTextoIA(texto){
-  return String(texto||"").replace(/\\r\\n/g,"\n").replace(/\\n/g,"\n").replace(/\\r/g,"\n");
-}
-function restaurarHistorico(){
-  const msgs=document.getElementById("msgs");msgs.innerHTML="";codigosGerados={};
-  if(!historico||!historico.length){criarMensagemInicial();return;}
-  historico.forEach(item=>{
-    if(!item||!item.role)return;
-    if(item.role==="user"){addMsg(escapar(limparTextoIA(item.content)),"user",false);return;}
-    if(item.role==="assistant")adicionarMensagemEli(limparTextoIA(item.content),limparTextoIA(item.codigo||""),item.tipo||"");
-  });
-  msgs.scrollTop=msgs.scrollHeight;
-}
-function adicionarMensagemEli(resposta,codigo,tipo){
-  resposta=limparTextoIA(resposta);codigo=limparTextoIA(codigo);tipo=normalizarTipo(tipo);
-  let codigoId=null;
-  if(codigo){codigoId="codigo_"+Date.now()+"_"+Math.floor(Math.random()*1000000);codigosGerados[codigoId]={codigo,tipo};}
-  let html='<div class="msg eli">'+escapar(resposta).replace(/\n/g,"<br>");
-  if(codigo){
-    html+='<div class="codebox"><pre>'+escapar(codigo)+'</pre></div>';
-    if(!(tipo in arquivos))html+='<div class="aviso">⚠️ A linguagem <strong>'+escapar(tipo.toUpperCase())+'</strong> ainda não existe.<br>Clica em <strong>📤 Enviar para o Editor</strong> e ela será criada automaticamente.</div>';
-    html+='<br><button class="editor-send" onclick="enviarCodigoGerado(\''+codigoId+'\')">📤 Enviar para o Editor</button>';
-  }
-  html+='</div>';document.getElementById("msgs").insertAdjacentHTML("beforeend",html);
-}
-function enviarCodigoGerado(codigoId){
-  const dados=codigosGerados[codigoId];
-  if(!dados){addMsg("❌ Não encontrei este código.","eli");return;}
-  const codigo=limparTextoIA(dados.codigo),tipo=normalizarTipo(dados.tipo);
-  if(!codigo){addMsg("❌ O código está vazio.","eli");return;}
-  arquivos[tipo]=codigo;ultimoCod=codigo;ultimoTipo=tipo;
-  if(!document.getElementById("tab-"+tipo))criarAba(tipo);
-  abaAtual=tipo;document.getElementById("editor").value=codigo;
-  document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"));
-  const tab=document.getElementById("tab-"+tipo);if(tab)tab.classList.add("active");
-  salvarProjeto();addMsg("✅ Código atualizado em main."+tipo+".","eli");log("🟢 main."+tipo+" atualizado com o novo código.");
-}
-function enviarEditor(){
-  if(!ultimoCod){addMsg("❌ Não encontrei código para enviar.","eli");return;}
-  enviarCodigoDireto(ultimoCod,ultimoTipo);
-}
-function enviarCodigoDireto(codigo,tipo){
-  codigo=limparTextoIA(codigo);tipo=normalizarTipo(tipo);if(!codigo)return;
-  arquivos[tipo]=codigo;ultimoCod=codigo;ultimoTipo=tipo;
-  if(!document.getElementById("tab-"+tipo))criarAba(tipo);
-  abaAtual=tipo;document.getElementById("editor").value=codigo;
-  document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"));
-  const tab=document.getElementById("tab-"+tipo);if(tab)tab.classList.add("active");
-  salvarProjeto();
-}
-function normalizarTipo(tipo){
-  tipo=String(tipo||"js").toLowerCase().trim();
-  const mapa={javascript:"js",js:"js",html:"html",htm:"html",css:"css",python:"py",py:"py",typescript:"ts",ts:"ts",json:"json",java:"java",php:"php",sql:"sql",c:"c",cpp:"cpp","c++":"cpp"};
-  return mapa[tipo]||"js";
-}
-function escapar(texto){
-  return String(texto||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
-}
-function addMsg(texto,tipo,rolar=true){
-  const id="m"+Date.now()+"_"+Math.floor(Math.random()*10000);
-  document.getElementById("msgs").insertAdjacentHTML("beforeend",'<div class="msg '+tipo+'" id="'+id+'">'+texto+'</div>');
-  if(rolar){const msgs=document.getElementById("msgs");msgs.scrollTop=msgs.scrollHeight;}
-  return id;
-}
-async function enviar(){
-  if(enviando)return;
-  const p=document.getElementById("perg");if(!p||!p.value.trim())return;
-  enviando=true;const pergunta=p.value.trim();
-  addMsg(escapar(pergunta),"user");historico.push({role:"user",content:pergunta});salvarProjeto();p.value="";
-  const loadingId=addMsg("Eli pensando...","eli");
-  try{
-    const historicoRecente=historico.slice(-12).map(item=>({role:item.role,content:item.content}));
-    const res=await fetch("/teste-firestore",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({pergunta,historico:historicoRecente})});
-    const textoResposta=await res.text();let data=null;
-    try{data=JSON.parse(textoResposta);}catch(e){console.error("Resposta não JSON:",textoResposta);}
-    const loading=document.getElementById(loadingId);if(loading)loading.remove();
-    if(!res.ok){
-      const mensagem=data&&data.resposta?limparTextoIA(data.resposta):"Erro no servidor "+res.status;
-      addMsg("❌ "+escapar(mensagem),"eli");historico.push({role:"assistant",content:"❌ "+mensagem});salvarProjeto();return;
-    }
-    if(!data){const erro="❌ O servidor enviou uma resposta inválida.";addMsg(erro,"eli");historico.push({role:"assistant",content:erro});salvarProjeto();return;}
-    const resposta=limparTextoIA(data.resposta||"Sem resposta."),codigo=limparTextoIA(data.codigo||""),tipo=normalizarTipo(data.tipo);
-    historico.push({role:"assistant",content:resposta,codigo,tipo});
-    if(codigo){ultimoCod=codigo;ultimoTipo=tipo;}
-    adicionarMensagemEli(resposta,codigo,tipo);salvarProjeto();
-    const msgs=document.getElementById("msgs");msgs.scrollTop=msgs.scrollHeight;
-  }catch(e){
-    const loading=document.getElementById(loadingId);if(loading)loading.remove();
-    const erro="❌ "+(e.message||"Erro de conexão com o servidor.");
-    addMsg(escapar(erro),"eli");historico.push({role:"assistant",content:erro});salvarProjeto();console.error("Erro:",e);
-  }finally{enviando=false;}
-}
-function enviarFoto(){addMsg("📷 Foto","user");addMsg("Manda a foto wy","eli");}
-function toggleMenu(){
-  const menu=document.getElementById("menuBox");
-  menu.style.display=menu.style.display==="block"?"none":"block";
-}
-function mostrarInfoProjeto(){
-  toggleMenu();if(!projetoAtual)return;
-  alert("📁 Projeto: "+(projetoAtual.nome||"Projeto")+"\n\nArquivos: "+Object.keys(arquivos).length+"\nMensagens: "+historico.length);
-}
+function enviarCodigoGerado(id){const d=codigosGerados[id];if(!d){addMsg("Não encontrei este código.","eli");return;}const codigo=limparTextoIA(d.codigo),tipo=normalizarTipo(d.tipo);if(!codigo.trim()){addMsg("O código está vazio.","eli");return;}salvarCodigo();arquivos[tipo]=codigo;ultimoCod=codigo;ultimoTipo=tipo;if(!document.getElementById("tab-"+tipo))criarAba(tipo);abrirAba(tipo);salvarProjeto();addMsg("✅ Código enviado para "+nomeFicheiro(tipo)+". Linguagem: "+tipo.toUpperCase()+".","eli");log("🟢 Código enviado para "+nomeFicheiro(tipo));}
+async function copiarCodigo(id,botao){const d=codigosGerados[id];if(!d)return;try{await navigator.clipboard.writeText(d.codigo);botao.textContent="✅ Copiado";setTimeout(()=>botao.textContent="📋 Copiar",1500);}catch(e){const ta=document.createElement("textarea");ta.value=d.codigo;document.body.appendChild(ta);ta.select();const ok=document.execCommand("copy");ta.remove();botao.textContent=ok?"✅ Copiado":"Erro ao copiar";setTimeout(()=>botao.textContent="📋 Copiar",1500);}}
+function toggleMenu(){const m=document.getElementById("menuBox");m.style.display=m.style.display==="block"?"none":"block";}
 function voltarProjetos(){salvarProjeto();window.location.href="/";}
-function limparConversa(){
-  toggleMenu();if(!confirm("Tem certeza que quer limpar esta conversa?\n\nOs códigos do projeto continuarão guardados."))return;
-  historico=[];codigosGerados={};criarMensagemInicial();salvarProjeto();atualizarStatus("💾 Conversa limpa");
+function mostrarInfoProjeto(){toggleMenu();alert("Projeto: "+(projetoAtual?.nome||"Projeto")+"\nFicheiros: "+Object.keys(arquivos).length+"\nMensagens: "+historico.length);}
+function limpar(){document.getElementById("log").innerHTML="";log("Console limpo.");}
+function log(t){const e=document.createElement("div");e.textContent="> "+String(t);const l=document.getElementById("log");l.appendChild(e);l.scrollTop=l.scrollHeight;}
+function limparConversa(){if(!confirm("Queres limpar o histórico desta conversa?"))return;historico=[];codigosGerados={};criarMensagemInicial();salvarProjeto();toggleMenu();log("Histórico da conversa limpo.");}
+function abrirRemocaoLinguagens(){toggleMenu();const list=document.getElementById("removeLangList");list.innerHTML="";const langs=Object.keys(arquivos);if(!langs.length){list.textContent="Este projeto ainda não tem ficheiros."; }langs.forEach(lang=>{const label=document.createElement("label");label.className="remove-option";const cb=document.createElement("input");cb.type="checkbox";cb.value=lang;const span=document.createElement("span");span.textContent=nomeFicheiro(lang)+" ("+lang.toUpperCase()+")";label.append(cb,span);list.appendChild(label);});document.getElementById("removeLangModal").style.display="flex";}
+function fecharRemocaoLinguagens(){document.getElementById("removeLangModal").style.display="none";}
+function removerLinguagensSelecionadas(){const selecionadas=[...document.querySelectorAll("#removeLangList input:checked")].map(e=>e.value);if(!selecionadas.length){alert("Seleciona pelo menos uma linguagem.");return;}if(!confirm("Remover "+selecionadas.map(nomeFicheiro).join(", ")+"?"))return;removerLangs(selecionadas);}
+function removerTodasLinguagens(){const langs=Object.keys(arquivos);if(!langs.length){fecharRemocaoLinguagens();return;}if(!confirm("Queres remover todos os ficheiros deste projeto?"))return;removerLangs(langs);}
+function removerLangs(langs){salvarCodigo();langs.forEach(l=>{delete arquivos[l];const t=document.getElementById("tab-"+l);if(t)t.remove();});if(langs.includes(abaAtual)){abaAtual=null;document.getElementById("editor").value="";}if(!abaAtual&&Object.keys(arquivos).length)abrirAba(Object.keys(arquivos)[0]);salvarProjeto();fecharRemocaoLinguagens();log("🗑️ Ficheiros removidos: "+langs.join(", "));}
+async function enviar(){
+ if(enviando)return;const campo=document.getElementById("perg");const pergunta=campo.value.trim();if(!pergunta&&!fotoPendente){campo.focus();return;}enviando=true;campo.value="";addMsg(pergunta||(fotoPendente?"Analisa esta imagem, por favor.":""),"user");historico.push({role:"user",content:pergunta||(fotoPendente?"Analisa esta imagem, por favor.":"")});salvarProjeto();const loading=addMsg("Eli pensando...","eli");const imagem=fotoPendente;fotoPendente=null;
+ try{
+  const payload={mensagem:pergunta||(imagem?"Analisa esta imagem, por favor.":""),pergunta:pergunta||(imagem?"Analisa esta imagem, por favor.":""),historico:historico.slice(-20),codigo:ultimoCod,tipo:ultimoTipo};
+  if(imagem){payload.imagemNome=imagem.name;payload.imagemTipo=imagem.type;payload.imagemBase64=await arquivoBase64(imagem);}
+  const resposta=await fetch("/teste-firestore",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify(payload)});
+  const dados=await resposta.json().catch(()=>({}));
+  if(!resposta.ok)throw new Error(dados.erro||dados.error||("Erro HTTP "+resposta.status));
+  const texto=dados.resposta||dados.message||dados.mensagem||dados.reply||"A resposta chegou sem texto.";
+  const codigo=dados.codigo||dados.code||"";
+  const tipo=normalizarTipo(dados.tipo||dados.linguagem||inferirTipo(codigo,pergunta));
+  loading.remove();
+  adicionarMensagemEli(texto,codigo,tipo);
+  historico.push({role:"assistant",content:texto,codigo,tipo});
+  ultimoCod=codigo||ultimoCod;ultimoTipo=tipo;salvarProjeto();
+ }catch(e){loading.remove();const msg="Não consegui contactar a ELI: "+(e.message||"erro desconhecido")+". Confirma se o backend /teste-firestore está disponível no Render.";addMsg(msg,"eli");log("❌ "+msg);}
+ finally{enviando=false;}
 }
-function limpar(){document.getElementById("log").innerHTML="&gt; Limpo";}
+function arquivoBase64(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(",")[1]||"");r.onerror=reject;r.readAsDataURL(file);});}
+function inferirTipo(codigo,pergunta){const s=(String(codigo||"")+"\n"+String(pergunta||"")).toLowerCase();if(s.includes("flutter")||s.includes("dart"))return "dart";if(s.includes("<html")||s.includes("<!doctype html"))return "html";if(s.includes("def ")||s.includes("print("))return "py";if(s.includes("interface ")||s.includes("type ")&&s.includes(":"))return "ts";if(s.includes("select ")||s.includes("create table"))return "sql";if(s.includes("{")&&s.includes("function"))return "js";return "js";}
+function enviarFoto(){document.getElementById("fotoInput").click();}
+async function enviarErro(){const codigo=abaAtual?arquivos[abaAtual]:"";const texto="Analisa e corrige este erro/código da linguagem "+(abaAtual||"desconhecida")+":\n\n"+(codigo||"(nenhum código no editor)")+"\n\nExplica a causa e devolve o código corrigido.";document.getElementById("perg").value=texto;await enviar();}
+async function gerarApp(){
+ salvarCodigo();const linguagens=Object.keys(arquivos);if(!linguagens.length){alert("Adiciona código ao projeto antes de gerar a aplicação.");return;}
+ const flutter=Object.hasOwn(arquivos,"dart"),web=Object.hasOwn(arquivos,"html");let plataforma;
+ if(flutter)plataforma="Flutter / Android";else if(web)plataforma="Aplicação Web";else{alert("Para preparar uma aplicação, adiciona um projeto Flutter (Dart) ou uma página HTML.");return;}
+ if(!confirm("🚀 GERAR APP\n\nTipo: "+plataforma+"\nFicheiros: "+linguagens.length+"\n\nQueres continuar?"))return;
+ salvarProjeto();log("🚀 A preparar a aplicação: "+plataforma);log("📁 Ficheiros: "+linguagens.map(nomeFicheiro).join(", "));
+ if(flutter){log("📱 Projeto Flutter identificado.");alert("Projeto Flutter identificado!\n\nO botão ainda não compila APK. Para gerar um APK verdadeiro, precisamos ligar este botão a um serviço de compilação com Flutter SDK e Android SDK.");}
+ else{log("🌐 Projeto Web identificado.");alert("Projeto Web identificado!\n\nOs ficheiros estão guardados no editor. A exportação/publicação ainda precisa de ser implementada.");}
+}
 function run(){
-  salvarCodigo();salvarProjeto();
-  if(!abaAtual){log("> Adiciona uma linguagem primeiro wy");return;}
-  const c=document.getElementById("editor").value;
-  if(abaAtual==="js"){
-    try{const resultado=new Function(c)();log("> Resultado: "+resultado);}
-    catch(e){log("> Erro: "+e.message);}
-    return;
-  }
-  if(abaAtual==="html"){
-    if(!c.trim()){log("🔴 SITE NÃO ATIVO");log("❌ O arquivo main.html está vazio.");return;}
-    try{
-      const blob=new Blob([c],{type:"text/html"}),url=URL.createObjectURL(blob);
-      log("🟢 SITE ATIVO");const logBox=document.getElementById("log"),link=document.createElement("a");
-      link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.innerText="🔗 Abrir site";link.className="site-link";
-      logBox.appendChild(document.createElement("br"));logBox.appendChild(link);logBox.scrollTop=logBox.scrollHeight;
-    }catch(e){log("🔴 SITE NÃO ATIVO");log("❌ Erro: "+e.message);}
-    return;
-  }
-  if(abaAtual==="css"){log("> CSS não roda sozinho, usa com HTML");return;}
-  if(abaAtual==="py"){log("> Python só roda no servidor");return;}
-  log("> Linguagem "+abaAtual+" não possui RUN configurado.");
+ salvarCodigo();if(!abaAtual){alert("Adiciona e seleciona uma linguagem primeiro.");return;}const codigo=document.getElementById("editor").value;arquivos[abaAtual]=codigo;salvarProjeto();
+ if(abaAtual==="js"){try{const resultado=Function('"use strict";return (function(){'+codigo+'\n})();')();if(resultado!==undefined)log(String(resultado));else log("JavaScript executado.");}catch(e){log("❌ "+e.message);}}
+ else if(abaAtual==="html"){const janela=window.open("","_blank");if(!janela){log("⚠️ Permite janelas pop-up para executar HTML.");return;}const css=arquivos.css||"";const js=arquivos.js||"";const documento=/<html[\s>]/i.test(codigo)?codigo:'<!doctype html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+css.replace(/<\/style/gi,"<\\/style")+'</style></head><body>'+codigo+'<script>'+js.replace(/<\/script/gi,"<\\/script")+'<\/script></body></html>';janela.document.open();janela.document.write(documento);janela.document.close();log("🌐 Pré-visualização HTML aberta.");}
+ else if(abaAtual==="css"){log("🎨 CSS guardado. Abre um ficheiro HTML para pré-visualizar a página.");}
+ else{log("ℹ️ RUN não executa "+abaAtual.toUpperCase()+" diretamente no navegador. O ficheiro foi guardado.");}
 }
-function log(t){document.getElementById("log").innerHTML+="<br>"+escapar(t);}
-function enviarErro(){
-  const erro=document.getElementById("log").innerText;
-  document.getElementById("perg").value="Eli me ajuda com este erro:\n\n"+erro;enviar();
-}
-document.addEventListener("keydown",function(event){
-  if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==="s"){
-    event.preventDefault();salvarProjeto();atualizarStatus("💾 Salvo");
-  }
-});
-window.addEventListener("beforeunload",salvarProjeto);
 </script>
 </body>
 </html>
